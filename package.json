@@ -1,0 +1,23 @@
+{
+  "name": "group_07",
+  "version": "1.0.0",
+  "description": "CS_546_A :- Group_07 final project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulpawar166/Group_07.git"
+  },
+  "author": "Group 07 team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahulpawar166/Group_07/issues"
+  },
+  "homepage": "https://github.com/rahulpawar166/Group_07#readme",
+  "dependencies": {
+    "mongodb": "^4.5.0"
+  }
+}
