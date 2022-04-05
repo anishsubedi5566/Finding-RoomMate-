@@ -1,4 +1,4 @@
-# TeamX
+# Group 07
 CS_546 - Final Project
                                                             Finding Room-mate Web Application
 
