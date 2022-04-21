@@ -18,6 +18,14 @@
   },
   "homepage": "https://github.com/rahulpawar166/Group_07#readme",
   "dependencies": {
-    "mongodb": "^4.5.0"
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.5",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mongodb": "^4.5.0",
+    "nodemon": "^2.0.15"
   }
 }
