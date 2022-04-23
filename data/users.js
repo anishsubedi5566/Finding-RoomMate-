@@ -1,12 +1,38 @@
-
-
-
 let { ObjectId } = require("mongodb");
 const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
 const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs");
 const salRounds = 16;
+
+function checkIsString(str) {
+  if (typeof str !== "string") throw `${str} is not a string`;
+  if (str.trim().length === 0) throw "String contains only spaces";
+  if (str.length === 0) throw `${str} is empty`;
+}
+
+function checkIsArray(arr) {
+  if (!Array.isArray(arr)) throw "Not an array";
+  if (arr.length === 0) throw "Array is an empty array";
+  for (let i = 0; i < arr.length; i++) {
+    checkIsString(arr[i]);
+  }
+}
+
+function checkIsNumber(num) {
+  if (typeof num !== "number") throw `${num} is not a number`;
+
+  if (isNaN(num)) throw `${num} is NaN`;
+}
+
+function checkIsObjectID(id) {
+  if (!ObjectId.isValid(id)) {
+    throw "ID is not a valid Object ID";
+  }
+}
+function checkValue(value) {
+  if (!value) throw `${value} not provided, please provide.`;
+}
 
 let username_string_Check = (string, var_Name) => {
   if (typeof string !== "string")
@@ -37,7 +63,22 @@ const password_string_check = (string, var_Name) => {
 };
 
 let exportedMethods = {
-  async createUser(username, password) {
+  async create(
+    username,
+    password,
+    securityQues,
+    securityAns,
+    firstName,
+    lastName,
+    schoolName,
+    city,
+    state,
+    homeCountry,
+    age,
+    gender,
+    bio,
+    picture
+  ) {
     //1. Both username and password must be supplied or you will throw an error
     if (!username) throw `please provide username`;
     if (!password) throw `please enter password`;
@@ -60,10 +101,82 @@ let exportedMethods = {
 
     password = password.trim();
     const hashPass = await bcrypt.hash(password, salRounds);
+
+    //First Name error check
+    checkValue(firstName);
+    checkIsString(firstName);
+
+    //LastName error check
+    checkValue(lastName);
+    checkIsString(lastName);
+
+    //city error check
+    checkValue(city);
+    checkIsString(city);
+
+    //state error check
+    checkValue(state);
+    checkIsString(state);
+
+    //school name error check
+    checkValue(schoolName);
+    checkIsString(schoolName);
+
+    //age error check
+    checkValue(age);
+    checkIsNumber(age);
+    if (age < 15 && age > 110) throw "Age is invalid";
+
+    //gender error check
+    checkValue(gender);
+    checkIsString(gender);
+
+    //homeCountry error check
+    if (!homeCountry) {
+      homeCountry = "N/A";
+    }
+
+    //securityQues error handling
+    checkValue(securityQues);
+    checkIsString(securityQues);
+
+    //securityAns error handling
+    checkValue(securityAns);
+    checkIsString(securityAns);
+
+    //bio error check
+    if (!bio) {
+      bio = "N/A";
+    }
+
+    const usersCollection = await users();
     const user_detail = {
       username: username,
       password: hashPass,
+      securityQuestion: securityQues,
+      securityAns: securityAns,
+      firstName: firstName,
+      lastName: lastName,
+
+      schoolName: schoolName,
+      city: city,
+      state: state,
+      homeCountry: homeCountry,
+      age: age,
+      gender: gender,
+      bio: bio,
+      userProfileImage: picture,
+      followers: [],
+      posts: [],
     };
+
+    // const insertInfo = await usersCollection.insertOne(user_detail);
+    // if (insertInfo.insertedCount === 0) throw "Could not create user";
+
+    // const newId = insertInfo.insertedId;
+
+    // let user = await this.get(newId.toString());
+    // return user;
 
     const inserted_user = await userCollection.insertOne(user_detail);
     if (inserted_user.insetedCount === 0) {
@@ -97,11 +210,10 @@ let exportedMethods = {
     //if user exist then verify password
     const hashPass = exist_user.password;
     let password_validation = false;
-   
+
     //If the username supplied is found in the DB, you will then use bcrypt to compare the hashed password in the database with the password input parameter.
     try {
       password_validation = await bcrypt.compare(password, hashPass);
-      
     } catch (e) {}
     if (password_validation) {
       //3. If the passwords match your function will return {authenticated: true}

@@ -1,19 +1,169 @@
+<h1>Sign Up</h1>
 <form action="/signup" id="signup-form" method="POST">
   <div class="form">
-    <h1>signup-form</h1>
-    <label>UserName</label>
-    <input name="username" type="text" placeholder="Enter user name" />
+
+    <label>Username: </label>
+    <input
+      id="username"
+      name="username"
+      type="text"
+      placeholder="Enter username"
+      required
+    />
 
     <br />
-    <label>Password</label>
-    <input name="password" type="password" placeholder="Enter password" />
+    <label>Password: </label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="Enter password"
+      required
+    />
+    <br />
+    <label for="securityQues">Security question:</label>
+    <select id="securityQues" name="securityQues" required>
+      <option value="nickname">What is your nickname?</option>
+      <option value="favPlace">Which is your favourite place to spend vacation?</option>
+      <option value="firstFriend">Who is your first childhood friend?</option>
+      <option value="favGame">Which is your favourite video game?</option>
+
+    </select>
+    <br />
+    <label>Answer: </label>
+    <input
+      id="securityAns"
+      name="securityAns"
+      type="text"
+      placeholder="Answer to the security question."
+      required
+    />
+    <br />
+    <label>First Name: </label>
+    <input
+      id="firstName"
+      name="firstName"
+      type="text"
+      placeholder="Enter your first name"
+      required
+    />
+    <br />
+    <label>Last Name: </label>
+    <input
+      id="lastName"
+      name="lastName"
+      type="text"
+      placeholder="Enter your last name"
+      required
+    />
+    <br />
+    <label for="schoolName">School Name:</label>
+    <select id="schoolName" name="schoolName" required>
+      <option value="sit">Stevens Institute of Technology</option>
+      <option value="nyu">New York University</option>
+      <option value="uta">University of Texas at Austin</option>
+      <option value="ud">University of Denver</option>
+
+      <option value="asu">Arizona State University</option>
+      <option value="ucsf">University of San Francisco</option>
+      <option value="sjsu">San Jose State University</option>
+      <option value="uw">University of Washington</option>
+
+    </select>
+    <br />
+    <label for="city">City:</label>
+    <select id="city" name="city" required>
+      <option value="austin">Austin</option>
+      <option value="boston">Boston</option>
+      <option value="chicago">Chicago</option>
+      <option value="denver">Denver</option>
+      <option value="hoboken">Hoboken</option>
+
+      <option value="jersey_city">Jersey City</option>
+      <option value="new_york">New York</option>
+
+      <option value="phoenix">Phoenix</option>
+      <option value="san_francisco">San Francisco</option>
+      <option value="san_jose">San Jose</option>
+      <option value="seattle">Seattle</option>
+
+    </select>
+    <br />
+    <label for="state">State:</label>
+    <select id="state" name="state" required>
+      <option value="arizona">Arizona</option>
+      <option value="california">California</option>
+      <option value="colorado">Colorado</option>
+      <option value="illinois">Illinois</option>
+      <option value="texas">Texas</option>
+      <option value="massachusetts">Massachusetts</option>
+      <option value="new_jersey">New Jersey</option>
+      <option value="new_york">New York</option>
+      <option value="washington">Washington</option>
+    </select>
     <br />
 
+    <label for="age">Age:</label>
+    <input id="age" name="age" type="number" placeholder="15" required />
+    <br />
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="male">Male</option>
+      <option value="feamle">Female</option>
+      <option value="non_binary">Non-Binary</option>
+      <option value="trans">Transgender</option>
+      <option value="agender">Agender</option>
+      <option value="pangender">Pangender</option>
+      <option value="genderqueer">Genderqueer</option>
+
+    </select>
+    <br />
+
+    <label for="homeCountry">Native Country:</label>
+    <select id="homeCountry" name="homeCountry" required>
+      <option value="usa">United States of America</option>
+      <option value="brazil">Brazil</option>
+      <option value="china">China</option>
+      <option value="france">France</option>
+      <option value="india">India</option>
+      <option value="israel">Israel</option>
+      <option value="Mexico">Mexico</option>
+      <option value="nepal">Nepal</option>
+      <option value="philippines">Philippines</option>
+      <option value="russia">Russia</option>
+      <option value="spain">Spain</option>
+      <option value="thailand">Thailand</option>
+      <option value="uae">United Arab Emirates</option>
+      <option value="uk">United Kingdom</option>
+
+    </select>
+    <br />
+
+    <label for="bio">Bio:</label>
+    <textarea
+      rows="4"
+      cols="50"
+      id="bio"
+      name="bio"
+      form="form"
+      placeholder="Other users will know you better if you tell us about yourself..."
+    ></textarea>
+    <br />
+    <label for="picture"></label>
+    <p class="userImage">Upload a profile picture for your profile if you want:</p>
+    <input
+      type="file"
+      class="form-control"
+      id="picture"
+      name="picture"
+      accept=".jpg,.gif,.png,.jpeg"
+    />
+    <br />
     {{#if errors}}
       <h2>{{errors}}</h2>
     {{/if}}
 
-    <label>Submit</label>
+    {{! <label>Submit</label> }}
     <button type="submit" id="btn">submit</button>
 
   </div>

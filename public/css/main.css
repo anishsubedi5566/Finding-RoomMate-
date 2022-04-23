@@ -1,57 +1,81 @@
 body {
-    background: #e0db8b;
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  }
-  h1 {
-    color: blue;
-    margin-bottom: 5px;
-  }
-  h2 {
-    color: red;
-  }
-  
-  label {
-    font-weight: bold;
-    color: rgb(101, 47, 202);
-  }
-  
-  #btn {
-    color: red;
-    background-color: aqua;
-    width: 10%;
-  }
-  
-  #btn:hover {
-    background-color: green;
-  }
-  
-  #btn:active {
-    color: #00ff4c;
-  }
-  
-  .form {
-    background-color: #00ff4c;
-    padding-left: 40px;
-    padding-top: 40px;
-  }
-  
-  a {
-    color: red;
-  }
-  
-  #signup-form {
-    padding-left: 2rem;
-    padding-bottom: 2rem;
-    padding-top: 3rem;
-  }
-  
-  #login-form {
-    padding-left: 2rem;
-    padding-bottom: 2rem;
-    padding-top: 3rem;
-  }
-  
-  input {
-    padding-left: 3px;
-  }
-  
+  background: #e0db8b;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  padding-left: 30%;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+h1 {
+  color: blue;
+  margin-bottom: 5px;
+}
+h2 {
+  color: red;
+}
+
+label {
+  font-weight: bold;
+  color: rgb(101, 47, 202);
+}
+
+#btn {
+  color: red;
+  background-color: aqua;
+  width: 10%;
+}
+
+#btn:hover {
+  background-color: green;
+}
+
+#btn:active {
+  color: #00ff4c;
+}
+
+.form {
+  background-color: #00ff4c;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+a {
+  color: red;
+}
+
+#signup-form {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+
+#login-form {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}
+
+input {
+  padding-left: 3px;
+}

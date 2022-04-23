@@ -1,6 +1,6 @@
-const flowRoute = require("./flow");
+const usersRoute = require("./users");
 const constructorMethod = (app) => {
-  app.use("/", flowRoute);
+  app.use("/", usersRoute);
   app.use("*", (request, response) => {
     response.status(404).json({
       error: "Not found",
