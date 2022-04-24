@@ -401,8 +401,89 @@ router.get("/private", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   req.session.destroy();
-  res.render("users/logout", { title: "Logged out" });
-  //res.redirect("/login");
+  //res.render("users/logout", { title: "Logged out" });
+  res.redirect("/login");
+});
+
+router.get("/CreatePost", async (req, res) => {
+  res.render("CreatePost");
+});
+
+router.post("/CreatePost", async (req, res) => {
+  const { sizeOfApartment, petsAllowed } = req.body;
+  // const sizeOfApartment = xss(req.body.sizeOfApartment);
+  // const petsAllowed = xss(req.body.petsAllowed);
+  const coupleAllowed = xss(req.body.coupleAllowed);
+  const parkingAvailable = xss(req.body.parkingAvailable);
+  const sharingAllowed = xss(req.body.sharingAllowed);
+
+  const city = xss(req.body.city);
+  const state = xss(req.body.state);
+  const Comment = xss(req.body.Comment);
+
+  //sizeOfApartment error check
+  if (!sizeOfApartment) {
+    const error = { errors: "Please provide sizeOfApartment" };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+
+  if (typeof sizeOfApartment !== "number") {
+    const error = { errors: `${sizeOfApartment} is must be a valid number` };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+
+  if (sizeOfApartment < 1 && sizeOfApartment > 15) {
+    const error = {
+      errors: "sizeOfApartment must be greater than 0 and less than15",
+    };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+
+  //city error check
+  if (!city) {
+    const error = { errors: `${city} is not provided` };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+  if (typeof city !== "string") {
+    const error = { errors: `${city} is not a string value` };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+  if (city.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+
+  //state error check
+  if (!state) {
+    const error = { errors: `${state} is not provided` };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+  if (typeof state !== "string") {
+    const error = { errors: `${state} is not a string value` };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+  if (state.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("CreatePost", error);
+    return;
+  }
+
+  try {
+    res.redirect("/private");
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({
+      error: e.message,
+    });
+  }
 });
 
 module.exports = router;

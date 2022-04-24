@@ -1,20 +1,7 @@
-<div class="topnav">
-
-  <a href="/CreatePost">Create Post</a>
-  <a href="/Mypost">My post</a>
-  <a href="/find">Find</a>
-  <a href="/AboutUs">About Us</a>
-  <a href="/logout">Logout</a>
-
-</div>
-
-{{!-- <h1>UserName:{{username}}</h1>
-<a id="Home" href="/logout">Logout</a>
-<br/>
- 
+<form action="/CreatePost" id="CreatePost" method="POST">
 
 <label for="sizeOfApartment">sizeOfApartment:</label>
-<input id="sizeOfApartment" name="sizeOfApartment" type="number" placeholder="1 BHK" required>
+<input id="sizeOfApartment" name="sizeOfApartment" value=6 type="number" placeholder="1 BHK" required>
 <br/>
 
 <label for="petsAllowed">petsAllowed:</label>
@@ -84,4 +71,8 @@
 
     <label for="Comment">Comment:</label>
     <textarea rows="2" cols="50" id="Comment" name="Comment"
-    placeholder="Enter additional message"></textarea> --}}
+    placeholder="Enter additional message"></textarea>
+
+    <button type="submit" id="btn">submit</button>
+
+</form>
