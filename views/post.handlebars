@@ -1,58 +1,70 @@
 <h1>Post Form Will Be Rendered Here!</h1>
 <form action="/post" id="post-form" method="POST">
-  <div class="form">
+  <div class="postform">
 
+    <div class="postform--group">
     <label>postDate</label>
     <input name="postDate" type="date" placeholder="postDate" />
+    </div>
 
-    <br />
+    
+     <div class="postform--group">
     <label>image</label>
     <input name="image" type="image" placeholder="image" />
-    <br />
+    </div>
 
+
+    <div class="postform--group">
     <label>sizeOfApartment</label>
     <input name="sizeOfApartment" type="text" placeholder="sizeOfApartment" />
-
-    <br />
+    </div>
+    
+    <div class="postform--group">
     <label>petsAllowed</label>
     <input name="petsAllowed" type="checkbox"/>
-    <br />
+    </div>
 
+     <div class="postform--group">
     <label>coupleAllowed</label>
     <input name="coupleAllowed" type="checkbox" />
+    </div>
 
-    <br />
-    
+    <div class="postform--group">
     <label>parkingAvailable</label>
     <input name="parkingAvailable" type="checkbox" />
+    </div>
 
-    <br />
-
+    <div class="postform--group">
     <label>numberOfRooms</label>
     <input name="numberOfRooms" type="number" />
+    </div>
 
-    <br />
-
-        
-    <label>numberOfRooms</label>
-    <input name="numberOfRooms" type="number" />
-
-    <br />
+     <div class="postform--group">  
     <label>sharingAllowed</label>
     <input name="sharingAllowed" type="checkbox" />
+    </div>
 
-    <br />
+    <div class="postform--group">  
     <label>City</label>
     <input name="City" type="text" />
+    </div>
 
-    <br />
+    <div class="postform--group">  
     <label>State</label>
     <input name="State" type="text" />
-    <br />
-     <label>Comments</label>
+    </div>
+
+
+   
+    <div class="postform--group">  
+    <label>Comments</label>
     <input name="comments" type="text" />
-    <br />
-    
+    </div>
+
+    <div class="postform--group">  
+    <label>Submit</label>
+    <button type="submit" id="btn">submit</button>
+    </div>
 
 
 
@@ -60,9 +72,7 @@
       <h2>{{errors}}</h2>
     {{/if}}
 
-    <label>Submit</label>
-    <button type="submit" id="btn">submit</button>
-    <br />
+   
 
   </div>
 </form>

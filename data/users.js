@@ -217,7 +217,7 @@ let exportedMethods = {
     } catch (e) {}
     if (password_validation) {
       //3. If the passwords match your function will return {authenticated: true}
-      return { authenticated: true };
+      return { authenticated: true }
     } else {
       throw "Either the username or password is invalid";
     }

@@ -9,17 +9,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    console.log("Reached here",req.body)
     const { postDate, image, sizeOfApartment, petsAllowed, coupleAllowed, parkingAvailable, numberOfRooms,sharingAllowed, City, State, comments } = req.body;
-    
-    console.log( postDate, image, sizeOfApartment, petsAllowed, coupleAllowed, parkingAvailable, numberOfRooms,sharingAllowed, City, State, comments )
 
     try {
-        console.log("Requesting createpost")
       const output = await postData.createPost(postDate, image, sizeOfApartment, petsAllowed, coupleAllowed, parkingAvailable, numberOfRooms,sharingAllowed, City, State, comments);
-        console.log("Post Posted", output)
       if (output) {
-        console.log("Got output", output)
         res.redirect("/post");
       }
     } catch (e) {
