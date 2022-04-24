@@ -36,7 +36,7 @@
 
     <div class="postform--group">
     <label>numberOfRooms</label>
-    <input name="numberOfRooms" type="number" />
+    <input name="numberOfRooms" type="string" />
     </div>
 
      <div class="postform--group">  
@@ -46,16 +46,14 @@
 
     <div class="postform--group">  
     <label>City</label>
-    <input name="City" type="text" />
+    <input name="city" type="text" />
     </div>
 
     <div class="postform--group">  
     <label>State</label>
-    <input name="State" type="text" />
+    <input name="state" type="text" />
     </div>
 
-
-   
     <div class="postform--group">  
     <label>Comments</label>
     <input name="comments" type="text" />
@@ -67,13 +65,11 @@
     </div>
 
 
-
     {{#if errors}}
       <h2>{{errors}}</h2>
     {{/if}}
 
    
-
   </div>
 </form>
 
