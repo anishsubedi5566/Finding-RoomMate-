@@ -1,6 +1,81 @@
-<div>
-    <p> Post Form Will Be Rendered Here!</p>
-</div>
+<h1>Post Form Will Be Rendered Here!</h1>
+<form action="/post" id="post-form" method="POST">
+  <div class="postform">
+
+    <div class="postform--group">
+    <label>postDate</label>
+    <input name="postDate" type="date" placeholder="postDate" />
+    </div>
+
+    
+     <div class="postform--group">
+    <label>image</label>
+    <input name="image" type="image" placeholder="image" />
+    </div>
+
+
+    <div class="postform--group">
+    <label>sizeOfApartment</label>
+    <input name="sizeOfApartment" type="text" placeholder="sizeOfApartment" />
+    </div>
+    
+    <div class="postform--group">
+    <label>petsAllowed</label>
+    <input name="petsAllowed" type="checkbox"/>
+    </div>
+
+     <div class="postform--group">
+    <label>coupleAllowed</label>
+    <input name="coupleAllowed" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+    <label>parkingAvailable</label>
+    <input name="parkingAvailable" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+    <label>numberOfRooms</label>
+    <input name="numberOfRooms" type="number" />
+    </div>
+
+     <div class="postform--group">  
+    <label>sharingAllowed</label>
+    <input name="sharingAllowed" type="checkbox" />
+    </div>
+
+    <div class="postform--group">  
+    <label>City</label>
+    <input name="City" type="text" />
+    </div>
+
+    <div class="postform--group">  
+    <label>State</label>
+    <input name="State" type="text" />
+    </div>
+
+
+   
+    <div class="postform--group">  
+    <label>Comments</label>
+    <input name="comments" type="text" />
+    </div>
+
+    <div class="postform--group">  
+    <label>Submit</label>
+    <button type="submit" id="btn">submit</button>
+    </div>
+
+
+
+    {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
+
+   
+
+  </div>
+</form>
 
 
 <div>
