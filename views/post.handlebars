@@ -1,6 +1,71 @@
-<div>
-    <p> Post Form Will Be Rendered Here!</p>
-</div>
+<h1>Post Form Will Be Rendered Here!</h1>
+<form action="/post" id="post-form" method="POST">
+  <div class="form">
+
+    <label>postDate</label>
+    <input name="postDate" type="date" placeholder="postDate" />
+
+    <br />
+    <label>image</label>
+    <input name="image" type="image" placeholder="image" />
+    <br />
+
+    <label>sizeOfApartment</label>
+    <input name="sizeOfApartment" type="text" placeholder="sizeOfApartment" />
+
+    <br />
+    <label>petsAllowed</label>
+    <input name="petsAllowed" type="checkbox"/>
+    <br />
+
+    <label>coupleAllowed</label>
+    <input name="coupleAllowed" type="checkbox" />
+
+    <br />
+    
+    <label>parkingAvailable</label>
+    <input name="parkingAvailable" type="checkbox" />
+
+    <br />
+
+    <label>numberOfRooms</label>
+    <input name="numberOfRooms" type="number" />
+
+    <br />
+
+        
+    <label>numberOfRooms</label>
+    <input name="numberOfRooms" type="number" />
+
+    <br />
+    <label>sharingAllowed</label>
+    <input name="sharingAllowed" type="checkbox" />
+
+    <br />
+    <label>City</label>
+    <input name="City" type="text" />
+
+    <br />
+    <label>State</label>
+    <input name="State" type="text" />
+    <br />
+     <label>Comments</label>
+    <input name="comments" type="text" />
+    <br />
+    
+
+
+
+    {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
+
+    <label>Submit</label>
+    <button type="submit" id="btn">submit</button>
+    <br />
+
+  </div>
+</form>
 
 
 <div>
