@@ -1,11 +1,13 @@
 const express = require("express");
 const data = require("../data");
-const postData = data.postData;
+const postData = data.posts;
 const router = express.Router();
 
 
 router.get("/", async (req, res) => {
-    res.render("post");
+    const allPost = await postData.getPost();
+    // console.log("Got all the post", allPost)
+    res.render("post", {allpost : allPost});
 });
 
 router.post("/", async (req, res) => {
@@ -31,7 +33,7 @@ router.post("/", async (req, res) => {
     if(req.body.sharingAllowed){
       sharingAllowed = true
     }
-      const output = await postData.createPost(postDate, sizeOfApartment, petsAllowed, coupleAllowed, parkingAvailable, numberOfRooms, sharingAllowed, city, State, comments);
+      const output = await postData.createPost(postDate, sizeOfApartment, petsAllowed, coupleAllowed, parkingAvailable, numberOfRooms, sharingAllowed, city, state, comments);
       if (output) {
         res.redirect("/post");
       }
