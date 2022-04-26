@@ -1,4 +1,34 @@
-<h1>Sign Up</h1>
+<main>
+<h1>{{title}}</h1>
+
+<div class="profile_date">
+  <img src={{user.userProfileImage}} alt="{{title}}" class="profile_image" />
+  <dl>
+    <dt>First Name</dt>
+    <dd>{{user.firstName}}</dd>>
+    <dt>Last Name</dt>
+    <dd>{{user.lastName}}</dd>>
+    <dt>School Name</dt>
+    <dd>{{user.schoolName}}</dd>>
+    <dt> City</dt>
+    <dd>{{user.city}}</dd>>
+    <dt>State</dt>
+    <dd>{{user.state}}</dd>>
+    <dt>Native Country</dt>
+    <dd>{{user.homeCountry}}</dd>>
+    <dt>Age</dt>
+    <dd>{{user.age}}</dd>>
+    <dt>Gender</dt>
+    <dd>{{user.gender}}</dd>>
+
+    <dt>Bio</dt>
+    <dd>{{user.bio}}</dd>>
+
+  </dl>
+</div>
+<a href="/edit">Edit</a>
+</main>
+{{!-- <h1>Sign Up</h1>
 <form action="/signup" id="signup-form" method="POST">
   <div class="form">
 
@@ -24,9 +54,12 @@
     <label for="securityQues">Security question:</label>
     <select id="securityQues" name="securityQues" required>
       <option value="What is your nickname?">What is your nickname?</option>
-      <option value="Which is your favourite place to spend vacation?">Which is your favourite place to spend vacation?</option>
-      <option value="Who is your first childhood friend?">Who is your first childhood friend?</option>
-      <option value="Which is your favourite video game?">Which is your favourite video game?</option>
+      <option value="Which is your favourite place to spend vacation?">Which is
+        your favourite place to spend vacation?</option>
+      <option value="Who is your first childhood friend?">Who is your first
+        childhood friend?</option>
+      <option value="Which is your favourite video game?">Which is your
+        favourite video game?</option>
 
     </select>
     <br />
@@ -59,9 +92,11 @@
     <br />
     <label for="schoolName">School Name:</label>
     <select id="schoolName" name="schoolName" required>
-      <option value="Stevens Institute of Technology">Stevens Institute of Technology</option>
+      <option value="Stevens Institute of Technology">Stevens Institute of
+        Technology</option>
       <option value="New York University">New York University</option>
-      <option value="University of Texas at Austin">University of Texas at Austin</option>
+      <option value="University of Texas at Austin">University of Texas at
+        Austin</option>
       <option value="University of Denver">University of Denver</option>
 
       <option value="Arizona State University">Arizona State University</option>
@@ -169,4 +204,4 @@
   </div>
 </form>
 
-<a id="Home" href="/">Already have an account? Click here to log-in</a>
+<a id="Home" href="/">Already have an account? Click here to log-in</a> --}}

@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const fileUpload = require('express-fileupload');
 const app = express();
 
 const configRoutes = require("./routes");
@@ -14,6 +15,9 @@ app.use(
     extended: true,
   })
 );
+app.use(fileUpload({
+  createParentPath: true
+}));
 
 const handlebarsInstance = exphbs.create({
   defaultLayout: "main",

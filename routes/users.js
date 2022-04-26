@@ -3,6 +3,7 @@ const data = require("../data");
 const userData = data.users;
 const router = express.Router();
 const xss = require("xss");
+let { ObjectId } = require("mongodb");
 
 router.get("/", async (req, res) => {
   if (req.session.user) {
@@ -301,12 +302,13 @@ router.post("/signup", async (req, res) => {
         bio,
         `/public/uploads/` + picture.name
       );
-
+      console.log("Image uploaded");
+      res.status(200).render("login", { title: "Login" });
       return res.redirect("/login");
     }
   } catch (e) {
     const error = e;
-    res.status(400).render("/signup", error);
+    res.status(400).render("/signup", { title: "Error", error: error });
     return;
   }
 });
@@ -390,7 +392,10 @@ router.get("/private", async (req, res) => {
       const name = {
         username: req.session.user.username,
       };
-      res.render("private", name);
+      res.render("private", {
+        title: "Private",
+        username: req.session.user.username,
+      });
     }
   } catch (e) {
     res.status(500).json({
@@ -403,6 +408,277 @@ router.get("/logout", async (req, res) => {
   req.session.destroy();
   res.render("users/logout", { title: "Logged out" });
   //res.redirect("/login");
+});
+
+//get user profile data
+
+router.route("/private/profile").get(async (req, res) => {
+  // const id = xss(req.params.id);
+  // console.log(id);
+  // //id error handle
+  // if (!id) {
+  //   let error = { errors: "ID not provided" };
+  //   res.status(400).render("userProfile/profile", error);
+  //   return;
+  // }
+  // if (typeof id !== "string") {
+  //   let error = { errors: "ID must be a string type" };
+  //   res.status(400).render("userProfile/profile", error);
+  //   return;
+  // }
+  // if (id.trim().length === 0) {
+  //   let error = { errors: "ID is consists of empty spaces" };
+  //   res.status(400).render("userProfile/profile", error);
+  //   return;
+  // }
+
+  // try {
+  //   ObjectId(id);
+  // } catch (e) {
+  //   let error = { errors: "Invalid Object Id" };
+  //   res.status(400).render("userProfile/profile", error);
+  //   return;
+  // }
+
+  const username = req.session.user.username;
+  const getAllUsers = await userData.getAllUsers();
+  let id;
+  //console.log(getAllUsers);
+  getAllUsers.forEach((user) => {
+    if (user.username === username) {
+      console.log(user._id);
+      id = user._id.toString();
+    }
+  });
+  console.log(id);
+  try {
+    const user = await userData.getUserByID(id);
+    console.log(user);
+    res.status(200).render("userProfile/profile", {
+      title: "User Profile",
+      user: user,
+    });
+  } catch (e) {
+    error = e;
+    res.status(400).render("private", error);
+    console.log(e);
+    return;
+  }
+});
+
+//Update user profile
+router.route("/private/:id/profile/edit").put(async (req, res) => {
+  const id = xss(req.params.id);
+  const picture = xss(req.body.picture);
+  const firstName = xss(req.body.firstName);
+  const lastName = xss(req.body.lastName);
+  const schoolName = xss(req.body.schoolName);
+  const city = xss(req.body.city);
+  const state = xss(req.body.state);
+  const homeCountry = xss(req.body.homeCountry);
+  const age = Number(xss(req.body.age));
+  const gender = xss(req.body.gender);
+  const bio = xss(req.body.bio);
+
+  //id error handle
+  if (!id) {
+    let error = { errors: "ID not provided" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof id !== "string") {
+    let error = { errors: "ID must be a string type" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (id.trim().length === 0) {
+    let error = { errors: "ID is consists of empty spaces" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  try {
+    ObjectId(id);
+  } catch (e) {
+    let error = { errors: "Invalid Object Id" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //First Name error check
+  if (!firstName) {
+    const error = { errors: `${firstName} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof firstName !== "string") {
+    const error = { errors: `${firstName} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (firstName.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //LastName error check
+  if (!lastName) {
+    const error = { errors: `${lastName} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof lastName !== "string") {
+    const error = { errors: `${lastName} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (lastName.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //city error check
+  if (!city) {
+    const error = { errors: `${city} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof city !== "string") {
+    const error = { errors: `${city} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (city.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //state error check
+  if (!state) {
+    const error = { errors: `${state} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof state !== "string") {
+    const error = { errors: `${state} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (state.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //school name error check
+  if (!schoolName) {
+    const error = { errors: `${schoolName} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof schoolName !== "string") {
+    const error = { errors: `${schoolName} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (schoolName.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //age error check
+  if (!age) {
+    const error = { errors: "Please provide your age" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  if (typeof age !== "number") {
+    const error = { errors: `${age} is must be a valid number` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  if (age < 15 && age > 110) {
+    const error = { errors: "Age must be greater than 15" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //gender error check
+  if (!gender) {
+    const error = { errors: `${gender} is not provided` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (typeof gender !== "string") {
+    const error = { errors: `${gender} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (gender.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //homeCountry error check
+  if (!homeCountry) {
+    homeCountry = "N/A";
+  }
+  if (typeof homeCountry !== "string") {
+    const error = { errors: `${homeCountry} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (homeCountry.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+
+  //bio error check
+  if (!bio) {
+    bio = "N/A";
+  }
+  if (typeof bio !== "string") {
+    const error = { errors: `${bio} is not a string value` };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  if (bio.trim().length === 0) {
+    const error = { errors: "Invalid input entered" };
+    res.status(400).render("userProfile/profile", error);
+    return;
+  }
+  try {
+    if (req.files) {
+      let picture = req.files.picture;
+      picture.mv(`./public/uploads/` + picture.name);
+      const updateUser = await userData.updateUser(
+        id,
+        firstName,
+        lastName,
+        schoolName,
+        city,
+        state,
+        homeCountry,
+        age,
+        gender,
+        bio,
+        `/public/uploads/` + picture.name
+      );
+    }
+    return res.redirect("/profile");
+  } catch (e) {
+    const error = e;
+    res.status(400).render("/profile", error);
+    return;
+  }
 });
 
 module.exports = router;

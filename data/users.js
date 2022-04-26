@@ -222,6 +222,168 @@ let exportedMethods = {
       throw "Either the username or password is invalid";
     }
   },
+  // Get by ID method
+  async getUserByID(id) {
+    if (!id) throw "Id parameter must be supplied";
+    checkIsObjectID(id);
+    checkIsString(id);
+
+    let newObjId = ObjectId(id);
+
+    const usersCollection = await users();
+    const user = await usersCollection.findOne({ _id: newObjId });
+
+    if (user === null) throw "No user with that id";
+
+    //result = JSON.parse(JSON.stringify(band));
+    user._id = user["_id"].toString();
+    console.log(user.firstName);
+    return user;
+  },
+
+  async updateUserProfile(
+    id,
+    picture,
+    firstName,
+    lastName,
+    schoolName,
+    city,
+    state,
+    homeCountry,
+    age,
+    gender,
+    bio
+  ) {
+    //ID error handling
+    checkValue(id);
+    checkIsString(id);
+    checkIsObjectID(id);
+
+    // firstName error handling
+    checkValue(firstName);
+    checkIsString(firstName);
+
+    //LastName error check
+    checkValue(lastName);
+    checkIsString(lastName);
+
+    //city error check
+    checkValue(city);
+    checkIsString(city);
+
+    //state error check
+    checkValue(state);
+    checkIsString(state);
+
+    //school name error check
+    checkValue(schoolName);
+    checkIsString(schoolName);
+
+    //age error check
+    checkValue(age);
+    checkIsNumber(age);
+    if (age < 15 && age > 110) throw "Age is invalid";
+
+    //gender error check
+    checkValue(gender);
+    checkIsString(gender);
+
+    //homeCountry error check
+    checkIsString(homeCountry);
+
+    //bio error check
+    checkIsString(bio);
+
+    let obj = ObjectId(id);
+    let usersCollection = await users();
+
+    let user = await this.get(id);
+    if (!user) {
+      throw "User not found";
+    }
+
+    let updateUserProfile = {
+      userProfileImage: picture,
+      firstName: firstName,
+      lastName: lastName,
+      schoolName: schoolName,
+      city: city,
+      state: state,
+      homeCountry: homeCountry,
+      age: age,
+      gender: gender,
+      bio: bio,
+    };
+
+    const updateInfo = await usersCollection.updateOne(
+      { _id: obj },
+      { $set: updateUserProfile }
+    );
+
+    if (!updateInfo.matchedCount && !updateInfo.modifiedCount)
+      throw "Update failed";
+
+    //return await this.get(id);
+    return {
+      _id: id,
+      userProfileImage: picture,
+      firstName: firstName,
+      lastName: lastName,
+      schoolName: schoolName,
+      city: city,
+      state: state,
+      homeCountry: homeCountry,
+      age: age,
+      gender: gender,
+      bio: bio,
+    };
+  },
+
+  async getUserByUsername(username) {
+    if (!username) throw "You should provide a username";
+    if (username.length == 0) throw "username is blank";
+    if (username == null) throw "username cannot be null";
+    if (username == undefined) throw "username should be defined";
+    if (typeof username != "string") throw "username is not string";
+    const user = await users();
+    const getUser = await user.findOne({ username });
+    getUser._id = getUser._id.toString();
+    if (getUser == null || getUser == undefined) throw "No User with that id";
+    return getUser;
+  },
+  //Checked
+  async getAllUsers() {
+    const userget = await users();
+    const getAllUser = await userget.find({}).toArray();
+    for (var i = 0; i < getAllUser.length; i++) {
+      getAllUser[i]._id = getAllUser[i]._id.toString();
+    }
+    if (getAllUser == null || getAllUser == undefined)
+      throw "User does not exists!";
+    return getAllUser;
+  },
+  async deleteUser(_id) {
+    if (_id === undefined || _id === null) {
+      throw "Id is undefined";
+    }
+    if (_id.length === 0) {
+      throw "Id is blank";
+    }
+    if (typeof _id != "string" || !_id.replace(/\s/g, "").length)
+      throw "Id should be string";
+    if (!ObjectId.isValid(_id)) {
+      throw "Enter a valid object id";
+    }
+    const userCollection = await users();
+    // await removeReviewByaUserId(_id);
+    const deletionInfo = await userCollection.deleteOne({ _id: ObjectId(_id) });
+    if (deletionInfo.deletedCount === 0) {
+      throw `Could not delete user with id of ${_id}`;
+    }
+    // await discussionCollection.removeDiscussionByUserId(_id);
+    // await removeCommentsByUserId(_id);
+    return true;
+  },
 };
 
 module.exports = exportedMethods;
