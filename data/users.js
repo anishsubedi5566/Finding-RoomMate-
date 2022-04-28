@@ -145,8 +145,12 @@ let exportedMethods = {
     checkIsString(securityAns);
 
     //bio error check
-    if (!bio) {
-      bio = "N/A";
+    if (typeof bio === "undefined") {
+      bio = "Bio is empty.";
+    } else if (typeof bio === "string") {
+      if (bio.trim().length === 0) {
+        bio = "Bio is empty.";
+      }
     }
 
     const usersCollection = await users();
@@ -217,7 +221,7 @@ let exportedMethods = {
     } catch (e) {}
     if (password_validation) {
       //3. If the passwords match your function will return {authenticated: true}
-      return { authenticated: true }
+      return { authenticated: true };
     } else {
       throw "Either the username or password is invalid";
     }
@@ -289,15 +293,15 @@ let exportedMethods = {
     checkIsString(gender);
 
     //homeCountry error check
-    checkIsString(homeCountry);
+    // checkIsString(homeCountry);
 
-    //bio error check
-    checkIsString(bio);
+    // //bio error check
+    // checkIsString(bio);
 
     let obj = ObjectId(id);
     let usersCollection = await users();
 
-    let user = await this.get(id);
+    let user = await this.getUserByID(id);
     if (!user) {
       throw "User not found";
     }
