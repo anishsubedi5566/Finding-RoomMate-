@@ -1,6 +1,6 @@
 body {
   /* background-image: url(/public/images/back.png); */
-  background-image: url("/public/images/back.jpg");
+  background-image: url("/public/images/back_new.jpg");
   background-color: #cccccc;
   height: 500px;
   background-position: center;
@@ -91,19 +91,19 @@ input {
   margin-top: 50px;
 }
 
-.user_profile_card {
+.user_profile {
   margin: 20px auto;
   width: 90%;
   max-width: 440px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   text-align: center;
   text-indent: none;
-  color: dimgray;
+  color: floralwhite;
 }
 
 .user_profile_card img {
