@@ -1,5 +1,10 @@
 <h1>Sign Up</h1>
-<form action="/signup" id="signup-form" method="POST">
+<form
+  action="/signup"
+  id="signup-form"
+  method="POST"
+  enctype="multipart/form-data"
+>
   <div class="form">
 
     <label>Username: </label>
@@ -24,9 +29,12 @@
     <label for="securityQues">Security question:</label>
     <select id="securityQues" name="securityQues" required>
       <option value="What is your nickname?">What is your nickname?</option>
-      <option value="Which is your favourite place to spend vacation?">Which is your favourite place to spend vacation?</option>
-      <option value="Who is your first childhood friend?">Who is your first childhood friend?</option>
-      <option value="Which is your favourite video game?">Which is your favourite video game?</option>
+      <option value="Which is your favourite place to spend vacation?">Which is
+        your favourite place to spend vacation?</option>
+      <option value="Who is your first childhood friend?">Who is your first
+        childhood friend?</option>
+      <option value="Which is your favourite video game?">Which is your
+        favourite video game?</option>
 
     </select>
     <br />
@@ -59,9 +67,11 @@
     <br />
     <label for="schoolName">School Name:</label>
     <select id="schoolName" name="schoolName" required>
-      <option value="Stevens Institute of Technology">Stevens Institute of Technology</option>
+      <option value="Stevens Institute of Technology">Stevens Institute of
+        Technology</option>
       <option value="New York University">New York University</option>
-      <option value="University of Texas at Austin">University of Texas at Austin</option>
+      <option value="University of Texas at Austin">University of Texas at
+        Austin</option>
       <option value="University of Denver">University of Denver</option>
 
       <option value="Arizona State University">Arizona State University</option>
@@ -121,6 +131,7 @@
 
     <label for="homeCountry">Native Country:</label>
     <select id="homeCountry" name="homeCountry" required>
+      <option value="None">None</option>
       <option value="United States of America">United States of America</option>
       <option value="Brazil">Brazil</option>
       <option value="China">China</option>
@@ -159,12 +170,16 @@
       accept=".jpg,.gif,.png,.jpeg"
     />
     <br />
-    {{#if errors}}
-      <h2>{{errors}}</h2>
+    {{#if error}}
+      <h2>{{error}}</h2>
     {{/if}}
 
     {{! <label>Submit</label> }}
-    <button type="submit" id="btn">submit</button>
+    <input
+      type="submit"
+      class="btn AllButton btn-outline-success"
+      value="Sign Up"
+    />
 
   </div>
 </form>

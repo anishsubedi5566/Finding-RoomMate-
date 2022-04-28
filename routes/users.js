@@ -46,8 +46,7 @@ router.post("/signup", async (req, res) => {
     username.trim().length === 0 ||
     password.trim().length === 0
   ) {
-    const out = { errors: "Enter username or password" };
-    res.status(400).render("signup", out);
+    res.status(400).render("signup", { error: "Enter username or password" });
     return;
   }
 
@@ -57,15 +56,17 @@ router.post("/signup", async (req, res) => {
   const validation = reg.test(username);
 
   if (!validation) {
-    const out = { errors: "only  alphanumeric is acceptable in username" };
-    res.status(400).render("signup", out);
+    res.status(400).render("signup", {
+      error: "only  alphanumeric is acceptable in username",
+    });
     return;
   }
 
   let n = username.length;
   if (n < 4) {
-    const out = { errors: "Username is less than 4 character" };
-    res.status(400).render("signup", out);
+    res
+      .status(400)
+      .render("signup", { error: "Username is less than 4 character" });
     return;
   }
 
@@ -79,190 +80,182 @@ router.post("/signup", async (req, res) => {
   }
 
   if (password_space || password_n < 6) {
-    const out = { errors: "password  is not valid" };
-    res.status(400).render("signup", out);
+    res.status(400).render("signup", { error: "password  is not valid" });
     return;
   }
 
   //security question error check
 
   if (!securityQues) {
-    const error = { errors: "Please provide a security question" };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: "Please provide a security question" });
     return;
   }
   if (typeof securityQues !== "string") {
-    const error = { errors: `Security question must be a string value` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `Security question must be a string value` });
     return;
   }
   if (securityQues.trim().length === 0) {
-    const error = { errors: "Security question input entered is invalid" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", {
+      error: "Security question input entered is invalid",
+    });
     return;
   }
 
   //security ans error check
 
   if (!securityAns) {
-    const error = { errors: "Please provide a security answer" };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: "Please provide a security answer" });
     return;
   }
   if (typeof securityAns !== "string") {
-    const error = { errors: `Security answer must be a string value` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `Security answer must be a string value` });
     return;
   }
   if (securityAns.trim().length === 0) {
-    const error = { errors: "Security answer input entered is invalid" };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: "Security answer input entered is invalid" });
     return;
   }
 
   //First Name error check
   if (!firstName) {
-    const error = { errors: `${firstName} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `First Name is not provided` });
     return;
   }
   if (typeof firstName !== "string") {
-    const error = { errors: `${firstName} is not a string value` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `First Name is not a string value` });
     return;
   }
   if (firstName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
   //LastName error check
   if (!lastName) {
-    const error = { errors: `${lastName} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `Last Name is not provided` });
     return;
   }
   if (typeof lastName !== "string") {
-    const error = { errors: `${lastName} is not a string value` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `Last Name is not a string value` });
     return;
   }
   if (lastName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
   //city error check
   if (!city) {
-    const error = { errors: `${city} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `City is not provided` });
     return;
   }
   if (typeof city !== "string") {
-    const error = { errors: `${city} is not a string value` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `City is not a string value` });
     return;
   }
   if (city.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
   //state error check
   if (!state) {
-    const error = { errors: `${state} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `State is not provided` });
     return;
   }
   if (typeof state !== "string") {
-    const error = { errors: `${state} is not a string value` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `State is not a string value` });
     return;
   }
   if (state.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
   //school name error check
   if (!schoolName) {
-    const error = { errors: `${schoolName} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `School Name is not provided` });
     return;
   }
   if (typeof schoolName !== "string") {
-    const error = { errors: `${schoolName} is not a string value` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `School Name is not a string value` });
     return;
   }
   if (schoolName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
   //age error check
   if (!age) {
-    const error = { errors: "Please provide your age" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Please provide your age" });
     return;
   }
 
   if (typeof age !== "number") {
-    const error = { errors: `${age} is must be a valid number` };
-    res.status(400).render("signup", error);
+    res
+      .status(400)
+      .render("signup", { error: `Age is must be a valid number` });
     return;
   }
 
   if (age < 15 && age > 110) {
-    const error = { errors: "Age must be greater than 15" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Age must be greater than 15" });
     return;
   }
 
   //gender error check
   if (!gender) {
-    const error = { errors: `${gender} is not provided` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `Gender is not provided` });
     return;
   }
   if (typeof gender !== "string") {
-    const error = { errors: `${gender} is not a string value` };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: `Gender is not a string value` });
     return;
   }
   if (gender.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("signup", error);
+    res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
 
-  //homeCountry error check
-  if (!homeCountry) {
-    homeCountry = "N/A";
-  }
-
   //bio error check
-  if (!bio) {
-    bio = "N/A";
+  if (typeof bio === "undefined") {
+    bio = "Bio is empty.";
+  } else if (typeof bio === "string") {
+    if (bio.trim().length === 0) {
+      bio = "Bio is empty.";
+    }
   }
 
   try {
-    if (error == null) {
-      const usercheck = await userFetch.checkUser(username, password);
-      if (usercheck) {
-        error = "User already exists";
-      }
+    const userCheck = await userData.checkUser(username, password);
+    if (userCheck) {
+      res.status(400).render("signup", { error: "User already exists" });
+      return;
     }
   } catch (e) {
-    error = e;
+    error = e.message;
   }
 
+  console.log(req.files);
   try {
+    //defult user image will appear
     if (!req.files) {
       const adduser = await userData.create(
         username,
@@ -280,11 +273,13 @@ router.post("/signup", async (req, res) => {
         bio,
         `/public/images/user_profile_default.png`
       );
-      return res.redirect("/login?msg=Congratulations, you are user now");
+      res.redirect("/login?msg=Congratulations, you are user now");
     } else {
+      //user can upload image
       let picture = req.files.picture;
-
-      picture.mv(`./public/uploads/` + picture.name);
+      //console.log(req.files);
+      let pictureName = picture.name.replaceAll(" ", "-");
+      picture.mv(`./public/uploads/` + pictureName);
 
       const adduser = await userData.create(
         username,
@@ -300,19 +295,17 @@ router.post("/signup", async (req, res) => {
         age,
         gender,
         bio,
-        `/public/uploads/` + picture.name
+        `/public/uploads/` + pictureName
       );
-      console.log("Image uploaded");
+
       res.status(200).render("login", { title: "Login" });
-      return res.redirect("/login");
+      // res.redirect("/login?msg=Congratulations, you are user now");
     }
   } catch (e) {
     const error = e;
-    res.status(400).render("/signup", { title: "Error", error: error });
-    return;
+    res.status(400).render("signup", { title: "Error", error: error });
   }
 });
-
 router.post("/login", async (req, res) => {
   //1.You must make sure that username and password are supplied in the req.body
   const username = xss(req.body.username);
@@ -324,8 +317,7 @@ router.post("/login", async (req, res) => {
     username.trim() === 0 ||
     password.trim() === 0
   ) {
-    const out = { errors: "Enter username or password" };
-    res.status(400).render("login", out);
+    res.status(400).render("login", { error: "Enter username or password" });
     return;
   }
 
@@ -335,8 +327,9 @@ router.post("/login", async (req, res) => {
   let n = username.length;
 
   if (n < 4) {
-    const out = { errors: "Username is less than 4 character" };
-    res.status(400).render("login", out);
+    res
+      .status(400)
+      .render("login", { error: "Username is less than 4 character" });
     return;
   }
 
@@ -344,8 +337,9 @@ router.post("/login", async (req, res) => {
   const validation = reg.test(username);
 
   if (!validation) {
-    const out = { errors: "only  alphanumeric is acceptable in username" };
-    res.status(400).render("login", out);
+    res.status(400).render("login", {
+      error: "only  alphanumeric is acceptable in username",
+    });
     return;
   }
 
@@ -359,8 +353,7 @@ router.post("/login", async (req, res) => {
   }
 
   if (password_space || password_n < 6) {
-    const error = { errors: "password  is not valid" };
-    res.status(400).render("login", error);
+    res.status(400).render("login", { error: "password  is not valid" });
     return;
   }
 
@@ -406,40 +399,13 @@ router.get("/private", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   req.session.destroy();
-  res.render("users/logout", { title: "Logged out" });
+  res.render("logout", { title: "Logged out" });
   //res.redirect("/login");
 });
 
 //get user profile data
 
 router.route("/private/profile").get(async (req, res) => {
-  // const id = xss(req.params.id);
-  // console.log(id);
-  // //id error handle
-  // if (!id) {
-  //   let error = { errors: "ID not provided" };
-  //   res.status(400).render("userProfile/profile", error);
-  //   return;
-  // }
-  // if (typeof id !== "string") {
-  //   let error = { errors: "ID must be a string type" };
-  //   res.status(400).render("userProfile/profile", error);
-  //   return;
-  // }
-  // if (id.trim().length === 0) {
-  //   let error = { errors: "ID is consists of empty spaces" };
-  //   res.status(400).render("userProfile/profile", error);
-  //   return;
-  // }
-
-  // try {
-  //   ObjectId(id);
-  // } catch (e) {
-  //   let error = { errors: "Invalid Object Id" };
-  //   res.status(400).render("userProfile/profile", error);
-  //   return;
-  // }
-
   const username = req.session.user.username;
   const getAllUsers = await userData.getAllUsers();
   let id;
@@ -461,15 +427,51 @@ router.route("/private/profile").get(async (req, res) => {
   } catch (e) {
     error = e;
     res.status(400).render("private", error);
-    console.log(e);
+
+    return;
+  }
+});
+
+router.route("/private/profile/edit").get(async (req, res) => {
+  const username = req.session.user.username;
+  const getAllUsers = await userData.getAllUsers();
+  let id;
+  //console.log(getAllUsers);
+  getAllUsers.forEach((user) => {
+    if (user.username === username) {
+      console.log(user._id);
+      id = user._id.toString();
+    }
+  });
+  console.log(id);
+  try {
+    const user = await userData.getUserByID(id);
+    console.log(user);
+    res
+      .status(200)
+      .render("userProfile/edit", { title: "Edit Profile", user: user });
+  } catch (e) {
+    error = e;
+    res
+      .status(400)
+      .render("userProfile/edit", { title: "Error", error: error.message });
+
     return;
   }
 });
 
 //Update user profile
-router.route("/private/:id/profile/edit").put(async (req, res) => {
-  const id = xss(req.params.id);
-  const picture = xss(req.body.picture);
+router.route("/private/profile/edit").post(async (req, res) => {
+  const username = req.session.user.username;
+  const getAllUsers = await userData.getAllUsers();
+  let _id;
+  //console.log(getAllUsers);
+  getAllUsers.forEach((user) => {
+    if (user.username === username) {
+      _id = user._id.toString();
+    }
+  });
+
   const firstName = xss(req.body.firstName);
   const lastName = xss(req.body.lastName);
   const schoolName = xss(req.body.schoolName);
@@ -480,187 +482,198 @@ router.route("/private/:id/profile/edit").put(async (req, res) => {
   const gender = xss(req.body.gender);
   const bio = xss(req.body.bio);
 
-  //id error handle
-  if (!id) {
-    let error = { errors: "ID not provided" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-  if (typeof id !== "string") {
-    let error = { errors: "ID must be a string type" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-  if (id.trim().length === 0) {
-    let error = { errors: "ID is consists of empty spaces" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-
-  try {
-    ObjectId(id);
-  } catch (e) {
-    let error = { errors: "Invalid Object Id" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-
   //First Name error check
   if (!firstName) {
-    const error = { errors: `${firstName} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `First Name is not provided` });
     return;
   }
   if (typeof firstName !== "string") {
-    const error = { errors: `${firstName} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: `First Name is not a string value`,
+    });
     return;
   }
   if (firstName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: "Invalid input entered for First Name",
+    });
     return;
   }
 
   //LastName error check
   if (!lastName) {
-    const error = { errors: `${lastName} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Last Name is not provided` });
     return;
   }
   if (typeof lastName !== "string") {
-    const error = { errors: `${lastName} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Last Name is not a string value` });
     return;
   }
   if (lastName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: "Invalid input entered for Last Name",
+    });
     return;
   }
 
   //city error check
   if (!city) {
-    const error = { errors: `${city} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `City is not provided` });
     return;
   }
   if (typeof city !== "string") {
-    const error = { errors: `${city} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `City is not a string value` });
     return;
   }
   if (city.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: "Invalid input entered for City" });
     return;
   }
 
   //state error check
   if (!state) {
-    const error = { errors: `${state} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `State is not provided` });
     return;
   }
   if (typeof state !== "string") {
-    const error = { errors: `${state} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `State is not a string value` });
     return;
   }
   if (state.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: "Invalid input entered for State" });
     return;
   }
 
   //school name error check
   if (!schoolName) {
-    const error = { errors: `${schoolName} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `School Name is not provided` });
     return;
   }
   if (typeof schoolName !== "string") {
-    const error = { errors: `${schoolName} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: `School Name is not a string value`,
+    });
     return;
   }
   if (schoolName.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: "Invalid input entered for School name",
+    });
     return;
   }
 
   //age error check
   if (!age) {
-    const error = { errors: "Please provide your age" };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: "Please provide your age" });
     return;
   }
 
   if (typeof age !== "number") {
-    const error = { errors: `${age} is must be a valid number` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Age is must be a valid number` });
     return;
   }
 
   if (age < 15 && age > 110) {
-    const error = { errors: "Age must be greater than 15" };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: "Age must be greater than 15" });
     return;
   }
 
   //gender error check
   if (!gender) {
-    const error = { errors: `${gender} is not provided` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Gender is not provided` });
     return;
   }
   if (typeof gender !== "string") {
-    const error = { errors: `${gender} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Gender is not a string value` });
     return;
   }
   if (gender.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
+    res.status(400).render("userProfile/edit", {
+      error: "Invalid input entered for Gender",
+    });
     return;
   }
 
-  //homeCountry error check
-  if (!homeCountry) {
-    homeCountry = "N/A";
-  }
-  if (typeof homeCountry !== "string") {
-    const error = { errors: `${homeCountry} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-  if (homeCountry.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
+  //home country error check
+  // if (typeof homeCountry !== "string") {
+  //   res.status(400).render("userProfile/profile", {
+  //     error: `Native country is not a string value`,
+  //   });
+  //   return;
+  // }
+  // if (homeCountry.trim().length === 0) {
+  //   res
+  //     .status(400)
+  //     .render("userProfile/edit", { error: "Invalid input entered" });
+  //   return;
+  // }
 
   //bio error check
-  if (!bio) {
-    bio = "N/A";
-  }
-  if (typeof bio !== "string") {
-    const error = { errors: `${bio} is not a string value` };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
-  if (bio.trim().length === 0) {
-    const error = { errors: "Invalid input entered" };
-    res.status(400).render("userProfile/profile", error);
-    return;
-  }
+  // if (!bio) {
+  //   bio = "N/A";
+  // }
+  // if (typeof bio !== "string") {
+  //   res
+  //     .status(400)
+  //     .render("userProfile/edit", { error: `Bio is not a string value` });
+  //   return;
+  // }
+  // if (bio.trim().length === 0) {
+  //   res
+  //     .status(400)
+  //     .render("userProfile/edit", { error: "Invalid input entered" });
+  //   return;
+  // }
+  // try {
+  //   const user = await userData.getUserByID(id);
+  //   console.log(user);
+  //   res.status(200).render("userProfile/edit", {
+  //     user: user,
+  //   });
+  // } catch (e) {
+  //   error = e;
+  //   res.status(400).render("userProfile/edit", error);
+
+  //   return;
+  // }
   try {
     if (req.files) {
       let picture = req.files.picture;
-      picture.mv(`./public/uploads/` + picture.name);
-      const updateUser = await userData.updateUser(
-        id,
+      let pictureName = picture.name.replaceAll(" ", "-");
+      picture.mv(`./public/uploads/` + pictureName);
+      const updateUser = await userData.updateUserProfile(
+        _id,
+        `/public/uploads/` + pictureName,
         firstName,
         lastName,
         schoolName,
@@ -669,16 +682,97 @@ router.route("/private/:id/profile/edit").put(async (req, res) => {
         homeCountry,
         age,
         gender,
-        bio,
-        `/public/uploads/` + picture.name
+        bio
       );
     }
-    return res.redirect("/profile");
+    return res.redirect("/private/profile");
   } catch (e) {
-    const error = e;
-    res.status(400).render("/profile", error);
+    console.log("Im in error");
+    console.log(e);
+    res.status(400).render("userProfile/edit", { error: e.message });
     return;
   }
 });
 
+router.route("/private/deleteProfile").get(async (req, res) => {
+  const username = req.session.user.username;
+  const getAllUsers = await userData.getAllUsers();
+  let id;
+  //console.log(getAllUsers);
+  getAllUsers.forEach((user) => {
+    if (user.username === username) {
+      id = user._id.toString();
+    }
+  });
+  const deleteUser = await userData.deleteUser(id);
+  req.session.destroy();
+  // res.render("logout", { title: "Logged out" });
+  res.redirect("/login");
+});
+// router.get("/users/delete/:userId", async (req, res) => {
+//   if (!req.session.user) {
+//       return res.redirect("/users/login?msg=Please login first.");
+//   }
+//   if (!req.params.userId || typeof req.params.userId !== 'string' || !req.params.userId.replace(/\s/g, "").length)
+//       throw `Enter a valid user Id`
+//   await usersCollection.deleteUser(req.params.userId);
+//   res.redirect("/admin");
+// });
+
 module.exports = router;
+
+// try {
+//   console.log("Im below");
+//   if (!req.files) {
+//     console.log("Im in if");
+//     const adduser = await userData.create(
+//       username,
+//       password,
+//       securityQues,
+//       securityAns,
+//       firstName,
+//       lastName,
+//       schoolName,
+//       city,
+//       state,
+//       homeCountry,
+//       age,
+//       gender,
+//       bio,
+//       `/public/images/user_profile_default.png`
+//     );
+//     res.redirect("/login?msg=Congratulations, you are user now");
+//   } else {
+//     console.log("Im in else");
+//     let picture = req.files.picture;
+//     //console.log(req.files);
+//     try {
+//       picture.mv(`./public/uploads/` + picture.name);
+//     } catch (e) {
+//       console.log(e);
+//     }
+//     console.log("qwsd");
+//     const adduser = await userData.create(
+//       username,
+//       password,
+//       securityQues,
+//       securityAns,
+//       firstName,
+//       lastName,
+//       schoolName,
+//       city,
+//       state,
+//       homeCountry,
+//       age,
+//       gender,
+//       bio,
+//       `/public/uploads/` + picture.name
+//     );
+//     console.log("Image uploaded");
+//     res.status(200).render("login", { title: "Login" });
+//     // res.redirect("/login?msg=Congratulations, you are user now");
+//   }
+// } catch (e) {
+//   const error = e;
+//   res.status(400).render("signup", { title: "Error", error: error });
+// }

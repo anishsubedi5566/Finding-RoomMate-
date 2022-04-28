@@ -1,32 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Roomie</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="/private"
+          >Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/private/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/private/profile/edit">Edit Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <main>
-<h1>{{title}}</h1>
 
-<div class="profile_date">
-  <img src={{user.userProfileImage}} alt="{{title}}" class="profile_image" />
-  <dl>
-    <dt>First Name</dt>
-    <dd>{{user.firstName}}</dd>>
-    <dt>Last Name</dt>
-    <dd>{{user.lastName}}</dd>>
-    <dt>School Name</dt>
-    <dd>{{user.schoolName}}</dd>>
-    <dt> City</dt>
-    <dd>{{user.city}}</dd>>
-    <dt>State</dt>
-    <dd>{{user.state}}</dd>>
-    <dt>Native Country</dt>
-    <dd>{{user.homeCountry}}</dd>>
-    <dt>Age</dt>
-    <dd>{{user.age}}</dd>>
-    <dt>Gender</dt>
-    <dd>{{user.gender}}</dd>>
+  <div class="user_profile">
+    <h1>{{title}}</h1>
 
-    <dt>Bio</dt>
-    <dd>{{user.bio}}</dd>>
+    <div class="profile_date">
+      <img
+        src={{user.userProfileImage}}
+        alt="{{title}}"
+        class="profile_image"
+      />
+      <dl>
+        <dt>First Name</dt>
+        <dd>{{user.firstName}}</dd>>
+        <dt>Last Name</dt>
+        <dd>{{user.lastName}}</dd>>
+        <dt>School Name</dt>
+        <dd>{{user.schoolName}}</dd>>
+        <dt> City</dt>
+        <dd>{{user.city}}</dd>>
+        <dt>State</dt>
+        <dd>{{user.state}}</dd>>
+        <dt>Native Country</dt>
+        <dd>{{user.homeCountry}}</dd>>
+        <dt>Age</dt>
+        <dd>{{user.age}}</dd>>
+        <dt>Gender</dt>
+        <dd>{{user.gender}}</dd>>
 
-  </dl>
-</div>
-<a href="/edit">Edit</a>
+        <dt>Bio</dt>
+        <dd>{{user.bio}}</dd>>
+
+      </dl>
+    </div>
+    <a href="/private/profile/edit">Edit</a>
+  </div>
 </main>
 {{!-- <h1>Sign Up</h1>
 <form action="/signup" id="signup-form" method="POST">

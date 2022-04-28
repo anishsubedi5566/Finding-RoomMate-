@@ -2,10 +2,16 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-const fileUpload = require('express-fileupload');
+var fileUpload = require("express-fileupload");
 const app = express();
 
 const configRoutes = require("./routes");
+
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
@@ -15,9 +21,6 @@ app.use(
     extended: true,
   })
 );
-app.use(fileUpload({
-  createParentPath: true
-}));
 
 const handlebarsInstance = exphbs.create({
   defaultLayout: "main",
@@ -47,7 +50,6 @@ const rewriteUnsupportedBrowserMethods = (req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(rewriteUnsupportedBrowserMethods);
-
 
 app.engine("handlebars", handlebarsInstance.engine);
 app.set("view engine", "handlebars");

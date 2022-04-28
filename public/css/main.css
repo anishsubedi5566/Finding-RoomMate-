@@ -79,3 +79,9 @@ a {
 input {
   padding-left: 3px;
 }
+
+img {
+  width: 25%;
+  height: 25%;
+  clip-path: circle();
+}
