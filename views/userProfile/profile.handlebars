@@ -15,11 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/private/profile">Profile</a>
@@ -35,216 +31,42 @@
   </div>
 </nav>
 <main>
-
   <div class="user_profile">
     <h1>{{title}}</h1>
+    <div class="user_profile_card">
 
-    <div class="profile_date">
-      <img
-        src={{user.userProfileImage}}
-        alt="{{title}}"
-        class="profile_image"
-      />
-      <dl>
-        <dt>First Name</dt>
-        <dd>{{user.firstName}}</dd>>
-        <dt>Last Name</dt>
-        <dd>{{user.lastName}}</dd>>
-        <dt>School Name</dt>
-        <dd>{{user.schoolName}}</dd>>
-        <dt> City</dt>
-        <dd>{{user.city}}</dd>>
-        <dt>State</dt>
-        <dd>{{user.state}}</dd>>
-        <dt>Native Country</dt>
-        <dd>{{user.homeCountry}}</dd>>
-        <dt>Age</dt>
-        <dd>{{user.age}}</dd>>
-        <dt>Gender</dt>
-        <dd>{{user.gender}}</dd>>
+      <div class="profile_date">
+        <img
+          src={{user.userProfileImage}}
+          alt="{{title}}"
+          class="profile_image"
+        />
+        <dl>
+          <dt>First Name</dt>
+          <dd>{{user.firstName}}</dd>
+          <dt>Last Name</dt>
+          <dd>{{user.lastName}}</dd>
+          <dt>School Name</dt>
+          <dd>{{user.schoolName}}</dd>
+          <dt> City</dt>
+          <dd>{{user.city}}</dd>
+          <dt>State</dt>
+          <dd>{{user.state}}</dd>
+          <dt>Native Country</dt>
+          <dd>{{user.homeCountry}}</dd>
+          <dt>Age</dt>
+          <dd>{{user.age}}</dd>
+          <dt>Gender</dt>
+          <dd>{{user.gender}}</dd>
 
-        <dt>Bio</dt>
-        <dd>{{user.bio}}</dd>>
+          <dt>Bio</dt>
+          <dd>{{user.bio}}</dd>
 
-      </dl>
+        </dl>
+      </div>
+
+      <a class="btn btn-primary" href="/private/profile/edit" role="button">Edit
+        Profile</a>
     </div>
-    <a href="/private/profile/edit">Edit</a>
   </div>
 </main>
-{{!-- <h1>Sign Up</h1>
-<form action="/signup" id="signup-form" method="POST">
-  <div class="form">
-
-    <label>Username: </label>
-    <input
-      id="username"
-      name="username"
-      type="text"
-      placeholder="Enter username"
-      required
-    />
-
-    <br />
-    <label>Password: </label>
-    <input
-      id="password"
-      name="password"
-      type="password"
-      placeholder="Enter password"
-      required
-    />
-    <br />
-    <label for="securityQues">Security question:</label>
-    <select id="securityQues" name="securityQues" required>
-      <option value="What is your nickname?">What is your nickname?</option>
-      <option value="Which is your favourite place to spend vacation?">Which is
-        your favourite place to spend vacation?</option>
-      <option value="Who is your first childhood friend?">Who is your first
-        childhood friend?</option>
-      <option value="Which is your favourite video game?">Which is your
-        favourite video game?</option>
-
-    </select>
-    <br />
-    <label>Answer: </label>
-    <input
-      id="securityAns"
-      name="securityAns"
-      type="text"
-      placeholder="Answer to the security question."
-      required
-    />
-    <br />
-    <label>First Name: </label>
-    <input
-      id="firstName"
-      name="firstName"
-      type="text"
-      placeholder="Enter your first name"
-      required
-    />
-    <br />
-    <label>Last Name: </label>
-    <input
-      id="lastName"
-      name="lastName"
-      type="text"
-      placeholder="Enter your last name"
-      required
-    />
-    <br />
-    <label for="schoolName">School Name:</label>
-    <select id="schoolName" name="schoolName" required>
-      <option value="Stevens Institute of Technology">Stevens Institute of
-        Technology</option>
-      <option value="New York University">New York University</option>
-      <option value="University of Texas at Austin">University of Texas at
-        Austin</option>
-      <option value="University of Denver">University of Denver</option>
-
-      <option value="Arizona State University">Arizona State University</option>
-      <option value="University of San Francisco">University of San Francisco</option>
-      <option value="San Jose State University">San Jose State University</option>
-      <option value="University of Washington">University of Washington</option>
-
-    </select>
-    <br />
-    <label for="city">City:</label>
-    <select id="city" name="city" required>
-      <option value="Austin">Austin</option>
-      <option value="Boston">Boston</option>
-      <option value="Chicago">Chicago</option>
-      <option value="Denver">Denver</option>
-      <option value="Hoboken">Hoboken</option>
-
-      <option value="Jersey City">Jersey City</option>
-      <option value="New York">New York</option>
-
-      <option value="Phoenix">Phoenix</option>
-      <option value="San Francisco">San Francisco</option>
-      <option value="San Jose">San Jose</option>
-      <option value="Seattle">Seattle</option>
-
-    </select>
-    <br />
-    <label for="state">State:</label>
-    <select id="state" name="state" required>
-      <option value="Arizona">Arizona</option>
-      <option value="California">California</option>
-      <option value="Colorado">Colorado</option>
-      <option value="Illinois">Illinois</option>
-      <option value="Texas">Texas</option>
-      <option value="Massachusetts">Massachusetts</option>
-      <option value="New Jersey">New Jersey</option>
-      <option value="New York">New York</option>
-      <option value="Washington">Washington</option>
-    </select>
-    <br />
-
-    <label for="age">Age:</label>
-    <input id="age" name="age" type="number" placeholder="15" required />
-    <br />
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Non-Binary">Non-Binary</option>
-      <option value="Transgender">Transgender</option>
-      <option value="Agender">Agender</option>
-      <option value="Pangender">Pangender</option>
-      <option value="Genderqueer">Genderqueer</option>
-
-    </select>
-    <br />
-
-    <label for="homeCountry">Native Country:</label>
-    <select id="homeCountry" name="homeCountry" required>
-      <option value="United States of America">United States of America</option>
-      <option value="Brazil">Brazil</option>
-      <option value="China">China</option>
-      <option value="France">France</option>
-      <option value="India">India</option>
-      <option value="Israel">Israel</option>
-      <option value="Mexico">Mexico</option>
-      <option value="Nepal">Nepal</option>
-      <option value="Philippines">Philippines</option>
-      <option value="Russia">Russia</option>
-      <option value="Spain">Spain</option>
-      <option value="Thailand">Thailand</option>
-      <option value="United Arab Emirates">United Arab Emirates</option>
-      <option value="United Kingdom">United Kingdom</option>
-
-    </select>
-    <br />
-
-    <label for="bio">Bio:</label>
-    <textarea
-      rows="4"
-      cols="50"
-      id="bio"
-      name="bio"
-      form="form"
-      placeholder="Other users will know you better if you tell us about yourself..."
-    ></textarea>
-    <br />
-    <label for="picture"></label>
-    <p class="userImage">Upload a profile picture for your profile if you want:</p>
-    <input
-      type="file"
-      class="form-control"
-      id="picture"
-      name="picture"
-      accept=".jpg,.gif,.png,.jpeg"
-    />
-    <br />
-    {{#if errors}}
-      <h2>{{errors}}</h2>
-    {{/if}}
-
-    {{! <label>Submit</label> }}
-    <button type="submit" id="btn">submit</button>
-
-  </div>
-</form>
-
-<a id="Home" href="/">Already have an account? Click here to log-in</a> --}}
