@@ -1,0 +1,100 @@
+<h1> Find A Room</h1>
+<form action="/private/postRoom" id="post-form" method="POST">
+  <div class="postform">
+    <div class="postform--group">
+    <label>postDate</label>
+    <input name="postDate" type="date" placeholder="postDate" />
+    </div>
+
+    <div class="postform--group">
+    <label>title</label>
+    <input name="title" type="text" placeholder="title" />
+    </div>
+
+    <div class="postform--group">
+    <label>Preferred State</label>
+    <input name="prefState" type="text" placeholder="Preferred state" />
+    </div>  
+
+    <div class="postform--group">
+    <label>Room Size</label>
+    <input name="roomsize" type="text" placeholder="roomsize" />
+    </div>
+    
+    <div class="postform--group">
+    <label>Need Parking</label>
+    <input name="parkingAvailable" type="checkbox"/>
+    </div>
+
+     <div class="postform--group">
+    <label>pets</label>
+    <input name="pets" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+    <label>Open To Share</label>
+    <input name="sharingAllowed" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+    <label>Your Budget$</label>
+    <input name="budget" type="text" />
+    </div>
+
+    <div class="postform--group">
+    <label>Are you student</label>
+    <input name="student" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+    <label>If student, School Name?</label>
+    <input name="schoolName" type="text" />
+    </div>
+ 
+    <div class="postform--group">
+    <label>Other Description</label>
+    <input name="otherdescription" type="text" placeholder="otherdescription" />
+    </div>
+
+    <div class="postform--group">  
+    <label>Submit</label>
+    <button type="submit" id="btn">submit</button>
+    </div>
+
+    {{#if message}}
+        <h2>{{message}}</h2>
+      {{/if}}
+
+
+  <ul class="post_list">
+    {{#each allpost}}
+    <li>PostedBy: {{this.user}}</li>
+    <li>postDate: {{this.postDate}}</li>
+    <li>title: {{this.title}}</li>
+    <li>prefState: {{this.prefState}}</li>
+    <li>roomsize: {{this.roomsize}}</li>
+    <li>budget: {{this.budget}}</li>
+    <li>schoolName: {{this.schoolName}}</li>
+    <li>otherdescription: {{this.otherdescription}}</li>
+    <li>parkingAvailable: {{this.parkingAvailable}}</li>
+    <li>sharingAllowed: {{this.sharingAllowed}}</li>
+    <li>student: {{this.student}}</li>
+    <li>pets: {{this.pets}}</li>
+    <br />
+    <br />
+    <br />
+    {{/each}}
+  </ul>
+
+    {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
+
+   
+  </div>
+</form>
+
+
+<div>
+    <p> All Existing Post will Be Rendered Here</p>
+</div>
