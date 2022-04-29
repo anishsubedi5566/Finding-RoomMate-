@@ -1,6 +1,6 @@
 body {
   /* background-image: url(/public/images/back.png); */
-  background-image: url("/public/images/back_new.jpg");
+  background-image: url("/public/images/back.jpg");
   background-color: #cccccc;
   height: 500px;
   background-position: center;
@@ -92,22 +92,23 @@ input {
 }
 
 .user_profile {
-  margin: 20px auto;
+  margin: 100px auto;
   width: 90%;
   max-width: 440px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   text-align: center;
   text-indent: none;
-  color: floralwhite;
+  color: #333;
 }
 
 .user_profile_card img {
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 25%;
   height: 25%;
   clip-path: circle();
@@ -116,6 +117,9 @@ input {
 .user_profile h1 {
   margin-top: 10px;
   text-align: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  color: dimgrey;
 }
 
 .user_profile .btn-primary {
@@ -130,7 +134,7 @@ input {
   margin-bottom: 20px;
 }
 
-.edit_profile_card {
+.edit_profile {
   margin: 0 auto;
   width: 90%;
   max-width: 440px;
@@ -173,4 +177,42 @@ input {
   color: #fff;
   text-decoration: none;
   padding-left: 25px;
+}
+
+/* About Us */
+.about_us {
+  margin: 100px auto;
+  width: 50%;
+
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  text-indent: none;
+  color: #333;
+}
+.about_us h1 {
+  color: dimgrey;
+}
+.about_us h2 {
+  font-size: 20px;
+  color: lightslategray;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightslategray;
+}
+.about_us h3 {
+  color: gray;
+}
+.about_us_body {
+  width: 90%;
+  margin: 0 auto;
+}
+.about_us_body ul {
+  list-style: none;
+}
+.about_us_body p {
+  text-align: justify;
 }

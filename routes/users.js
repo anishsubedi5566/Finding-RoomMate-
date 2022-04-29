@@ -421,7 +421,7 @@ router.route("/private/profile").get(async (req, res) => {
     const user = await userData.getUserByID(id);
     console.log(user);
     res.status(200).render("userProfile/profile", {
-      title: "User Profile",
+      title: "Your Profile",
       user: user,
     });
   } catch (e) {
@@ -709,70 +709,5 @@ router.route("/private/deleteProfile").get(async (req, res) => {
   // res.render("logout", { title: "Logged out" });
   res.redirect("/login");
 });
-// router.get("/users/delete/:userId", async (req, res) => {
-//   if (!req.session.user) {
-//       return res.redirect("/users/login?msg=Please login first.");
-//   }
-//   if (!req.params.userId || typeof req.params.userId !== 'string' || !req.params.userId.replace(/\s/g, "").length)
-//       throw `Enter a valid user Id`
-//   await usersCollection.deleteUser(req.params.userId);
-//   res.redirect("/admin");
-// });
 
 module.exports = router;
-
-// try {
-//   console.log("Im below");
-//   if (!req.files) {
-//     console.log("Im in if");
-//     const adduser = await userData.create(
-//       username,
-//       password,
-//       securityQues,
-//       securityAns,
-//       firstName,
-//       lastName,
-//       schoolName,
-//       city,
-//       state,
-//       homeCountry,
-//       age,
-//       gender,
-//       bio,
-//       `/public/images/user_profile_default.png`
-//     );
-//     res.redirect("/login?msg=Congratulations, you are user now");
-//   } else {
-//     console.log("Im in else");
-//     let picture = req.files.picture;
-//     //console.log(req.files);
-//     try {
-//       picture.mv(`./public/uploads/` + picture.name);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//     console.log("qwsd");
-//     const adduser = await userData.create(
-//       username,
-//       password,
-//       securityQues,
-//       securityAns,
-//       firstName,
-//       lastName,
-//       schoolName,
-//       city,
-//       state,
-//       homeCountry,
-//       age,
-//       gender,
-//       bio,
-//       `/public/uploads/` + picture.name
-//     );
-//     console.log("Image uploaded");
-//     res.status(200).render("login", { title: "Login" });
-//     // res.redirect("/login?msg=Congratulations, you are user now");
-//   }
-// } catch (e) {
-//   const error = e;
-//   res.status(400).render("signup", { title: "Error", error: error });
-// }
