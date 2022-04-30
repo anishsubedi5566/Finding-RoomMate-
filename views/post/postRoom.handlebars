@@ -11,22 +11,65 @@
     <input name="title" type="text" placeholder="title" />
     </div>
 
-    <div class="postform--group">
-    <label>Preferred State</label>
-    <input name="prefState" type="text" placeholder="Preferred state" />
-    </div>  
+   <div class="postform--group">
+      <label>city</label>
+      <select id="city" name="city" required>
+        <option value="austin">Austin</option>
+        <option value="boston">Boston</option>
+        <option value="chicago">Chicago</option>
+        <option value="denver">Denver</option>
+        <option value="hoboken">Hoboken</option>
 
-    <div class="postform--group">
-    <label>Room Size</label>
-    <input name="roomsize" type="text" placeholder="roomsize" />
+        <option value="jersey_city">Jersey City</option>
+        <option value="new_york">New York</option>
+
+        <option value="phoenix">Phoenix</option>
+        <option value="san_francisco">San Francisco</option>
+        <option value="san_jose">San Jose</option>
+        <option value="seattle">Seattle</option>
+      </select>
     </div>
-    
+
+    <div class="postform--group"></div>
+    <label>State</label>
+    <select id="state" name="state" required>
+        <option value="arizona">Arizona</option>
+        <option value="california">California</option>
+        <option value="colorado">Colorado</option>
+        <option value="illinois">Illinois</option>
+        <option value="texas">Texas</option>
+        <option value="massachusetts">Massachusetts</option>
+        <option value="new_jersey">New Jersey</option>
+        <option value="new_york">New York</option>
+        <option value="washington">Washington</option>
+      </select>
+    </div>
+
+    <div class="postform--group"></div>
+    <label for="schoolName">School Name:</label>
+    <select id="schoolName" name="schoolName" required>
+      <option value="Stevens Institute of Technology">Stevens Institute of
+        Technology</option>
+      <option value="New York University">New York University</option>
+      <option value="University of Texas at Austin">University of Texas at
+        Austin</option>
+      <option value="University of Denver">University of Denver</option>
+
+      <option value="Arizona State University">Arizona State University</option>
+      <option value="University of San Francisco">University of San Francisco</option>
+      <option value="San Jose State University">San Jose State University</option>
+      <option value="University of Washington">University of Washington</option>
+      <option value="Not a Student">Not a Student</option>
+    </select>
+    </div>
+
     <div class="postform--group">
     <label>Need Parking</label>
     <input name="parkingAvailable" type="checkbox"/>
     </div>
 
-     <div class="postform--group">
+    
+    <div class="postform--group">
     <label>pets</label>
     <input name="pets" type="checkbox" />
     </div>
@@ -36,8 +79,8 @@
     <input name="sharingAllowed" type="checkbox" />
     </div>
 
-    <div class="postform--group">
-    <label>Your Budget$</label>
+     <div class="postform--group">
+    <label>Budget$</label>
     <input name="budget" type="text" />
     </div>
 
@@ -46,10 +89,6 @@
     <input name="student" type="checkbox" />
     </div>
 
-    <div class="postform--group">
-    <label>If student, School Name?</label>
-    <input name="schoolName" type="text" />
-    </div>
  
     <div class="postform--group">
     <label>Other Description</label>
@@ -65,14 +104,14 @@
         <h2>{{message}}</h2>
       {{/if}}
 
-
+{{!-- 
   <ul class="post_list">
     {{#each allpost}}
     <li>PostedBy: {{this.user}}</li>
     <li>postDate: {{this.postDate}}</li>
     <li>title: {{this.title}}</li>
     <li>prefState: {{this.prefState}}</li>
-    <li>roomsize: {{this.roomsize}}</li>
+    <li>roomNumber: {{this.roomNumber}}</li>
     <li>budget: {{this.budget}}</li>
     <li>schoolName: {{this.schoolName}}</li>
     <li>otherdescription: {{this.otherdescription}}</li>
@@ -84,7 +123,7 @@
     <br />
     <br />
     {{/each}}
-  </ul>
+  </ul> --}}
 
     {{#if errors}}
       <h2>{{errors}}</h2>
