@@ -3,126 +3,147 @@
   <div class="postform">
 
     <div class="postform--group">
-    <label>postDate</label>
-    <input name="postDate" type="date" placeholder="postDate" />
-    </div>
-
-
-    <div class="postform--group">
-    <label>image</label>
-    <input name="image" type="image" placeholder="image" />
-    </div>
-
-     <div class="postform--group">
-    <label>title</label>
-    <input name="title" type="text" placeholder="title" />
+      <label>postDate</label>
+      <input name="postDate" type="date" placeholder="postDate" required />
     </div>
 
     <div class="postform--group">
-    <label>street</label>
-    <input name="street" type="text" placeholder="street" />
+      <label>image</label>
+      <input name="image" type="image" placeholder="image" />
     </div>
 
     <div class="postform--group">
-    <label>city</label>
-    <input name="city" type="text" placeholder="city" />
-    </div>
-
-   
-    <div class="postform--group">
-    <label>state</label>
-    <input name="state" type="text" placeholder="state" />
-    </div>
-
-     <div class="postform--group">
-    <label>Room Size</label>
-    <input name="roomsize" type="text" placeholder="roomsize" />
-    </div>
-
-  <div class="postform--group">
-    <label>Room Area</label>
-    <input name="roomarea" type="text" placeholder="roomarea" />
-    </div>
-
-     <div class="postform--group">
-    <label>petsAllowed</label>
-    <input name="petsAllowed" type="checkbox"/>
-    </div>
-
-
-    <div class="postform--group">
-    <label>parkingAvailable</label>
-    <input name="parkingAvailable" type="checkbox" />
-    </div>
-    
-      <div class="postform--group">
-    <label>sharingAllowed</label>
-    <input name="sharingAllowed" type="checkbox" />
-    </div>
-
-     <div class="postform--group">
-    <label>Rent</label>
-    <input name="rent" type="text" />
+      <label>title</label>
+      <input name="title" type="text" placeholder="Enter title" required />
     </div>
 
     <div class="postform--group">
-    <label>Peoples living in currently</label>
-    <input name="peoplelivingcurrently" type="text" />
+      <label>street</label>
+      <input name="street" type="text" placeholder="Enter street" required />
     </div>
 
-   
     <div class="postform--group">
-    <label>Other Description</label>
-    <input name="otherdescription" type="text" placeholder="otherdescription" />
+      <label>city</label>
+      <select id="city" name="city" required>
+        <option value="austin">Austin</option>
+        <option value="boston">Boston</option>
+        <option value="chicago">Chicago</option>
+        <option value="denver">Denver</option>
+        <option value="hoboken">Hoboken</option>
+
+        <option value="jersey_city">Jersey City</option>
+        <option value="new_york">New York</option>
+
+        <option value="phoenix">Phoenix</option>
+        <option value="san_francisco">San Francisco</option>
+        <option value="san_jose">San Jose</option>
+        <option value="seattle">Seattle</option>
+      </select>
     </div>
 
-   
+    <div class="postform--group">
+      <label>state</label>
+      <select id="state" name="state" required>
+        <option value="arizona">Arizona</option>
+        <option value="california">California</option>
+        <option value="colorado">Colorado</option>
+        <option value="illinois">Illinois</option>
+        <option value="texas">Texas</option>
+        <option value="massachusetts">Massachusetts</option>
+        <option value="new_jersey">New Jersey</option>
+        <option value="new_york">New York</option>
+        <option value="washington">Washington</option>
+      </select>
+    </div>
 
+    <div class="postform--group">
+      <label>Rooms Available</label>
+      <input name="roomNumber" type="number" placeholder="1" required />
+    </div>
 
-    <div class="postform--group">  
-    <label>Submit</label>
-    <button type="submit" id="btn">submit</button>
+    <div class="postform--group">
+      <label>Room Area</label>
+      <input name="roomarea" type="number" placeholder="100 Sq. Ft." required />
+    </div>
+
+    <div class="postform--group">
+      <label>petsAllowed</label>
+      <input name="petsAllowed" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+      <label>parkingAvailable</label>
+      <input name="parkingAvailable" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+      <label>sharingAllowed</label>
+      <input name="sharingAllowed" type="checkbox" />
+    </div>
+
+    <div class="postform--group">
+      <label>Rent</label>
+      <input name="rent" type="number" placeholder="100$" required />
+    </div>
+
+    <div class="postform--group">
+      <label>Peoples living in currently</label>
+      <input
+        name="peoplelivingcurrently"
+        type="number"
+        placeholder="1"
+        required
+      />
+    </div>
+
+    <div class="postform--group">
+      <label>Other Description</label>
+      <input
+        name="otherdescription"
+        type="text"
+        placeholder="otherdescription"
+      />
+    </div>
+
+    <div class="postform--group">
+      <label>Submit</label>
+      <button type="submit" id="btn">submit</button>
     </div>
 
     {{#if message}}
-        <h2>{{message}}</h2>
-      {{/if}}
+      <h2>{{message}}</h2>
+    {{/if}}
 
-
-  <ul class="post_list">
-    {{#each allpost}}
-    <li>UserId: {{this._id}}</li>
-    <li>postedBy: {{this.user}}</li>
-    <li>postDate: {{this.postDate}}</li>
-    <li>title: {{this.title}}</li>
-    <li>street: {{this.street}}</li>
-    <li>city: {{this.city}}</li>
-    <li>state: {{this.state}}</li>
-    <li>roomsize: {{this.roomsize}}</li>
-    <li>roomarea: {{this.roomarea}}</li>
-    <li>petsAllowed: {{this.petsAllowed}}</li>
-    <li>parkingAvailable: {{this.parkingAvailable}}</li>
-    <li>sharingAllowed: {{this.sharingAllowed}}</li>
-    <li>rent: {{this.rent}}</li>
-    <li>peoplelivingcurrently: {{this.peoplelivingcurrently}}</li>
-    <li>otherdescription: {{this.otherdescription}}</li>
-    <br />
-    <br />
-    <br />
-    {{/each}}
-  </ul>
-
-
+    {{!-- <ul class="post_list">
+      {{#each allpost}}
+        <li>UserId: {{this._id}}</li>
+        <li>postedBy: {{this.user}}</li>
+        <li>postDate: {{this.postDate}}</li>
+        <li>title: {{this.title}}</li>
+        <li>street: {{this.street}}</li>
+        <li>city: {{this.city}}</li>
+        <li>state: {{this.state}}</li>
+        <li>roomNumber: {{this.roomNumber}}</li>
+        <li>roomarea: {{this.roomarea}}</li>
+        <li>petsAllowed: {{this.petsAllowed}}</li>
+        <li>parkingAvailable: {{this.parkingAvailable}}</li>
+        <li>sharingAllowed: {{this.sharingAllowed}}</li>
+        <li>rent: {{this.rent}}</li>
+        <li>peoplelivingcurrently: {{this.peoplelivingcurrently}}</li>
+        <li>otherdescription: {{this.otherdescription}}</li>
+        <br />
+        <br />
+        <br />
+      {{/each}}
+    </ul> --}}
 
     {{#if errors}}
       <h2>{{errors}}</h2>
     {{/if}}
 
-   
   </div>
 </form>
 
-
-<div>
-    <p> All Existing Post will Be Rendered Here</p>
-</div>
+{{! <div>
+  <p> All Existing Post will Be Rendered Here</p>
+</div> }}
