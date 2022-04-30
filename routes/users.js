@@ -215,7 +215,7 @@ router.post("/signup", async (req, res) => {
     return;
   }
 
-  if (age < 15 && age > 110) {
+  if (age < 15 || age > 100) {
     res.status(400).render("signup", { error: "Age must be greater than 15" });
     return;
   }

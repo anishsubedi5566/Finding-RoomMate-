@@ -125,7 +125,7 @@ let exportedMethods = {
     //age error check
     checkValue(age);
     checkIsNumber(age);
-    if (age < 15 && age > 110) throw "Age is invalid";
+    if (age < 15 || age > 100) throw "Age is invalid";
 
     //gender error check
     checkValue(gender);
