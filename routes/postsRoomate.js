@@ -32,8 +32,9 @@ router.post("/", async (req, res) => {
 
     if (!roomNumber || isNaN(roomNumber)) throw `Enter valid roomNumber`;
     roomNumber = parseInt(roomNumber);
-    console.log(roomNumber);
-    if (roomNumber < 1 || roomNumber > 15) throw "roomNumber must be between 1 to 15";
+
+    if (roomNumber < 1 || roomNumber > 15)
+      throw "roomNumber must be between 1 to 15";
 
     if (!roomarea || isNaN(roomarea)) throw `Enter valid roomarea`;
     roomarea = parseInt(roomarea);
@@ -41,11 +42,12 @@ router.post("/", async (req, res) => {
 
     if (!rent || isNaN(rent)) throw `Enter valid rent`;
     rent = parseInt(rent);
+    console.log("route rent", rent, rent < 100);
     if (rent < 100) throw "rent must be greater eqaul to 100";
 
     if (!peoplelivingcurrently || isNaN(peoplelivingcurrently))
       throw `Enter valid peoplelivingcurrently`;
-    rent = parseInt(peoplelivingcurrently);
+    peoplelivingcurrently = parseInt(peoplelivingcurrently);
     if (peoplelivingcurrently < 1)
       throw "peoplelivingcurrently must be greater than zero";
 
@@ -60,6 +62,22 @@ router.post("/", async (req, res) => {
     if (req.body.sharingAllowed) {
       sharingAllowed = true;
     }
+    console.log(
+      user,
+      postDate,
+      title,
+      street,
+      city,
+      state,
+      roomNumber,
+      roomarea,
+      petsAllowed,
+      parkingAvailable,
+      sharingAllowed,
+      rent,
+      peoplelivingcurrently,
+      otherdescription
+    );
 
     const output = await postRoomateData.createPost(
       user,

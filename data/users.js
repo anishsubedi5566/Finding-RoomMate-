@@ -3,7 +3,7 @@ const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
 const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs");
-const salRounds = 16;
+const salRounds = 11;
 
 function checkIsString(str) {
   if (typeof str !== "string") throw `${str} is not a string`;

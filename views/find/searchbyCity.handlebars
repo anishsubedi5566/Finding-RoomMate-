@@ -1,23 +1,38 @@
 <h1>Search city wise </h1>
-<form action="private/searchbyCity" id="city_search" method="POST">
+<form action="searchbyCity" id="city_search" method="POST">
 
   <div>
-    <label>city</label>
+    <label for="city">City</label>
     <select id="city" name="city" required>
-      <option value="austin">Austin</option>
-      <option value="boston">Boston</option>
-      <option value="chicago">Chicago</option>
-      <option value="denver">Denver</option>
-      <option value="hoboken">Hoboken</option>
+      <option value="Austin">Austin</option>
+      <option value="Boston">Boston</option>
+      <option value="Chicago">Chicago</option>
+      <option value="Denver">Denver</option>
+      <option value="Hoboken">Hoboken</option>
 
-      <option value="jersey_city">Jersey City</option>
-      <option value="new_york">New York</option>
+      <option value="Jersey City">Jersey City</option>
+      <option value="New York">New York</option>
 
-      <option value="phoenix">Phoenix</option>
-      <option value="san_francisco">San Francisco</option>
-      <option value="san_jose">San Jose</option>
-      <option value="seattle">Seattle</option>
+      <option value="Phoenix">Phoenix</option>
+      <option value="San Francisco">San Francisco</option>
+      <option value="San Jose">San Jose</option>
+      <option value="Seattle">Seattle</option>
     </select>
+    <br />
   </div>
 
+  <label for="btn">Submit:</label>
+  <button type="submit" id="btn">Submit</button>
+
 </form>
+
+{{#if errors}}
+  <h2>{{errors}}</h2>
+{{/if}}
+
+<ul class="post_list">
+  {{#each allpost}}
+    <li> {{this}}</li>
+    <br />
+  {{/each}}
+</ul>

@@ -1,12 +1,7 @@
-// const express=require('express');
-// const router=express.Router();
-// const data=require("../data");
-// const postRoomateData=data.postsRoomate;
-// const postsRoomData=data.postsRoom;
-
 const express = require("express");
-
 const router = express.Router();
+const data = require("../data");
+const searchData = data.search;
 
 router.get("/", async (req, res) => {
   res.render("find/findPost");
@@ -17,16 +12,80 @@ router.get("/searchbyCity", async (req, res) => {
 });
 
 router.post("/searchbyCity", async (req, res) => {
-  const city=req.body.city;
-  
-  //check if city is provided and valid
-  if(!city || city.trim().length===0){
-    res.status(400).render("find/searchbyCity",{error:'Enter valid city name'})
-    return
+  const city = req.body.city;
+  console.log(city);
+  try {
+    //check if city is provided and valid
+    if (!city || city.trim().length === 0) throw "Enter valid city name";
+
+    const result = await searchData.searchCity(city);
+
+    res.render("find/searchbyCity", { allpost: result });
+  } catch (e) {
+    if (e) {
+      res.status(400).render("find/searchbyCity", { errors: e });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
   }
+});
 
-  
+//searchbyschoolName
+router.get("/searchbyschoolName", async (req, res) => {
+  res.render("find/searchbyschoolName");
+});
 
-})
+router.post("/searchbyschoolName", async (req, res) => {
+  const schoolName = req.body.schoolName;
+
+  try {
+    //check if schoolName is provided and valid
+    if (!schoolName || schoolName.trim().length === 0)
+      throw "Enter valid schoolName";
+
+    const result = await searchData.searchschoolName(schoolName);
+    res.render("find/searchbyschoolName", { allpost: result });
+  } catch (e) {
+    if (e) {
+      res.status(400).render("find/searchbyschoolName", { errors: e });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+  }
+});
+
+//Mypost
+
+router.get("/searchbymyPost", async (req, res) => {
+  res.render("find/searchbymyPost");
+});
+
+router.post("/searchbymyPost", async (req, res) => {
+  user = req.session.user.username;
+
+  try {
+    //check if user is provided and valid
+    if (!user || user.trim().length === 0) throw "Enter valid user name";
+
+    const result = await searchData.searchmyPost(user);
+    console.log("result in routes", result);
+    res.render("find/searchbymyPost", { allpost: result });
+  } catch (e) {
+    if (e) {
+      res.status(400).render("find/searchbymyPost", { errors: e });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+  }
+});
 
 module.exports = router;
