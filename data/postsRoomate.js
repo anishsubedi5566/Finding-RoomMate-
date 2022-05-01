@@ -45,6 +45,20 @@ let exportedMethods = {
     // if(typeof coupleAllowed != "boolean") throw "Couple allowed is empty"
     // if(typeof parkingAvailable != "boolean") throw "Parking is empty"
     // if(typeof sharingAllowed != "boolean") throw "Sharing allowed is empty"
+    console.log(user,
+      postDate,
+      title,
+      street,
+      city,
+      state,
+      roomNumber,
+      roomarea,
+      petsAllowed,
+      parkingAvailable,
+      sharingAllowed,
+      rent,
+      peoplelivingcurrently,
+      otherdescription)
 
     //check for username
     checkValue(user);
@@ -84,20 +98,12 @@ let exportedMethods = {
     roomarea = parseInt(roomarea);
     if (roomarea < 100) throw "roomarea must be greater eqaul to 100";
 
-    //petsAllowed
-    checkValue(petsAllowed);
-
-    //parkingAvailable
-    checkValue(parkingAvailable);
-
-    //sharingAllowed
-    checkValue(sharingAllowed);
-
     //rent
     checkValue(rent);
     checkIsNumber(rent);
     //convert rent into integer
     rent = parseInt(rent);
+    console.log("data rent", rent, rent < 100, typeof rent);
     if (rent < 100) throw "rent must be greater eqaul to 100";
 
     //peoplelivingcurrently

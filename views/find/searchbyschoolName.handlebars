@@ -1,0 +1,37 @@
+<h1>Search city schoolName</h1>
+<form action="searchbyschoolName" id="schoolName_search" method="POST">
+
+    
+    <label for="schoolName">School Name</label>
+    <select id="schoolName" name="schoolName" required>
+      <option value="Stevens Institute of Technology">Stevens Institute of
+        Technology</option>
+      <option value="New York University">New York University</option>
+      <option value="University of Texas at Austin">University of Texas at
+        Austin</option>
+      <option value="University of Denver">University of Denver</option>
+
+      <option value="Arizona State University">Arizona State University</option>
+      <option value="University of San Francisco">University of San Francisco</option>
+      <option value="San Jose State University">San Jose State University</option>
+      <option value="University of Washington">University of Washington</option>
+    </select>
+    
+    </div>
+
+  <label for="btn">Submit:</label>
+  <button type="submit" id="btn">Submit</button>
+
+</form>
+
+  {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
+    
+  <ul class="post_list">
+    {{#each allpost}}
+    <li> {{this}}</li>
+    <br />
+    {{/each}}
+  </ul>
+

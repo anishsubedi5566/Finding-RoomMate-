@@ -1,0 +1,18 @@
+<h1>Search Mypost</h1>
+<form action="searchbymyPost" id="myPost_search" method="POST">
+
+  <label for="btn">Submit:</label>
+  <button type="submit" id="btn">Submit</button>
+
+</form>
+
+{{#if errors}}
+  <h2>{{errors}}</h2>
+{{/if}}
+
+<ul class="post_list">
+  {{#each allpost}}
+    <li> {{this}}</li>
+    <br />
+  {{/each}}
+</ul>
