@@ -32,12 +32,13 @@ router.post("/signup", async (req, res) => {
   const securityAns = xss(req.body.securityAns);
   const firstName = xss(req.body.firstName);
   const lastName = xss(req.body.lastName);
+  const email = xss(req.body.email);
   const schoolName = xss(req.body.schoolName);
   const age = Number(xss(req.body.age));
   const city = xss(req.body.city);
   const state = xss(req.body.state);
   const gender = xss(req.body.gender);
-  let bio = xss(req.body.bio);
+  
   let homeCountry = xss(req.body.homeCountry);
 
   if (
@@ -138,7 +139,9 @@ router.post("/signup", async (req, res) => {
     return;
   }
   if (firstName.trim().length === 0) {
-    res.status(400).render("signup", { error: "Invalid input entered" });
+    res
+      .status(400)
+      .render("signup", { error: "Invalid input entered for First name" });
     return;
   }
 
@@ -154,8 +157,33 @@ router.post("/signup", async (req, res) => {
     return;
   }
   if (lastName.trim().length === 0) {
-    res.status(400).render("signup", { error: "Invalid input entered" });
+    res
+      .status(400)
+      .render("signup", { error: "Invalid input entered for Last name" });
     return;
+  }
+
+  //Email error handling
+  if (!email) {
+    res.status(400).render("signup", { error: `Email is not provided` });
+    return;
+  }
+  if (typeof email !== "string") {
+    res.status(400).render("signup", { error: `Email is not a string value` });
+    return;
+  }
+  if (email.trim().length === 0) {
+    res
+      .status(400)
+      .render("signup", { error: "Invalid input entered for Email" });
+    return;
+  }
+
+  const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailValidation = emailReg.test(email);
+
+  if (!emailValidation) {
+    res.status(400).render("signup", { error: "Email is invalid" });
   }
 
   //city error check
@@ -234,14 +262,7 @@ router.post("/signup", async (req, res) => {
     return;
   }
 
-  //bio error check
-  if (typeof bio === "undefined") {
-    bio = "Bio is empty.";
-  } else if (typeof bio === "string") {
-    if (bio.trim().length === 0) {
-      bio = "Bio is empty.";
-    }
-  }
+
 
   try {
     const userCheck = await userData.checkUser(username, password);
@@ -264,13 +285,14 @@ router.post("/signup", async (req, res) => {
         securityAns,
         firstName,
         lastName,
+        email,
         schoolName,
         city,
         state,
         homeCountry,
         age,
         gender,
-        bio,
+        
         `/public/images/user_profile_default.png`
       );
       res.redirect("/login?msg=Congratulations, you are user now");
@@ -288,13 +310,14 @@ router.post("/signup", async (req, res) => {
         securityAns,
         firstName,
         lastName,
+        email,
         schoolName,
         city,
         state,
         homeCountry,
         age,
         gender,
-        bio,
+        
         `/public/uploads/` + pictureName
       );
 
@@ -474,13 +497,14 @@ router.route("/private/profile/edit").post(async (req, res) => {
 
   const firstName = xss(req.body.firstName);
   const lastName = xss(req.body.lastName);
+  const email = xss(req.body.email);
   const schoolName = xss(req.body.schoolName);
   const city = xss(req.body.city);
   const state = xss(req.body.state);
   const homeCountry = xss(req.body.homeCountry);
   const age = Number(xss(req.body.age));
   const gender = xss(req.body.gender);
-  const bio = xss(req.body.bio);
+  
 
   //First Name error check
   if (!firstName) {
@@ -520,6 +544,33 @@ router.route("/private/profile/edit").post(async (req, res) => {
       error: "Invalid input entered for Last Name",
     });
     return;
+  }
+
+  //Email error handling
+  if (!email) {
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Email is not provided` });
+    return;
+  }
+  if (typeof email !== "string") {
+    res
+      .status(400)
+      .render("userProfile/edit", { error: `Email is not a string value` });
+    return;
+  }
+  if (email.trim().length === 0) {
+    res
+      .status(400)
+      .render("userProfile/edit", { error: "Invalid input entered for Email" });
+    return;
+  }
+
+  const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailValidation = emailReg.test(email);
+
+  if (!emailValidation) {
+    res.status(400).render("userProfile/edit", { error: "Email is invalid" });
   }
 
   //city error check
@@ -676,13 +727,14 @@ router.route("/private/profile/edit").post(async (req, res) => {
         `/public/uploads/` + pictureName,
         firstName,
         lastName,
+        email,
         schoolName,
         city,
         state,
         homeCountry,
         age,
-        gender,
-        bio
+        gender
+        
       );
     }
     return res.redirect("/private/profile");

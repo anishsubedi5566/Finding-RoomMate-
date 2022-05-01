@@ -34,6 +34,11 @@ function checkValue(value) {
   if (!value) throw `${value} not provided, please provide.`;
 }
 
+function validateEmail(email) {
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+    throw "Email is invalid";
+}
+
 let username_string_Check = (string, var_Name) => {
   if (typeof string !== "string")
     throw `given parameter ${var_Name} is not string`;
@@ -68,8 +73,10 @@ let exportedMethods = {
     password,
     securityQues,
     securityAns,
+
     firstName,
     lastName,
+    email,
     schoolName,
     city,
     state,
@@ -101,6 +108,11 @@ let exportedMethods = {
 
     password = password.trim();
     const hashPass = await bcrypt.hash(password, salRounds);
+
+    //Email error handling
+    checkValue(email);
+    checkIsString(email);
+    validateEmail(email);
 
     //First Name error check
     checkValue(firstName);
@@ -144,15 +156,6 @@ let exportedMethods = {
     checkValue(securityAns);
     checkIsString(securityAns);
 
-    //bio error check
-    if (typeof bio === "undefined") {
-      bio = "Bio is empty.";
-    } else if (typeof bio === "string") {
-      if (bio.trim().length === 0) {
-        bio = "Bio is empty.";
-      }
-    }
-
     const usersCollection = await users();
     const user_detail = {
       username: username,
@@ -161,16 +164,16 @@ let exportedMethods = {
       securityAns: securityAns,
       firstName: firstName,
       lastName: lastName,
-
+      email: email,
       schoolName: schoolName,
       city: city,
       state: state,
       homeCountry: homeCountry,
       age: age,
       gender: gender,
-      bio: bio,
+
       userProfileImage: picture,
-      followers: [],
+
       posts: [],
     };
 
@@ -250,18 +253,23 @@ let exportedMethods = {
     picture,
     firstName,
     lastName,
+    email,
     schoolName,
     city,
     state,
     homeCountry,
     age,
-    gender,
-    bio
+    gender
   ) {
     //ID error handling
     checkValue(id);
     checkIsString(id);
     checkIsObjectID(id);
+
+    //Email error handling
+    checkValue(email);
+    checkIsString(email);
+    validateEmail(email);
 
     // firstName error handling
     checkValue(firstName);
@@ -310,13 +318,13 @@ let exportedMethods = {
       userProfileImage: picture,
       firstName: firstName,
       lastName: lastName,
+      email: email,
       schoolName: schoolName,
       city: city,
       state: state,
       homeCountry: homeCountry,
       age: age,
       gender: gender,
-      bio: bio,
     };
 
     const updateInfo = await usersCollection.updateOne(
@@ -333,13 +341,13 @@ let exportedMethods = {
       userProfileImage: picture,
       firstName: firstName,
       lastName: lastName,
+      email: email,
       schoolName: schoolName,
       city: city,
       state: state,
       homeCountry: homeCountry,
       age: age,
       gender: gender,
-      bio: bio,
     };
   },
 

@@ -83,6 +83,16 @@
       required
     />
     <br />
+    <label>Email: </label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      value={{user.email}}
+      placeholder="Enter your email"
+      required
+    />
+    <br />
     <label for="schoolName">School Name:</label>
     <select id="schoolName" name="schoolName" value={{user.schoolName}}required>
       <option value="Stevens Institute of Technology">Stevens Institute of
@@ -170,17 +180,7 @@
     </select>
     <br />
 
-    <label for="bio">Bio:</label>
-    <textarea
-      rows="4"
-      cols="50"
-      id="bio"
-      name="bio"
-      form="form"
-      value = {{user.bio}}
-      placeholder="Other users will know you better if you tell us about yourself..."
-    ></textarea>
-    <br />
+    
    
      {{#if error}}
       <div class="alert alert-danger" role="alert">
