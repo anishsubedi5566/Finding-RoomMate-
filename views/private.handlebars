@@ -31,13 +31,35 @@
           <a class="nav-link" href="/private/profile/edit">Edit Profile</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/private/selectpost">Make Post</a>
-        </li>
 
-       <li class="nav-item">
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/selectpost">Make Post</a>
+        </li> --}}
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/private/findPost/searchbymyPost">My Post</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By city</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
+      </li>
+
+
+
+
+
+       {{!-- <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
