@@ -15,14 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/private/profile">Profile</a>
+          <a class="nav-link" href="/private/profile">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/private/profile/edit">Edit Profile</a>
@@ -36,176 +32,190 @@
 </nav>
 
 <div class="edit_profile">
-<h1>Edit Your Profile</h1>
-<div class="edit_profile_card">
-<form
-  action="/private/profile/edit"
-  id="edit-form"
-  method="POST"
-  onsubmit="validateEditProfileInputs(event);"
-  enctype="multipart/form-data"
->
-  <div class="edit_form">
-
-    <img
-      src={{user.userProfileImage}}
-      alt="{{user.firstName}} profile image"
-      class="profile_image"
-    />
-    <br />
-    <div class="input-group mb-3" id="image_upload_option">
-      <input
-        type="file"
-        class="form-control"
-        id="inputGroupFile02"
-        id="picture"
-        name="picture"
-        accept=".jpg,.gif,.png,.jpeg"
-      />
-      
-    </div>
-    <label>First Name: </label>
-    <input
-      id="firstName"
-      name="firstName"
-      type="text"
-      value={{user.firstName}}
-      placeholder="Enter your first name"
-      required
-    />
-    <br />
-    <label>Last Name: </label>
-    <input
-      id="lastName"
-      name="lastName"
-      type="text"
-      value={{user.lastName}}
-      placeholder="Enter your last name"
-      required
-    />
-    <br />
-    <label>Email: </label>
-    <input
-      id="email"
-      name="email"
-      type="email"
-      value={{user.email}}
-      placeholder="Enter your email"
-      required
-    />
-    <br />
-    <label for="schoolName">School Name:</label>
-    <select id="schoolName" name="schoolName" value={{user.schoolName}}required>
-      <option value="Stevens Institute of Technology">Stevens Institute of
-        Technology</option>
-      <option value="New York University">New York University</option>
-      <option value="University of Texas at Austin">University of Texas at
-        Austin</option>
-      <option value="University of Denver">University of Denver</option>
-
-      <option value="Arizona State University">Arizona State University</option>
-      <option value="University of San Francisco">University of San Francisco</option>
-      <option value="San Jose State University">San Jose State University</option>
-      <option value="University of Washington">University of Washington</option>
-
-    </select>
-    <br />
-    <label for="city">City:</label>
-    <select id="city" name="city" value={{user.city}}required>
-      <option value="Austin">Austin</option>
-      <option value="Boston">Boston</option>
-      <option value="Chicago">Chicago</option>
-      <option value="Denver">Denver</option>
-      <option value="Hoboken">Hoboken</option>
-
-      <option value="Jersey City">Jersey City</option>
-      <option value="New York">New York</option>
-
-      <option value="Phoenix">Phoenix</option>
-      <option value="San Francisco">San Francisco</option>
-      <option value="San Jose">San Jose</option>
-      <option value="Seattle">Seattle</option>
-
-    </select>
-    <br />
-    <label for="state">State:</label>
-    <select id="state" name="state" value={{user.state}} required>
-      <option value="Arizona">Arizona</option>
-      <option value="California">California</option>
-      <option value="Colorado">Colorado</option>
-      <option value="Illinois">Illinois</option>
-      <option value="Texas">Texas</option>
-      <option value="Massachusetts">Massachusetts</option>
-      <option value="New Jersey">New Jersey</option>
-      <option value="New York">New York</option>
-      <option value="Washington">Washington</option>
-    </select>
-    <br />
-    <label for="homeCountry">Native Country:</label>
-    <select
-      id="homeCountry"
-      name="homeCountry"
-      value={{user.homeCountry}}
-      required
+  <h1>Edit Your Profile</h1>
+  <div class="edit_profile_card">
+    <form
+      action="/private/profile/edit"
+      id="edit-form"
+      method="POST"
+      onsubmit="validateEditProfileInputs(event);"
+      enctype="multipart/form-data"
     >
-    <option value="None">None</option>
-      <option value="United States of America">United States of America</option>
-      <option value="Brazil">Brazil</option>
-      <option value="China">China</option>
-      <option value="France">France</option>
-      <option value="India">India</option>
-      <option value="Israel">Israel</option>
-      <option value="Mexico">Mexico</option>
-      <option value="Nepal">Nepal</option>
-      <option value="Philippines">Philippines</option>
-      <option value="Russia">Russia</option>
-      <option value="Spain">Spain</option>
-      <option value="Thailand">Thailand</option>
-      <option value="United Arab Emirates">United Arab Emirates</option>
-      <option value="United Kingdom">United Kingdom</option>
+      <div class="edit_form">
 
-    </select>
-    <br />
-    <label for="age">Age:</label>
-    <input id="age" name="age" type="number" value={{user.age}} placeholder="15" required />
-    <br />
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" value={{user.gender}} required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Non-Binary">Non-Binary</option>
-      <option value="Transgender">Transgender</option>
-      <option value="Agender">Agender</option>
-      <option value="Pangender">Pangender</option>
-      <option value="Genderqueer">Genderqueer</option>
+        <img
+          src={{user.userProfileImage}}
+          alt="{{user.firstName}} profile image"
+          class="profile_image"
+        />
+        <br />
+        <div class="input-group mb-3" id="image_upload_option">
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            id="picture"
+            name="picture"
+            accept=".jpg,.gif,.png,.jpeg"
+          />
 
-    </select>
-    <br />
+        </div>
+        <label>First Name: </label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          value={{user.firstName}}
+          placeholder="Enter your first name"
+          required
+        />
+        <br />
+        <label>Last Name: </label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          value={{user.lastName}}
+          placeholder="Enter your last name"
+          required
+        />
+        <br />
+        <label>Email: </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={{user.email}}
+          placeholder="Enter your email"
+          required
+        />
+        <br />
+        <label for="schoolName">School Name:</label>
+        <select id="schoolName" name="schoolName" required>
+          <option
+            value={{user.schoolName}}
+            selected
+          >{{user.schoolName}}</option>
+          <option value="Stevens Institute of Technology">Stevens Institute of
+            Technology</option>
+          <option value="New York University">New York University</option>
+          <option value="University of Texas at Austin">University of Texas at
+            Austin</option>
+          <option value="University of Denver">University of Denver</option>
 
-    
-   
-     {{#if error}}
-      <div class="alert alert-danger" role="alert">
-        {{error}}
+          <option value="Arizona State University">Arizona State University</option>
+          <option value="University of San Francisco">University of San
+            Francisco</option>
+          <option value="San Jose State University">San Jose State University</option>
+          <option value="University of Washington">University of Washington</option>
+
+        </select>
+        <br />
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+          <option value={{user.city}} selected>{{user.city}}</option>
+          <option value="Austin">Austin</option>
+          <option value="Boston">Boston</option>
+          <option value="Chicago">Chicago</option>
+          <option value="Denver">Denver</option>
+          <option value="Hoboken">Hoboken</option>
+
+          <option value="Jersey City">Jersey City</option>
+          <option value="New York">New York</option>
+
+          <option value="Phoenix">Phoenix</option>
+          <option value="San Francisco">San Francisco</option>
+          <option value="San Jose">San Jose</option>
+          <option value="Seattle">Seattle</option>
+
+        </select>
+        <br />
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+          <option value={{user.state}} selected>{{user.state}}</option>
+          <option value="Arizona">Arizona</option>
+          <option value="California">California</option>
+          <option value="Colorado">Colorado</option>
+          <option value="Illinois">Illinois</option>
+          <option value="Texas">Texas</option>
+          <option value="Massachusetts">Massachusetts</option>
+          <option value="New Jersey">New Jersey</option>
+          <option value="New York">New York</option>
+          <option value="Washington">Washington</option>
+        </select>
+        <br />
+        <label for="homeCountry">Native Country:</label>
+        <select id="homeCountry" name="homeCountry" required>
+          <option
+            value={{user.homeCountry}}
+            selected
+          >{{user.homeCountry}}</option>
+          <option value="None">None</option>
+          <option value="United States of America">United States of America</option>
+          <option value="Brazil">Brazil</option>
+          <option value="China">China</option>
+          <option value="France">France</option>
+          <option value="India">India</option>
+          <option value="Israel">Israel</option>
+          <option value="Mexico">Mexico</option>
+          <option value="Nepal">Nepal</option>
+          <option value="Philippines">Philippines</option>
+          <option value="Russia">Russia</option>
+          <option value="Spain">Spain</option>
+          <option value="Thailand">Thailand</option>
+          <option value="United Arab Emirates">United Arab Emirates</option>
+          <option value="United Kingdom">United Kingdom</option>
+
+        </select>
+        <br />
+        <label for="age">Age:</label>
+        <input
+          id="age"
+          name="age"
+          type="number"
+          value={{user.age}}
+          placeholder="15"
+          required
+        />
+        <br />
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value={{user.gender}} selected>{{user.gender}}</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Non-Binary">Non-Binary</option>
+          <option value="Transgender">Transgender</option>
+          <option value="Agender">Agender</option>
+          <option value="Pangender">Pangender</option>
+          <option value="Genderqueer">Genderqueer</option>
+
+        </select>
+        <br />
+
+        {{#if error}}
+          <div class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+        {{else}}
+          <div class="alert alert-danger" hidden role="alert">
+            {{error}}
+          </div>
+        {{/if}}
+
+        <input
+          type="submit"
+          class="btn AllButton btn-outline-success"
+          value="Submit"
+        />
+
       </div>
-    {{else}}
-      <div class="alert alert-danger" hidden role="alert">
-        {{error}}
-      </div>
-    {{/if}}
-
-    {{! <label>Submit</label> }}
-    <input
-      type="submit"
-      class="btn AllButton btn-outline-success"
-      value="Submit"
-    />
-
+    </form>
   </div>
-</form>
-</div>
-<div class="delete_btn_box">
-<a onclick= "window.location.href='/private/deleteProfile'" class="delete_btn">Delete Profile</a>
-</div>
+  <div class="delete_btn_box">
+    <a
+      onclick="window.location.href='/private/deleteProfile'"
+      class="delete_btn"
+    >Delete Profile</a>
+  </div>
 </div>
 <script src="/public/js/editProfile.js"></script>

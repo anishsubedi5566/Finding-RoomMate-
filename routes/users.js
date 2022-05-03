@@ -308,7 +308,6 @@ router.post("/signup", async (req, res) => {
     error = e.message;
   }
 
-  console.log(req.files);
   try {
     //defult user image will appear
     if (!req.files) {
