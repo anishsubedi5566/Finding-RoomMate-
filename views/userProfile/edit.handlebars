@@ -42,6 +42,7 @@
   action="/private/profile/edit"
   id="edit-form"
   method="POST"
+  onsubmit="validateEditProfileInputs(event);"
   enctype="multipart/form-data"
 >
   <div class="edit_form">
@@ -147,6 +148,7 @@
       value={{user.homeCountry}}
       required
     >
+    <option value="None">None</option>
       <option value="United States of America">United States of America</option>
       <option value="Brazil">Brazil</option>
       <option value="China">China</option>
@@ -206,3 +208,4 @@
 <a onclick= "window.location.href='/private/deleteProfile'" class="delete_btn">Delete Profile</a>
 </div>
 </div>
+<script src="/public/js/editProfile.js"></script>

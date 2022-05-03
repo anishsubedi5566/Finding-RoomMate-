@@ -3,6 +3,7 @@
   action="/signup"
   id="signup-form"
   method="POST"
+  onsubmit="validateSignUpInputs(event);"
   enctype="multipart/form-data"
 >
   <div class="form">
@@ -31,6 +32,7 @@
     <label for="securityQues">Security question</label>
     <br />
     <select id="securityQues" name="securityQues" required>
+      <option value="None">None</option>
       <option value="What is your nickname?">What is your nickname?</option>
       <option value="Which is your favourite place to spend vacation?">Which is
         your favourite place to spend vacation?</option>
@@ -84,6 +86,7 @@
     <label for="schoolName">School Name</label>
     <br />
     <select id="schoolName" name="schoolName" required>
+      <option value="None">None</option>
       <option value="Stevens Institute of Technology">Stevens Institute of
         Technology</option>
       <option value="New York University">New York University</option>
@@ -101,6 +104,7 @@
     <label for="city">City</label>
     <br />
     <select id="city" name="city" required>
+      <option value="None">None</option>
       <option value="Austin">Austin</option>
       <option value="Boston">Boston</option>
       <option value="Chicago">Chicago</option>
@@ -120,6 +124,7 @@
     <label for="state">State</label>
     <br />
     <select id="state" name="state" required>
+      <option value="None">None</option>
       <option value="Arizona">Arizona</option>
       <option value="California">California</option>
       <option value="Colorado">Colorado</option>
@@ -139,6 +144,7 @@
     <label for="gender">Gender</label>
     <br />
     <select id="gender" name="gender" required>
+      <option value="None">None</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="Non-Binary">Non-Binary</option>
@@ -201,8 +207,8 @@
       class="btn AllButton btn-outline-success"
       value="Sign Up"
     />
-
   </div>
 </form>
 
 <a id="Home" href="/">Already have an account? Click here to log-in</a>
+<script src="/public/js/signup.js"></script>

@@ -54,7 +54,7 @@ let username_string_Check = (string, var_Name) => {
       throw `please, remove inbetween space in ${var_Name}`;
   }
 
-  if (n < 4) throw `${var_Name} must be atleast 4 digit`;
+  if (n < 4) throw `${var_Name} must be atleast 4 characters`;
 };
 
 const password_string_check = (string, var_Name) => {
@@ -109,6 +109,13 @@ let exportedMethods = {
     password = password.trim();
     const hashPass = await bcrypt.hash(password, salRounds);
 
+    //security question error handling
+    checkValue(securityQues);
+    checkIsString(securityQues);
+    if (securityQues == "None") {
+      throw "Security question should not be none";
+    }
+
     //Email error handling
     checkValue(email);
     checkIsString(email);
@@ -117,22 +124,38 @@ let exportedMethods = {
     //First Name error check
     checkValue(firstName);
     checkIsString(firstName);
+    if (firstName.length < 2) {
+      throw "First name must be of 2 or more than 2 characters";
+    }
 
     //LastName error check
     checkValue(lastName);
     checkIsString(lastName);
+    if (lastName.length < 2) {
+      throw "Last name must be of 2 or more than 2 characters";
+    }
 
     //city error check
     checkValue(city);
     checkIsString(city);
 
+    if (city == "None") {
+      throw "City should not be none";
+    }
+
     //state error check
     checkValue(state);
     checkIsString(state);
+    if (state == "None") {
+      throw "State should not be none";
+    }
 
     //school name error check
     checkValue(schoolName);
     checkIsString(schoolName);
+    if (schoolName == "None") {
+      throw "School name should not be none";
+    }
 
     //age error check
     checkValue(age);
@@ -142,6 +165,9 @@ let exportedMethods = {
     //gender error check
     checkValue(gender);
     checkIsString(gender);
+    if (gender == "None") {
+      throw "Gender should not be none";
+    }
 
     //homeCountry error check
     if (!homeCountry) {
@@ -271,14 +297,19 @@ let exportedMethods = {
     checkIsString(email);
     validateEmail(email);
 
-    // firstName error handling
+    //First Name error check
     checkValue(firstName);
     checkIsString(firstName);
+    if (firstName.length < 2) {
+      throw "First name must be of 2 or more than 2 characters";
+    }
 
     //LastName error check
     checkValue(lastName);
     checkIsString(lastName);
-
+    if (lastName.length < 2) {
+      throw "Last name must be of 2 or more than 2 characters";
+    }
     //city error check
     checkValue(city);
     checkIsString(city);
