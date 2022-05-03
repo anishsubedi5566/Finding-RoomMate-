@@ -34,12 +34,13 @@
 <div class="edit_profile">
   <h1>Edit Your Profile</h1>
   <div class="edit_profile_card">
-    <form
+    {{! <form
       action="/private/profile/edit"
       id="edit-form"
       method="POST"
       onsubmit="validateEditProfileInputs(event);"
       enctype="multipart/form-data"
+
     >
       <div class="edit_form">
 
@@ -110,11 +111,47 @@
             Austin</option>
           <option value="University of Denver">University of Denver</option>
 
-          <option value="Arizona State University">Arizona State University</option>
-          <option value="University of San Francisco">University of San
-            Francisco</option>
-          <option value="San Jose State University">San Jose State University</option>
-          <option value="University of Washington">University of Washington</option>
+
+      </div>
+      <label>First Name: </label>
+      <input
+        id="firstName"
+        name="firstName"
+        type="text"
+        value={{user.firstName}}
+        placeholder="Enter your first name"
+        required
+      />
+      <br />
+      <label>Last Name: </label>
+      <input
+        id="lastName"
+        name="lastName"
+        type="text"
+        value={{user.lastName}}
+        placeholder="Enter your last name"
+        required
+      />
+      <br />
+      <label>Email: </label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        value={{user.email}}
+        placeholder="Enter your email"
+        required
+      />
+      <br />
+      <label for="schoolName">School Name:</label>
+      <select id="schoolName" name="schoolName" required>
+        <option value={{user.schoolName}} selected>{{user.schoolName}}</option>
+        <option value="Stevens Institute of Technology">Stevens Institute of
+          Technology</option>
+        <option value="New York University">New York University</option>
+        <option value="University of Texas at Austin">University of Texas at
+          Austin</option>
+        <option value="University of Denver">University of Denver</option>
 
         </select>
         <br />
@@ -127,13 +164,20 @@
           <option value="Denver">Denver</option>
           <option value="Hoboken">Hoboken</option>
 
-          <option value="Jersey City">Jersey City</option>
-          <option value="New York">New York</option>
 
-          <option value="Phoenix">Phoenix</option>
-          <option value="San Francisco">San Francisco</option>
-          <option value="San Jose">San Jose</option>
-          <option value="Seattle">Seattle</option>
+      </select>
+      <br />
+      <label for="city">City:</label>
+      <select id="city" name="city" required>
+        <option value={{user.city}} selected>{{user.city}}</option>
+        <option value="Austin">Austin</option>
+        <option value="Boston">Boston</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Denver">Denver</option>
+        <option value="Hoboken">Hoboken</option>
+
+        <option value="Jersey City">Jersey City</option>
+        <option value="New York">New York</option>
 
         </select>
         <br />
@@ -196,22 +240,62 @@
           <option value="Pangender">Pangender</option>
           <option value="Genderqueer">Genderqueer</option>
 
-        </select>
-        <br />
 
-        {{#if error}}
-          <div class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
-        {{else}}
-          <div class="alert alert-danger" hidden role="alert">
-            {{error}}
-          </div>
-        {{/if}}
+      </select>
+      <br />
+      <label for="age">Age:</label>
+      <input
+        id="age"
+        name="age"
+        type="number"
+        value={{user.age}}
+        placeholder="15"
+        required
+      />
+      <br />
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value={{user.gender}} selected>{{user.gender}}</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Non-Binary">Non-Binary</option>
+        <option value="Transgender">Transgender</option>
+        <option value="Agender">Agender</option>
+        <option value="Pangender">Pangender</option>
+        <option value="Genderqueer">Genderqueer</option>
+
+      </select>
+      <br />
+
+
+      {{#if error}}
+        <div class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
+      {{else}}
+        <div class="alert alert-danger" hidden role="alert">
+          {{error}}
+        </div>
+      {{/if}}
+
+      <input
+        type="submit"
+        class="btn AllButton btn-outline-success"
+        value="Submit"
+        onclick="triggerSubmit(event)"
+      />
+
+    </div>
+    {{! </form> }}
+  </div>
+
+  <div id="message">
+    <div id="edit_text"></div>
 
         <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
+
   </div>
   <button
     type="button"
@@ -221,6 +305,7 @@
   >Delete Account</button>
   
 </div>
+
 <script src="/public/js/editProfile.js"></script>
 <script>
   function confirmDelete() { let text = "Are you sure you want to permanentlydelete your ROOMIE account? "; 
@@ -228,3 +313,4 @@
     window.location.href='/private/deleteProfile'
   } }
 </script>
+

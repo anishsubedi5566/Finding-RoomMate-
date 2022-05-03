@@ -1,4 +1,4 @@
-function validateEditProfileInputs(e) {
+function triggerSubmit(e) {
   e.preventDefault();
 
   let firstNameVal = document.getElementById("firstName").value;
@@ -11,7 +11,10 @@ function validateEditProfileInputs(e) {
   let homeCountryVal = document.getElementById("homeCountry").value;
   let ageVal = Number(document.getElementById("age").value);
   let genderVal = document.getElementById("gender").value;
-  let editProfileForm = document.getElementById("edit-form");
+  let imageVal = document.getElementById("profile_image").value;
+  var message = document.getElementById("edit_text");
+  console.log(imageVal);
+  // let editProfileForm = document.getElementById("edit-form");
 
   let errorMessage = null;
 
@@ -44,11 +47,36 @@ function validateEditProfileInputs(e) {
   } else {
     errorMessage = null;
   }
+
+  // if (request.files) {
+  //   let picture = req.files.picture;
+  //   let pictureName = picture.name.replaceAll(" ", "-");
+  //   picture.mv(`./public/uploads/` + pictureName);
+  //   imageVal = `/public/uploads/` + pictureName;
+  // }
+
   if (errorMessage == null) {
-    editProfileForm.submit();
-    return;
+    var saveData = $.ajax({
+      type: "POST",
+      url: "/private/profile/edit",
+      data: {
+        firstName: firstNameVal,
+        lastName: lastNameVal,
+        email: emailVal,
+        schoolName: schoolNameVal,
+        city: cityVal,
+        state: stateVal,
+        homeCountry: homeCountryVal,
+        age: ageVal,
+        gender: genderVal,
+        userProfileImage: imageVal,
+      },
+      success: function (resultData) {
+        message.innerHTML = "Profile Edited Successfully";
+      },
+    });
   } else {
-    alert(errorMessage);
-    return;
+    console.log(errorMessage);
+    message.innerHTML = `ERROR:${errorMessage}`;
   }
 }
