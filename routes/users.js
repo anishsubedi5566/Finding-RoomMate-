@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
   const city = xss(req.body.city);
   const state = xss(req.body.state);
   const gender = xss(req.body.gender);
-  
+
   let homeCountry = xss(req.body.homeCountry);
 
   if (
@@ -105,6 +105,12 @@ router.post("/signup", async (req, res) => {
     });
     return;
   }
+  if (securityQues == "None") {
+    res
+      .status(400)
+      .render("signup", { error: "Security question should not be none" });
+    return;
+  }
 
   //security ans error check
 
@@ -144,6 +150,12 @@ router.post("/signup", async (req, res) => {
       .render("signup", { error: "Invalid input entered for First name" });
     return;
   }
+  if (firstName.length < 2) {
+    res.status(400).render("signup", {
+      error: "First name must be of 2 or more than 2 characters",
+    });
+    return;
+  }
 
   //LastName error check
   if (!lastName) {
@@ -160,6 +172,12 @@ router.post("/signup", async (req, res) => {
     res
       .status(400)
       .render("signup", { error: "Invalid input entered for Last name" });
+    return;
+  }
+  if (lastName.length < 2) {
+    res.status(400).render("signup", {
+      error: "Last name must be of 2 or more than 2 characters",
+    });
     return;
   }
 
@@ -199,6 +217,10 @@ router.post("/signup", async (req, res) => {
     res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
+  if (city == "None") {
+    res.status(400).render("signup", { error: "City should not be none" });
+    return;
+  }
 
   //state error check
   if (!state) {
@@ -211,6 +233,10 @@ router.post("/signup", async (req, res) => {
   }
   if (state.trim().length === 0) {
     res.status(400).render("signup", { error: "Invalid input entered" });
+    return;
+  }
+  if (city == "City") {
+    res.status(400).render("signup", { error: "City should not be none" });
     return;
   }
 
@@ -227,6 +253,12 @@ router.post("/signup", async (req, res) => {
   }
   if (schoolName.trim().length === 0) {
     res.status(400).render("signup", { error: "Invalid input entered" });
+    return;
+  }
+  if (schoolName == "None") {
+    res
+      .status(400)
+      .render("signup", { error: "School name should not be none" });
     return;
   }
 
@@ -261,8 +293,10 @@ router.post("/signup", async (req, res) => {
     res.status(400).render("signup", { error: "Invalid input entered" });
     return;
   }
-
-
+  if (gender == "None") {
+    res.status(400).render("signup", { error: "Gender should not be none" });
+    return;
+  }
 
   try {
     const userCheck = await userData.checkUser(username, password);
@@ -292,7 +326,7 @@ router.post("/signup", async (req, res) => {
         homeCountry,
         age,
         gender,
-        
+
         `/public/images/user_profile_default.png`
       );
       res.redirect("/login?msg=Congratulations, you are user now");
@@ -317,7 +351,7 @@ router.post("/signup", async (req, res) => {
         homeCountry,
         age,
         gender,
-        
+
         `/public/uploads/` + pictureName
       );
 
@@ -439,10 +473,10 @@ router.route("/private/profile").get(async (req, res) => {
       id = user._id.toString();
     }
   });
-  console.log(id);
+
   try {
     const user = await userData.getUserByID(id);
-    console.log(user);
+
     res.status(200).render("userProfile/profile", {
       title: "Your Profile",
       user: user,
@@ -458,15 +492,18 @@ router.route("/private/profile").get(async (req, res) => {
 router.route("/private/profile/edit").get(async (req, res) => {
   const username = req.session.user.username;
   const getAllUsers = await userData.getAllUsers();
+  let userDefaultImage = "";
   let id;
   //console.log(getAllUsers);
   getAllUsers.forEach((user) => {
     if (user.username === username) {
-      console.log(user._id);
+      userDefaultImage = user.userProfileImage;
       id = user._id.toString();
     }
+    userImage = user.userProfileImage;
   });
-  console.log(id);
+  console.log(userImage);
+
   try {
     const user = await userData.getUserByID(id);
     console.log(user);
@@ -486,12 +523,14 @@ router.route("/private/profile/edit").get(async (req, res) => {
 //Update user profile
 router.route("/private/profile/edit").post(async (req, res) => {
   const username = req.session.user.username;
-  const getAllUsers = await userData.getAllUsers();
-  let _id;
+  const getAllUser = await userData.getAllUsers();
+  let userDefaultImage = "";
+  let id;
   //console.log(getAllUsers);
-  getAllUsers.forEach((user) => {
+  getAllUser.forEach((user) => {
     if (user.username === username) {
-      _id = user._id.toString();
+      userDefaultImage = user.userProfileImage;
+      id = user._id.toString();
     }
   });
 
@@ -504,7 +543,6 @@ router.route("/private/profile/edit").post(async (req, res) => {
   const homeCountry = xss(req.body.homeCountry);
   const age = Number(xss(req.body.age));
   const gender = xss(req.body.gender);
-  
 
   //First Name error check
   if (!firstName) {
@@ -525,6 +563,12 @@ router.route("/private/profile/edit").post(async (req, res) => {
     });
     return;
   }
+  if (firstName.length < 2) {
+    res.status(400).render("userProfile/edit", {
+      error: "First name must be of 2 or more than 2 characters",
+    });
+    return;
+  }
 
   //LastName error check
   if (!lastName) {
@@ -542,6 +586,12 @@ router.route("/private/profile/edit").post(async (req, res) => {
   if (lastName.trim().length === 0) {
     res.status(400).render("userProfile/edit", {
       error: "Invalid input entered for Last Name",
+    });
+    return;
+  }
+  if (lastName.length < 2) {
+    res.status(400).render("userProfile/edit", {
+      error: "Last name must be of 2 or more than 2 characters",
     });
     return;
   }
@@ -723,7 +773,7 @@ router.route("/private/profile/edit").post(async (req, res) => {
       let pictureName = picture.name.replaceAll(" ", "-");
       picture.mv(`./public/uploads/` + pictureName);
       const updateUser = await userData.updateUserProfile(
-        _id,
+        id,
         `/public/uploads/` + pictureName,
         firstName,
         lastName,
@@ -734,15 +784,37 @@ router.route("/private/profile/edit").post(async (req, res) => {
         homeCountry,
         age,
         gender
-        
+      );
+    } else {
+      const updateUser = await userData.updateUserProfile(
+        id,
+        userDefaultImage,
+        firstName,
+        lastName,
+        email,
+        schoolName,
+        city,
+        state,
+        homeCountry,
+        age,
+        gender
       );
     }
     return res.redirect("/private/profile");
   } catch (e) {
-    console.log("Im in error");
-    console.log(e);
-    res.status(400).render("userProfile/edit", { error: e.message });
-    return;
+    const user = await userData.getUserByID(id);
+    if (e) {
+      console.log("Im in error");
+      console.log(e);
+      res
+        .status(400)
+        .render("userProfile/edit", { error: e.message, user: user });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
   }
 });
 
