@@ -4,6 +4,7 @@ const usersData = require("./users");
 const postsRoomData = require("./postsRoom");
 const postsRoomateData = require("./postsRoomate");
 const searchData = require("./findPost");
+const commentData = require("./makeComments");
 // const albumsData = require("./albums");
 
 let exportedMethods = {
@@ -11,6 +12,7 @@ let exportedMethods = {
   postsRoom: postsRoomData,
   postsRoomate: postsRoomateData,
   search: searchData,
+  comment: commentData
 };
 
 module.exports = exportedMethods;

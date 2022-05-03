@@ -47,6 +47,7 @@ router.post("/searchbyschoolName", async (req, res) => {
       throw "Enter valid schoolName";
 
     const result = await searchData.searchschoolName(schoolName);
+    // console.log(result);
     res.render("find/searchbyschoolName", { allpost: result });
   } catch (e) {
     if (e) {
