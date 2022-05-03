@@ -4,8 +4,10 @@ const postRoomateRoute = require("./postsRoomate");
 const selectPostRoute = require("./selectPost");
 const findPostRoute = require("./findPost");
 const aboutUsRoute = require("./other");
+const makeCommentRoute = require("./makeComments");
 
 const constructorMethod = (app) => {
+  app.use("/comment", makeCommentRoute);
   app.use("/", usersRoute);
   app.use("/private/postRoom", postRoomRoute);
   app.use("/private/postRoomate", postRoomateRoute);

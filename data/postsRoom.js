@@ -30,7 +30,8 @@ let exportedMethods = {
     sharingAllowed,
     budget,
     student,
-    otherdescription
+    otherdescription,
+    comments = []
   ) {
     // if(!postDate) throw "postDate is empty"
     // if(!sizeOfApartment || typeof sizeOfApartment != "string" || sizeOfApartment == " ") throw "Enter size of apartment"
@@ -86,7 +87,9 @@ let exportedMethods = {
       budget: budget,
       student: student,
       otherdescription: otherdescription,
+      comments : comments
     };
+    // console.log(post_detail);
     try {
       const postCollection = await posts();
       const inserted_user = await postCollection.insertOne(post_detail);

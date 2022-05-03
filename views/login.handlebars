@@ -1,23 +1,71 @@
-<h1>login</h1>
-<form action="/login" id="login-form" method="POST">
-  <div class="form">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Roomie</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutUs">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign Up</a>
+        </li>
 
-    <label>UserName</label>
-    <input name="username" type="text" placeholder="Enter user name" />
-
-    <br />
-    <label>Password</label>
-    <input name="password" type="password" placeholder="Enter password" />
-    <br />
-    {{#if error}}
-      <h2>{{error}}</h2>
-    {{/if}}
-
-    <label>Submit</label>
-    <button type="submit" id="btn">submit</button>
-    <br />
-
+      </ul>
+    </div>
   </div>
-</form>
+</nav>
+<main>
+  <div class="login_card">
+    <h1>login</h1>
+    <form action="/login" id="login-form" method="POST">
 
-<a id="signup_link" href="/signup">Need to register? Click here to sign-up</a>
+      <div class="mb-3">
+        <label
+          for="exampleDropdownFormEmail1"
+          class="form-label"
+        >Username</label>
+        <input
+          name="username"
+          type="text"
+          class="form-control"
+          id="exampleDropdownFormEmail1"
+          placeholder="Enter your username"
+        />
+      </div>
+      <div class="mb-3">
+        <label
+          for="exampleDropdownFormPassword1"
+          class="form-label"
+        >Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="exampleDropdownFormPassword1"
+          placeholder="Password"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <a id="signup_link" href="/signup">Need to register? Click here to sign-up</a>
+  </div>
+</main>

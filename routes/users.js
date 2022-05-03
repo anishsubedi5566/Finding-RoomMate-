@@ -40,6 +40,7 @@ router.post("/signup", async (req, res) => {
   const gender = xss(req.body.gender);
 
   let homeCountry = xss(req.body.homeCountry);
+  let userImage = "";
 
   if (
     !password ||
@@ -309,58 +310,97 @@ router.post("/signup", async (req, res) => {
   }
 
   try {
-    //defult user image will appear
-    if (!req.files) {
-      const adduser = await userData.create(
-        username,
-        password,
-        securityQues,
-        securityAns,
-        firstName,
-        lastName,
-        email,
-        schoolName,
-        city,
-        state,
-        homeCountry,
-        age,
-        gender,
-
-        `/public/images/user_profile_default.png`
-      );
-      res.redirect("/login?msg=Congratulations, you are user now");
-    } else {
-      //user can upload image
+    if (req.files) {
       let picture = req.files.picture;
       //console.log(req.files);
       let pictureName = picture.name.replaceAll(" ", "-");
       picture.mv(`./public/uploads/` + pictureName);
-
-      const adduser = await userData.create(
-        username,
-        password,
-        securityQues,
-        securityAns,
-        firstName,
-        lastName,
-        email,
-        schoolName,
-        city,
-        state,
-        homeCountry,
-        age,
-        gender,
-
-        `/public/uploads/` + pictureName
-      );
-
-      res.status(200).render("login", { title: "Login" });
-      // res.redirect("/login?msg=Congratulations, you are user now");
+      userImage = `/public/uploads/` + pictureName;
+    } else if (!req.files) {
+      userImage = `/public/images/user_profile_default.png`;
     }
   } catch (e) {
     const error = e;
     res.status(400).render("signup", { title: "Error", error: error });
   }
+
+  try {
+    console.log(userImage);
+    const adduser = await userData.create(
+      username,
+      password,
+      securityQues,
+      securityAns,
+      firstName,
+      lastName,
+      email,
+      schoolName,
+      city,
+      state,
+      homeCountry,
+      age,
+      gender,
+      userImage
+    );
+    res.redirect("/login?msg=Congratulations, you are user now");
+  } catch (e) {
+    const error = e;
+    res.status(400).render("signup", { title: "Error", error: error });
+  }
+
+  //   try {
+  //     //defult user image will appear
+  //     if (!req.files) {
+  //       const adduser = await userData.create(
+  //         username,
+  //         password,
+  //         securityQues,
+  //         securityAns,
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         schoolName,
+  //         city,
+  //         state,
+  //         homeCountry,
+  //         age,
+  //         gender,
+
+  //         `/public/images/user_profile_default.png`
+  //       );
+  //       res.redirect("/login?msg=Congratulations, you are user now");
+  //     } else {
+  //       //user can upload image
+  //       let picture = req.files.picture;
+  //       //console.log(req.files);
+  //       let pictureName = picture.name.replaceAll(" ", "-");
+  //       picture.mv(`./public/uploads/` + pictureName);
+
+  //       const adduser = await userData.create(
+  //         username,
+  //         password,
+  //         securityQues,
+  //         securityAns,
+  //         firstName,
+  //         lastName,
+  //         email,
+  //         schoolName,
+  //         city,
+  //         state,
+  //         homeCountry,
+  //         age,
+  //         gender,
+
+  //         `/public/uploads/` + pictureName
+  //       );
+
+  //       res.status(200).render("login", { title: "Login" });
+  //       // res.redirect("/login?msg=Congratulations, you are user now");
+  //     }
+  //   } catch (e) {
+  //     const error = e;
+  //     res.status(400).render("signup", { title: "Error", error: error });
+  //   }
 });
 router.post("/login", async (req, res) => {
   //1.You must make sure that username and password are supplied in the req.body

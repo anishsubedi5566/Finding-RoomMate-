@@ -83,7 +83,7 @@ let exportedMethods = {
     homeCountry,
     age,
     gender,
-    bio,
+
     picture
   ) {
     //1. Both username and password must be supplied or you will throw an error
