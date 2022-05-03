@@ -10,7 +10,7 @@ body {
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-.topnav {
+/* .topnav {
   overflow: hidden;
   background-color: #333;
   padding-left: 30%;
@@ -33,8 +33,8 @@ body {
 .topnav a.active {
   background-color: #04aa6d;
   color: white;
-}
-h1 {
+} */
+/* h1 {
   color: blue;
   margin-bottom: 5px;
 }
@@ -45,9 +45,9 @@ h2 {
 label {
   font-weight: bold;
   color: rgb(101, 47, 202);
-}
+} */
 
-#btn {
+/* #btn {
   color: red;
   background-color: aqua;
   width: 10%;
@@ -59,29 +59,102 @@ label {
 
 #btn:active {
   color: #00ff4c;
-}
+} */
 
-.form {
+/* .form {
   background-color: #00ff4c;
   padding-left: 40px;
   padding-top: 40px;
-}
+} */
 
 a {
   color: red;
 }
 
-#signup-form {
-  padding-left: 2rem;
-  padding-bottom: 2rem;
-  padding-top: 3rem;
+/* Login page css */
+.login_card {
+  margin: 100px auto;
+  width: 90%;
+  max-width: 440px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  text-indent: none;
+  color: #333;
+}
+.login_card h1 {
+  margin-top: 10px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  color: black;
 }
 
-#login-form {
+.mb-3 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Sign up css */
+.signup_card {
+  margin: 100px auto;
+  width: 90%;
+
+  max-width: 500px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  text-indent: none;
+  
+}
+.signup_card h1 {
+  margin-top: 10px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  color: black;
+}
+
+.signup_card label {
+  width: 35%;
+  font-weight: bold;
+  text-align: left;
+  
+}
+
+.signup_card select,
+input {
+  width: 50%;
+}
+
+.signup_card label,
+p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: dimgray;
+}
+
+.signup_card p {
+  font-weight: bold;
+}
+
+.signup_card a {
+  padding-bottom: 20px;
+}
+
+/* #login-form {
   padding-left: 2rem;
   padding-bottom: 2rem;
   padding-top: 3rem;
-}
+} */
 
 input {
   padding-left: 3px;
@@ -119,7 +192,7 @@ input {
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
-  color: dimgrey;
+  color: black;
 }
 
 .user_profile .btn-primary {
@@ -129,13 +202,15 @@ input {
 /* Edit profile css */
 
 .edit_profile h1 {
+  margin-top: 10px;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  color: black;
 }
 
 .edit_profile {
-  margin: 0 auto;
+  margin: 50px auto;
   width: 90%;
   max-width: 440px;
   color: #fff;
@@ -146,11 +221,12 @@ input {
   backdrop-filter: blur(5px);
   text-align: center;
   text-indent: none;
-  color: dimgray;
+  
 }
-.edit_profile_card textarea {
-  width: 70%;
-  height: 50px;
+
+.edit_profile button {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .edit_profile_card img {
@@ -166,18 +242,24 @@ input {
   margin: 0 auto;
 }
 
-.edit_profile .delete_btn_box {
-  width: 150px;
-  height: 30px;
-  background-color: rgb(156, 32, 32);
-  border-radius: 10px;
-  margin: 20px auto;
+.edit_profile label {
+  font-weight: bold;
+  width: 35%;
+  text-align: left;
+  color: dimgray;
 }
-.edit_profile .delete_btn {
-  color: #fff;
-  text-decoration: none;
-  padding-left: 25px;
+
+.edit_profile select,
+input {
+  width: 50%;
 }
+
+.edit_profile label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
 
 /* About Us */
 .about_us {

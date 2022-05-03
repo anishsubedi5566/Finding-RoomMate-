@@ -49,7 +49,10 @@
           class="profile_image"
         />
         <br />
-        <div class="input-group mb-3" id="image_upload_option">
+        <div
+          class="input-group mb-3 image_upload_option"
+          id="image_upload_option"
+        >
           <input
             type="file"
             class="form-control"
@@ -57,40 +60,44 @@
             id="picture"
             name="picture"
             accept=".jpg,.gif,.png,.jpeg"
+            spellcheck="false"
           />
 
         </div>
-        <label>First Name: </label>
+        <label>First Name</label>
         <input
           id="firstName"
           name="firstName"
           type="text"
           value={{user.firstName}}
           placeholder="Enter your first name"
+          spellcheck="false"
           required
         />
         <br />
-        <label>Last Name: </label>
+        <label>Last Name</label>
         <input
           id="lastName"
           name="lastName"
           type="text"
           value={{user.lastName}}
           placeholder="Enter your last name"
+          spellcheck="false"
           required
         />
         <br />
-        <label>Email: </label>
+        <label>Email</label>
         <input
           id="email"
           name="email"
           type="email"
           value={{user.email}}
           placeholder="Enter your email"
+          spellcheck="false"
           required
         />
         <br />
-        <label for="schoolName">School Name:</label>
+        <label for="schoolName">School Name</label>
         <select id="schoolName" name="schoolName" required>
           <option
             value={{user.schoolName}}
@@ -111,7 +118,7 @@
 
         </select>
         <br />
-        <label for="city">City:</label>
+        <label for="city">City</label>
         <select id="city" name="city" required>
           <option value={{user.city}} selected>{{user.city}}</option>
           <option value="Austin">Austin</option>
@@ -130,7 +137,7 @@
 
         </select>
         <br />
-        <label for="state">State:</label>
+        <label for="state">State</label>
         <select id="state" name="state" required>
           <option value={{user.state}} selected>{{user.state}}</option>
           <option value="Arizona">Arizona</option>
@@ -144,7 +151,7 @@
           <option value="Washington">Washington</option>
         </select>
         <br />
-        <label for="homeCountry">Native Country:</label>
+        <label for="homeCountry">Native Country</label>
         <select id="homeCountry" name="homeCountry" required>
           <option
             value={{user.homeCountry}}
@@ -178,7 +185,7 @@
           required
         />
         <br />
-        <label for="gender">Gender:</label>
+        <label for="gender">Gender</label>
         <select id="gender" name="gender" required>
           <option value={{user.gender}} selected>{{user.gender}}</option>
           <option value="Male">Male</option>
@@ -202,20 +209,22 @@
           </div>
         {{/if}}
 
-        <input
-          type="submit"
-          class="btn AllButton btn-outline-success"
-          value="Submit"
-        />
-
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
   </div>
-  <div class="delete_btn_box">
-    <a
-      onclick="window.location.href='/private/deleteProfile'"
-      class="delete_btn"
-    >Delete Profile</a>
-  </div>
+  <button
+    type="button"
+    id="delete_profile"
+    class="btn btn-danger"
+    onclick="confirmDelete();"
+  >Delete Account</button>
+  
 </div>
 <script src="/public/js/editProfile.js"></script>
+<script>
+  function confirmDelete() { let text = "Are you sure you want to permanentlydelete your ROOMIE account? "; 
+  if (confirm(text) == true) { 
+    window.location.href='/private/deleteProfile'
+  } }
+</script>
