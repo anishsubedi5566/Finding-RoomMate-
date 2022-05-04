@@ -1,12 +1,40 @@
 <p> All the values are passed here! Make a Form</p>
 <p> To edit: Views/post/individulPost</p>
 
-
 postDate{{postDetail.postDate}}
 Image{{postDetail.image}}
 sizeOfApartment{{postDetail.sizeOfApartment}}
 PetAllowed{{postDetail.petsAllowed}}
 
+<p>Send a message to {{postDetail.user}}</p> 
 
+<form
+      action="/private/message"
+      id="message-form"
+      method="POST"
+    >
+      <div class="form">
+        <label>To:</label>
+        {{!-- <input
+          id="messageTo"
+          name="messageTo"
+          type="text"
+          value={{postDetail.user}}
+            disabled
+          placeholder="Enter Message"
+        />
+        <br /> --}}
 
-<a href=""><p>Click to Message User {{postDetail.user}}</p> </a>
+        <input type="text" name="messageTo" value={{postDetail.user}} readonly="true"/>
+
+        <label>Send a Message</label>
+        <input
+          id="message"
+          name="message"
+          type="text"
+          placeholder="Enter Message"
+        />
+        <br />
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
