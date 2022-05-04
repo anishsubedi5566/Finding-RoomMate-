@@ -11,7 +11,7 @@ function triggerSubmit(e) {
   let homeCountryVal = document.getElementById("homeCountry").value;
   let ageVal = Number(document.getElementById("age").value);
   let genderVal = document.getElementById("gender").value;
-  let imageVal = document.getElementById("profile_image").value;
+  let imageVal = document.getElementById("inputGroupFile02").value;
   var message = document.getElementById("edit_text");
   console.log(imageVal);
   // let editProfileForm = document.getElementById("edit-form");
