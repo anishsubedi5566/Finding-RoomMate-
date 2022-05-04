@@ -74,3 +74,16 @@
 <a id="Home" href="/logout">Logout</a>
 <a href="/private/profile">Profile</a>
 <a href="/private/profile/edit">Edit Profile</a>
+
+
+{{!-- Display All Post --}}
+
+{{#each allPost}}
+  <p>Posted By :{{this.user}}</p>
+  <a href="http://localhost:3000/private/post/{{this._id}}">{{this.user}}</a>
+
+<div>
+
+
+</div>
+{{/each}}

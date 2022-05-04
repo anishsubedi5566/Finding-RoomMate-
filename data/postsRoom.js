@@ -103,10 +103,23 @@ let exportedMethods = {
     }
   },
 
+  // async getPost() {
+  //   try {
+  //     const postCollection = await posts();
+  //     const allpost = await postCollection.find({ field: "room" }).toArray();
+  //     allpost.map((item) => (item._id = item._id.toString()));
+
+  //     allpost.sort((a, b) => b.postDate - a.postDate);
+
+  //     return allpost;
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // },
   async getPost() {
     try {
       const postCollection = await posts();
-      const allpost = await postCollection.find({ field: "room" }).toArray();
+      const allpost = await postCollection.find().toArray();
       allpost.map((item) => (item._id = item._id.toString()));
 
       allpost.sort((a, b) => b.postDate - a.postDate);

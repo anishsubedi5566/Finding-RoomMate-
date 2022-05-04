@@ -5,6 +5,8 @@ const router = express.Router();
 const xss = require("xss");
 let { ObjectId } = require("mongodb");
 
+const postRoomData = data.postsRoom;
+
 router.get("/", async (req, res) => {
   if (req.session.user) {
     //1.If the user is authenticated, it will redirect to /private.
@@ -481,9 +483,11 @@ router.get("/private", async (req, res) => {
       const name = {
         username: req.session.user.username,
       };
+      const allPost = await postRoomData.getPost();
       res.render("private", {
         title: "Private",
         username: req.session.user.username,
+        allPost: allPost
       });
     }
   } catch (e) {
