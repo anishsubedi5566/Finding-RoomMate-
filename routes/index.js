@@ -4,6 +4,7 @@ const postRoomateRoute = require("./postsRoomate");
 const selectPostRoute = require("./selectPost");
 const findPostRoute = require("./findPost");
 const aboutUsRoute = require("./other");
+const aboutUsNotAuthRoute = require("./notAuth")
 const makeCommentRoute = require("./makeComments");
 const individualPostRoute = require("./individualPostRoute")
 const messageRoute = require("./message")
@@ -18,7 +19,8 @@ const constructorMethod = (app) => {
   app.use("/private/selectpost", selectPostRoute);
   app.use("/private/findPost", findPostRoute);
   app.use("/private/message",messageRoute)
-  app.use("/", aboutUsRoute);
+  app.use("/private", aboutUsRoute);
+  app.use("/",aboutUsNotAuthRoute)
   app.use("*", (request, response) => {
     const error = { error: "Error 404 Not found" };
     response.status(404).render("errors/notfound", error);
