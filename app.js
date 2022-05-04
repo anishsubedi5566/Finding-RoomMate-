@@ -87,6 +87,14 @@ app.use("/signup", (req, res, next) => {
   }
 });
 
+app.use("/aboutUs", (req, res, next)=> {
+  if(req.session.user){
+    return res.redirect("/private/aboutUs");
+  } else {
+    next();
+  }
+})
+
 app.use(async (req, res, next) => {
   const current_time = new Date();
   const expire_time = new Date();
