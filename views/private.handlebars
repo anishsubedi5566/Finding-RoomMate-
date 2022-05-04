@@ -78,12 +78,13 @@
 
 {{!-- Display All Post --}}
 
+<h4> All posts are already rendered on handlebars Here. Only showed few fileds for now.
+ To edit: views/userProfile/private.handlebars (scroll to end)
+</h4>
 {{#each allPost}}
   <p>Posted By :{{this.user}}</p>
-  <a href="http://localhost:3000/private/post/{{this._id}}">{{this.user}}</a>
-
-<div>
-
-
-</div>
+  <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+  <br />
+  <p>titile: {{this.title}} </p>
+<hr />
 {{/each}}

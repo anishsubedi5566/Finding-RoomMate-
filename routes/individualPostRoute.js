@@ -9,11 +9,11 @@ router.get("/:postid", async (req, res) => {
     try{
         // if (!user) throw "user not provided, please provide.";
        
-        const postDetail = findIndividualPost.searchPost(req.params.postid);
+        const postDetail = await findIndividualPost.searchPost(req.params.postid);
+        console.log("routes/individialpost/postDeatilbyID",postDetail[0])
         res.render("post/individualPost", {
             postDetail:postDetail
         })
-        
     }
     catch (e){
 
