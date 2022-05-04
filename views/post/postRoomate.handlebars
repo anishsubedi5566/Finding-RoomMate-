@@ -1,29 +1,18 @@
-<h1>Find a Roommate</h1>
+
 <form action="/private/postRoomate" id="post-form" method="POST">
   <div class="postform">
 
     <div class="postform--group">
-      <label>postDate</label>
+      <h1 ="postform--group">Find a Roommate</h1>
+      <label>Date of Posting</label>
       <input name="postDate" type="date" placeholder="postDate" required />
-    </div>
-
-    <div class="postform--group">
-      <label>image</label>
-      <input name="image" type="image" placeholder="image" />
-    </div>
-
-    <div class="postform--group">
-      <label>title</label>
-      <input name="title" type="text" placeholder="Enter title" required />
-    </div>
-
-    <div class="postform--group">
-      <label>street</label>
-      <input name="street" type="text" placeholder="Enter street" required />
-    </div>
-
-    <div class="postform--group">
-
+    <br/>
+      <label>Title</label>
+      <input name="title" type="text" placeholder="Enter Title" required />
+    <br/>
+      <label>Street</label>
+      <input name="street" type="text" placeholder="Enter Street" required />
+    <br/>
       <label for="city">City</label>
       <select id="city" name="city" required>
         <option value="Austin">Austin</option>
@@ -41,11 +30,7 @@
         <option value="Seattle">Seattle</option>
 
       </select>
-
-    </div>
-
-    <div class="postform--group">
-
+    <br/>
       <label for="state">State</label>
       <select id="state" name="state" required>
         <option value="Arizona">Arizona</option>
@@ -58,61 +43,55 @@
         <option value="New York">New York</option>
         <option value="Washington">Washington</option>
       </select>
-
-    </div>
-
-    <div class="postform--group">
+    <br/>
       <label>Rooms Available</label>
       <input name="roomNumber" type="number" placeholder="1" required />
-    </div>
-
-    <div class="postform--group">
+    <br/>
       <label>Room Area</label>
       <input name="roomarea" type="number" placeholder="100 Sq. Ft." required />
-    </div>
-
-    <div class="postform--group">
-      <label>petsAllowed</label>
+    <br/>
+      <label>Pets Allowed</label>
       <input name="petsAllowed" type="checkbox" />
-    </div>
-
-    <div class="postform--group">
-      <label>parkingAvailable</label>
+    <br/>
+      <label>Parking Available</label>
       <input name="parkingAvailable" type="checkbox" />
-    </div>
-
-    <div class="postform--group">
-      <label>sharingAllowed</label>
+    <br/>
+      <label>Sharing Allowed</label>
       <input name="sharingAllowed" type="checkbox" />
-    </div>
-
-    <div class="postform--group">
+    <br/>
       <label>Rent</label>
       <input name="rent" type="number" placeholder="100$" required />
-    </div>
-
-    <div class="postform--group">
-      <label>Peoples living in currently</label>
+    <br/>
+      <label>Number of Roommates</label>
       <input
         name="peoplelivingcurrently"
         type="number"
         placeholder="1"
         required
       />
-    </div>
-
-    <div class="postform--group">
+    <br/>
       <label>Other Description</label>
       <input
         name="otherdescription"
         type="text"
-        placeholder="otherdescription"
+        placeholder="Additional Information"
       />
-    </div>
+      <br/>
+      <p class="userImage">Upload a picture of the room if you
+          want</p>
+        <div class="input-group mb-3" id="image_upload_option">
+          <input
+            type="file"
+            class="form-control"
+            id="inputGroupFile02"
+            id="picture"
+            name="picture"
+            accept=".jpg,.gif,.png,.jpeg"
+          />
 
-    <div class="postform--group">
-      <label>Submit</label>
-      <button type="submit" id="btn">submit</button>
+        </div>
+    <br/>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
     {{#if message}}

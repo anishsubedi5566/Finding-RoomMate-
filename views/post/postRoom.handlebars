@@ -1,17 +1,18 @@
-<h1> Find A Room</h1>
 <form action="/private/postRoom" id="post-form" method="POST">
   <div class="postform">
     <div class="postform--group">
-    <label>postDate</label>
+    <h1 class="postform-group"> Find A Room</h1>
+    <label>Date of Posting</label>
     <input name="postDate" type="date" placeholder="postDate" />
-    </div>
+    <br/>
+    
 
-    <div class="postform--group">
-    <label>title</label>
-    <input name="title" type="text" placeholder="title" />
-    </div>
-
-   <div class="postform--group">
+    
+    <label>Title</label>
+    <input name="title" type="text" placeholder="Title" />
+   
+    <br/>
+   
 
     <label for="city">City</label>
     <select id="city" name="city" required>
@@ -29,10 +30,10 @@
       <option value="San Jose">San Jose</option>
       <option value="Seattle">Seattle</option>
     </select>
+    <br/>
+  
 
-    </div>
-
-    <div class="postform--group"></div>
+    
     
     <label for="state">State</label>
     <select id="state" name="state" required>
@@ -46,10 +47,8 @@
       <option value="New York">New York</option>
       <option value="Washington">Washington</option>
     </select>
+    <br/>
     
-    </div>
-
-    <div class="postform--group"></div>
 
     
     <label for="schoolName">School Name</label>
@@ -67,43 +66,42 @@
       <option value="University of Washington">University of Washington</option>
     </select>
 
-    </div>
+    <br/>
 
-    <div class="postform--group">
+   
     <label>Need Parking</label>
     <input name="parkingAvailable" type="checkbox"/>
-    </div>
+    <br/>
 
     
-    <div class="postform--group">
-    <label>pets</label>
-    <input name="pets" type="checkbox" />
-    </div>
+    
+    <label>Have Pets</label>
+    <input name="pets-yes" type="checkbox" />
+  
+    <br/>
 
-    <div class="postform--group">
+    
     <label>Open To Share</label>
     <input name="sharingAllowed" type="checkbox" />
-    </div>
+    <br/>
 
-     <div class="postform--group">
-    <label>Budget$</label>
-    <input name="budget" type="text" />
-    </div>
+     
+    <label>Budget</label>
+    <input name="budget" type="text" placeholder="$" />
+    <br/>
 
-    <div class="postform--group">
+   
     <label>Are you student</label>
     <input name="student" type="checkbox" />
-    </div>
+    <br/>
 
  
-    <div class="postform--group">
     <label>Other Description</label>
-    <input name="otherdescription" type="text" placeholder="otherdescription" />
-    </div>
+    <input name="otherdescription" type="text" placeholder="Additional Information" />
+      <br/>
 
-    <div class="postform--group">  
-    <label>Submit</label>
-    <button type="submit" id="btn">submit</button>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
     {{#if message}}
