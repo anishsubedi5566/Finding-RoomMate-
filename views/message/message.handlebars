@@ -1,0 +1,11 @@
+<p> All the Message will be displayed here</p>
+
+
+<ul class="message_list">
+  {{#each allMessage}}
+    <li> SendBy: {{this.sendBy}}</li>
+    <li>Message{{this.message}}</li>
+    <li>ReceivedBy: {{this.receivedBy}}</li>
+    <br />
+  {{/each}}
+</ul>
