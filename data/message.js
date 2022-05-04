@@ -1,0 +1,61 @@
+let { ObjectId } = require("mongodb");
+const mongoCollections = require("../config/mongoCollections");
+const messages = mongoCollections.messages;
+
+
+let exportedMethods = {
+  async createMessage(
+    message,
+    sendBy,
+    receivedBy,
+    date
+  ) {
+   
+    const message_detail = {
+      message: message,
+      date: date,
+      sendBy: sendBy,
+      receivedBy: receivedBy,
+    };
+    try {
+      const messageCollection = await messages();
+      const inserted_user = await messageCollection.insertOne(message_detail);
+      if (!inserted_user.acknowledged) {
+        throw `insertion of post failed`;
+      } else {
+        return { message: "Message is sent successfully" };
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  },
+
+  // async getPost() {
+  //   try {
+  //     const postCollection = await posts();
+  //     const allpost = await postCollection.find({ field: "room" }).toArray();
+  //     allpost.map((item) => (item._id = item._id.toString()));
+
+  //     allpost.sort((a, b) => b.postDate - a.postDate);
+
+  //     return allpost;
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // },
+//   async getPost() {
+//     try {
+//       const postCollection = await posts();
+//       const allpost = await postCollection.find().toArray();
+//       allpost.map((item) => (item._id = item._id.toString()));
+
+//       allpost.sort((a, b) => b.postDate - a.postDate);
+
+//       return allpost;
+//     } catch (error) {
+//       console.log("error", error);
+//     }
+//   },
+};
+
+module.exports = exportedMethods;
