@@ -30,19 +30,20 @@ let exportedMethods = {
     }
   },
 
-  // async getPost() {
-  //   try {
-  //     const postCollection = await posts();
-  //     const allpost = await postCollection.find({ field: "room" }).toArray();
-  //     allpost.map((item) => (item._id = item._id.toString()));
-
-  //     allpost.sort((a, b) => b.postDate - a.postDate);
-
-  //     return allpost;
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // },
+  async getPost(user) {
+    try {
+      const messageCollection = await messages();
+      const allMessage = await messageCollection.find({
+        "sendBy": user,
+        "receivedBy": user
+      }).toArray();
+      allMessage.map((item) => (item._id = item._id.toString()));
+      allMessage.sort((a, b) => b.postDate - a.postDate);
+      return allMessage;
+    } catch (error) {
+      console.log("error", error);
+    }
+  },
 //   async getPost() {
 //     try {
 //       const postCollection = await posts();
