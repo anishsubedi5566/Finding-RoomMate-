@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Roomie</a>
     <button
@@ -76,10 +76,9 @@
   </div>
 </nav>
 
-<h1>UserName:{{{username}}}</h1>
-<a id="Home" href="/logout">Logout</a>
-<a href="/private/profile">Profile</a>
-<a href="/private/profile/edit">Edit Profile</a>
+
+
+<h5 class="h4-pvt">Username: {{{username}}}</h5>
 
 
 {{!-- Display All Post --}}
@@ -87,14 +86,20 @@
 <h4> All posts are already rendered on handlebars Here. Only showed few fileds for now.
  To edit: views/userProfile/private.handlebars (scroll to end)
 </h4>
-{{#each allPost}}
-  <p>Posted By :{{this.user}}</p>
-  <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
-  <br />
-  <p>titile: {{this.title}} </p>
-  <p>image: {{this.image}} </p>
-  <p>sizeOfApartment: {{this.sizeOfApartment}} </p>
-  <p>petsAllowed: {{this.petsAllowed}} </p>
-  <p>coupleAllowed: {{this.coupleAllowed}} </p>
-<hr />
+
+  <div class="grid-container">
+  {{#each allPost}}
+  
+    <div class="grid-item"><p>Posted By :{{this.user}}</p></div>
+     <br />
+      <p>Title: {{this.title}} </p>
+      <p>Image: {{this.image}} </p>
+      <p>Size of Apartment: {{this.sizeOfApartment}} </p>
+      <p>Pets Allowed: {{this.petsAllowed}} </p>
+      <p>Couples Allowed: {{this.coupleAllowed}} </p>
+      <br />
+      <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+    </div>
+  
 {{/each}}
+</div>
