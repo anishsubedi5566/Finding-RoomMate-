@@ -32,6 +32,13 @@ const handlebarsInstance = exphbs.create({
 
       return new Handlebars.SafeString(JSON.stringify(obj));
     },
+   ifEqual:function(a, b, opts) {
+    if (a == b) {
+        return opts.fn(this);
+    } else {
+        return opts.inverse(this);
+    }
+}
   },
 });
 
@@ -87,13 +94,13 @@ app.use("/signup", (req, res, next) => {
   }
 });
 
-app.use("/aboutUs", (req, res, next)=> {
-  if(req.session.user){
+app.use("/aboutUs", (req, res, next) => {
+  if (req.session.user) {
     return res.redirect("/private/aboutUs");
   } else {
     next();
   }
-})
+});
 
 app.use(async (req, res, next) => {
   const current_time = new Date();

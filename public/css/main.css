@@ -368,3 +368,18 @@ input {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.h4-pvt{
+  margin-top: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  color: black;
+}
+.grid-container{
+  display: grid;
+
+}
+.grid-items{
+  display: inline-grid;
+}
