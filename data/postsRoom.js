@@ -87,7 +87,7 @@ let exportedMethods = {
       budget: budget,
       student: student,
       otherdescription: otherdescription,
-      comments : comments
+      comments: comments,
     };
     // console.log(post_detail);
     try {

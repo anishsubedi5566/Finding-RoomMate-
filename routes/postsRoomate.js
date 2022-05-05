@@ -15,6 +15,7 @@ router.post("/", async (req, res) => {
     street,
     city,
     state,
+    schoolName,
     roomNumber,
     roomarea,
     rent,
@@ -29,6 +30,8 @@ router.post("/", async (req, res) => {
     if (!street || street.trim().length === 0) throw "Enter valid street";
     if (!city || city.trim().length === 0) throw "Enter valid city";
     if (!state || state.trim().length === 0) throw "Enter valid state";
+    if (!schoolName || schoolName.trim().length === 0)
+      throw "Enter valid schoolName";
 
     if (!roomNumber || isNaN(roomNumber)) throw `Enter valid roomNumber`;
     roomNumber = parseInt(roomNumber);
@@ -69,6 +72,7 @@ router.post("/", async (req, res) => {
       street,
       city,
       state,
+      schoolName,
       roomNumber,
       roomarea,
       petsAllowed,
@@ -86,6 +90,7 @@ router.post("/", async (req, res) => {
       street,
       city,
       state,
+      schoolName,
       roomNumber,
       roomarea,
       petsAllowed,

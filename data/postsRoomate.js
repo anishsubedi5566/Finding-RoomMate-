@@ -27,6 +27,7 @@ let exportedMethods = {
     street,
     city,
     state,
+    schoolName,
     roomNumber,
     roomarea,
     petsAllowed,
@@ -85,6 +86,10 @@ let exportedMethods = {
     checkValue(state);
     checkIsString(state);
 
+    //schoolName error check
+    checkValue(schoolName);
+    checkIsString(schoolName);
+
     //roomNumber
     checkValue(roomNumber);
     checkIsNumber(roomNumber);
@@ -124,6 +129,7 @@ let exportedMethods = {
       street: street,
       city: city,
       state: state,
+      schoolName: schoolName,
       roomNumber: roomNumber,
       roomarea: roomarea,
       petsAllowed: petsAllowed,
