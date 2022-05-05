@@ -1,6 +1,7 @@
 const express = require("express");
 const data = require("../data");
 const userData = data.users;
+const searchData = data.search;
 const router = express.Router();
 const xss = require("xss");
 let { ObjectId } = require("mongodb");
@@ -483,17 +484,22 @@ router.get("/private", async (req, res) => {
       const name = {
         username: req.session.user.username,
       };
-      const allPost = await postRoomData.getPost();
+      const result = await searchData.getallPost();
       res.render("private", {
         title: "Private",
         username: req.session.user.username,
-        allPost: allPost
+        allpost: result,
       });
     }
   } catch (e) {
-    res.status(500).json({
-      error: e.message,
-    });
+    if (e) {
+      res.render("private", { errors: e });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
   }
 });
 

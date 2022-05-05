@@ -69,6 +69,17 @@ let exportedMethods = {
       return fetch_data;
     }
   },
+  async getallPost() {
+    const postCollection = await posts();
+    const fetch_data = await postCollection.find({}).toArray();
+    console.log(fetch_data.length);
+
+    if (fetch_data.length === 0) {
+      throw `There is not any post `;
+    } else {
+      return fetch_data;
+    }
+  },
 };
 
 module.exports = exportedMethods;

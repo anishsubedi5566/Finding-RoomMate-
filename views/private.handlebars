@@ -80,26 +80,60 @@
 
 <h5 class="h4-pvt">Username: {{{username}}}</h5>
 
+{{#if errors}}
+  <h2>{{errors}}</h2>
+{{/if}}
 
-{{!-- Display All Post --}}
 
-<h4> All posts are already rendered on handlebars Here. Only showed few fileds for now.
- To edit: views/userProfile/private.handlebars (scroll to end)
-</h4>
-
-  <div class="grid-container">
-  {{#each allPost}}
   
-    <div class="grid-item"><p>Posted By :{{this.user}}</p></div>
+ <div class="grid-container">
+  {{#each allpost}}
+    {{!-- {{#if this.field === "room"}} --}}
+    {{#ifEqual this.field "room"}}
+  
+ 
+    <div class="grid-item">
+    <ul>
+    <div class=""><p>Posted By :{{this.user}}</p></div>
+    
      <br />
-      <p>Title: {{this.title}} </p>
-      <p>Image: {{this.image}} </p>
-      <p>Size of Apartment: {{this.sizeOfApartment}} </p>
-      <p>Pets Allowed: {{this.petsAllowed}} </p>
-      <p>Couples Allowed: {{this.coupleAllowed}} </p>
+      <label>Title: {{this.title}} </label>
+      <label>Post Date:{{this.postDate}}</label>
+      <label>City: {{this.city}} </label>
+      <label>State:{{this.state}}</label>
+      <label>School Name: {{this.schoolName}}</label>
+      <label>Parking Available:{{this.parkingAvailable}}</label>
+      <label>Pets Allowed: {{this.petsAllowed}} </label>
+      <label>Sharing allowed: {{this.sharingAllowed}}</label>
+      <label>Budget: {{this.budget}}</label>
+      <label>Is a student?: {{this.student}}</label>
+      <label>Other description: {{this.otherdescription}}</label>
       <br />
       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+    </ul>
     </div>
   
-{{/each}}
+     {{else}}
+      <div class="grid-item">
+      <ul>
+      <label>Title: {{this.title}} </label>
+      <label>Post Date:{{this.postDate}}</label>
+      <label>Street: {{this.street}}</label>
+      <label>City: {{this.city}} </label>
+      <label>State:{{this.state}}</label>
+      <label>Number of Rooms:{{roomNumber}}</label>
+      <label>Room Area: {{roomarea}}</label>
+      <label>Parking Available:{{this.parkingAvailable}}</label>
+      <label>Pets Allowed: {{this.petsAllowed}} </label>
+      <label>Sharing allowed: {{this.sharingAllowed}}</label>
+      <label>Rent: {{this.rent}}</label>
+      <p>People Living Currently: {{this.peoplelivingcurrently}}</p>
+      <label>Other Description: {{this.otherdescription}}</label>
+      </ul>
+      </div>
+     {{/ifEqual}}
+
+  {{/each}}
 </div>
+
+
