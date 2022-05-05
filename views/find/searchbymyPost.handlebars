@@ -10,43 +10,52 @@
   <h2>{{errors}}</h2>
 {{/if}}
 
-<ul class="post_list">
+<div class="grid-container">
   {{#each allpost}}
     {{!-- {{#if this.field === "room"}} --}}
     {{#ifEqual this.field "room"}}
   
-
-    <div class="grid-item"><p>Posted By :{{this.user}}</p></div>
+ 
+    <div class="grid-item">
+    <ul>
+    <div class=""><p>Posted By :{{this.user}}</p></div>
+    
      <br />
-      <p>Title: {{this.title}} </p>
-      <p>Post Date:{{this.postDate}}</p>
-      <p>City: {{this.city}} </p>
-      <p>State:{{this.state}}</p>
-      <p>School Name: {{this.schoolName}}</p>
-      <p>Parking Available:{{this.parkingAvailable}}</p>
-      <p>Pets Allowed: {{this.petsAllowed}} </p>
-      <p>Sharing allowed: {{this.sharingAllowed}}</p>
-      <p>Budget: {{this.budget}}</p>
-      <p>Is a student?: {{this.student}}</p>
-      <p>Other description: {{this.otherdescription}}</p>
+      <label>Title: {{this.title}} </label>
+      <label>Post Date:{{this.postDate}}</label>
+      <label>City: {{this.city}} </label>
+      <label>State:{{this.state}}</label>
+      <label>School Name: {{this.schoolName}}</label>
+      <label>Parking Available:{{this.parkingAvailable}}</label>
+      <label>Pets Allowed: {{this.petsAllowed}} </label>
+      <label>Sharing allowed: {{this.sharingAllowed}}</label>
+      <label>Budget: {{this.budget}}</label>
+      <label>Is a student?: {{this.student}}</label>
+      <label>Other description: {{this.otherdescription}}</label>
       <br />
       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
-    
+    </ul>
+    </div>
+  
      {{else}}
-      <p>Title: {{this.title}} </p>
-      <p>Post Date:{{this.postDate}}</p>
-      <p>Street: {{this.street}}</p>
-      <p>City: {{this.city}} </p>
-      <p>State:{{this.state}}</p>
-      <p>Number of Rooms:{{roomNumber}}</p>
-      <p>Room Area: {{roomarea}}</p>
-      <p>Parking Available:{{this.parkingAvailable}}</p>
-      <p>Pets Allowed: {{this.petsAllowed}} </p>
-      <p>Sharing allowed: {{this.sharingAllowed}}</p>
-      <p>Rent: {{this.rent}}</p>
+      <div class="grid-item">
+      <ul>
+      <label>Title: {{this.title}} </label>
+      <label>Post Date:{{this.postDate}}</label>
+      <label>Street: {{this.street}}</label>
+      <label>City: {{this.city}} </label>
+      <label>State:{{this.state}}</label>
+      <label>Number of Rooms:{{roomNumber}}</label>
+      <label>Room Area: {{roomarea}}</label>
+      <label>Parking Available:{{this.parkingAvailable}}</label>
+      <label>Pets Allowed: {{this.petsAllowed}} </label>
+      <label>Sharing allowed: {{this.sharingAllowed}}</label>
+      <label>Rent: {{this.rent}}</label>
       <p>People Living Currently: {{this.peoplelivingcurrently}}</p>
-      <p>Other Description: {{this.otherdescription}}</p>
+      <label>Other Description: {{this.otherdescription}}</label>
+      </ul>
+      </div>
      {{/ifEqual}}
+
   {{/each}}
-  </div>
-</ul>
+</div>

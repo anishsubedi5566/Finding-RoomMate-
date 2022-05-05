@@ -32,13 +32,13 @@ const handlebarsInstance = exphbs.create({
 
       return new Handlebars.SafeString(JSON.stringify(obj));
     },
-   ifEqual:function(a, b, opts) {
-    if (a == b) {
+    ifEqual: function (a, b, opts) {
+      if (a == b) {
         return opts.fn(this);
-    } else {
+      } else {
         return opts.inverse(this);
-    }
-}
+      }
+    },
   },
 });
 
