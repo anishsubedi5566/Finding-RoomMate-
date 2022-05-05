@@ -8,17 +8,17 @@ const commentData = data.comment;
 router.post("/", async (req, res) => {
     
     let {id,
-        user, 
+        username, 
         date, 
         comment
     } = req.body;
 
     try{
-
-        if (!user) throw "user not provided, please provide.";
+        if (!id) throw "Id not provided";
+        if (!username) throw "user not provided, please provide.";
         if (typeof user !== "string") throw "User is not a string";
-        if (user.trim().length === 0) throw "String contains only spaces";
-        if (user.length === 0) throw "User is empty";
+        if (username.trim().length === 0) throw "String contains only spaces";
+        if (username.length === 0) throw "User is empty";
 
         if (!date) throw `Enter date`;
 
@@ -27,17 +27,26 @@ router.post("/", async (req, res) => {
         if (comment.trim().length === 0) throw "String contains only spaces";
         if (comment.length === 0) throw "User is empty";
 
-
-        const newComment = commentData.createComment(id, user, date, comment);
-
+        const newComment = commentData.createComment(id, user, date, comment); 
         // if (newComment){
         //     res.redirect("/comment");
         // }
-
+        // not sure which page to use
     }
     catch (e){
-
+    //     res.status(400).render("/private", {error: e.message});
+    // //     return; 
     }
+
+    // try{
+    //     const newComment = commentData.createComment(id, username, date, comment);
+    //     res.status(200).render("", {comment: newComment});
+    // }
+    // catch(e){
+    //     console.log(e);
+    //     res.status(400).render("", {error: e.message});
+    //     return; 
+    // }
 });
 
 
