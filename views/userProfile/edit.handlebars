@@ -79,6 +79,13 @@
 <div class="edit_profile">
   <h1>Edit Your Profile</h1>
   <div class="edit_profile_card">
+    <form
+      action="/private/profile/edit"
+      id="edit-form"
+      method="POST"
+      onsubmit="validateEditProfileInputs(event);"
+      enctype="multipart/form-data"
+    >
       <div class="edit_form">
 
         <img
@@ -89,12 +96,11 @@
         <br />
         <div
           class="input-group mb-3 image_upload_option"
-          id="image_upload_option"
-        >
+          >
           <input
             type="file"
             class="form-control"
-            id="inputGroupFile02"
+            
             id="picture"
             name="picture"
             accept=".jpg,.gif,.png,.jpeg"
@@ -247,19 +253,9 @@
           </div>
         {{/if}}
 
-
-         <div id="message">
-              <div id="edit_text"></div>
-        </div>
-
-        <input
-        type="submit"
-        class="btn AllButton btn-outline-success"
-        value="Submit"
-        onclick="triggerSubmit(event)"
-        />
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
-   
+    </form>
   </div>
   <button
     type="button"

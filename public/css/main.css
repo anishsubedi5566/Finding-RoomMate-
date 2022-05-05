@@ -113,7 +113,6 @@ a {
   backdrop-filter: blur(5px);
   text-align: center;
   text-indent: none;
-  
 }
 .signup_card h1 {
   margin-top: 10px;
@@ -127,7 +126,6 @@ a {
   width: 35%;
   font-weight: bold;
   text-align: left;
-  
 }
 
 .signup_card select,
@@ -221,7 +219,6 @@ input {
   backdrop-filter: blur(5px);
   text-align: center;
   text-indent: none;
-  
 }
 
 .edit_profile button {
@@ -237,8 +234,9 @@ input {
   clip-path: circle();
 }
 
-#image_upload_option {
-  width: 70%;
+.image_upload_option {
+  width: 20%;
+  height: 30px;
   margin: 0 auto;
 }
 
@@ -258,8 +256,6 @@ input {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
-
 
 /* About Us */
 .about_us {
@@ -299,15 +295,15 @@ input {
   text-align: justify;
 }
 
-.heading-room{
+.heading-room {
   text-align: center;
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 }
-.postform--group{
+.postform--group {
   text-align: center;
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
 }
-.postform--group{
+.postform--group {
   margin: 100px auto;
   width: 90%;
   max-width: 440px;
@@ -320,17 +316,15 @@ input {
   text-align: center;
   text-indent: none;
   color: #333;
-  
-
 }
-.postform--group{
+.postform--group {
   margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
 }
-  
+
 .postform--group h1 {
   margin-top: 10px;
   text-align: center;
@@ -339,15 +333,15 @@ input {
   color: black;
 }
 
-.postform--group label{
+.postform--group label {
   padding-top: 10px;
   padding-bottom: 10px;
   color: dimgray;
 }
-.postform--group{
+.postform--group {
   padding-top: 10px;
   padding-bottom: 10px;
-  }
+}
 .postform--group label {
   font-weight: bold;
   width: 35%;
@@ -360,7 +354,8 @@ input {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.postform--group select,input{
+.postform--group select,
+input {
   width: 200px;
   height: 25px;
   margin: 2px;
@@ -369,14 +364,14 @@ input {
   box-sizing: border-box;
 }
 
-.h4-pvt{
+.h4-pvt {
   margin-top: 10px;
   text-align: left;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
 }
-.grid-container{
+.grid-container {
   /* display: -moz-grid-line;
   justify-content: space-evenly;
   grid-template-columns: auto auto auto;
@@ -415,7 +410,6 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  
 }
 .grid-item {
   text-align: center;
@@ -455,7 +449,7 @@ input {
   padding-bottom: 20px;
   color: black;
 }
-.grid-item label{
+.grid-item label {
   padding-top: 20px;
   padding-bottom: 20px;
   color: dimgray;
@@ -468,6 +462,4 @@ input {
   flex: 1 0 21%; /* explanation below */
   margin: 5px;
   height: 40px;
-
-
 }
