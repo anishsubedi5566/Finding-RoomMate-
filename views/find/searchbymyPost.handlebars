@@ -1,8 +1,8 @@
-<h1>Search Mypost</h1>
+<h1 class="searchbyheader">Search Mypost</h1>
 <form action="searchbymyPost" id="myPost_search" method="POST">
 
-  <label for="btn">Submit:</label>
-  <button type="submit" id="btn">Submit</button>
+  <label for="btn"></label>
+   <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
 
@@ -20,7 +20,7 @@
     <ul>
     <div class=""><p>Posted By :{{this.user}}</p></div>
     
-     <br />
+    <div class="cssroom-div">
       <label>Title: {{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>City: {{this.city}} </label>
@@ -34,12 +34,15 @@
       <label>Other description: {{this.otherdescription}}</label>
       <br />
       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+    </div>
     </ul>
     </div>
   
      {{else}}
       <div class="grid-item">
       <ul>
+      <div class=""><p>Posted By :{{this.user}}</p></div>
+      <div class="cssroom-div">
       <label>Title: {{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>Street: {{this.street}}</label>
@@ -53,6 +56,9 @@
       <label>Rent: {{this.rent}}</label>
       <p>People Living Currently: {{this.peoplelivingcurrently}}</p>
       <label>Other Description: {{this.otherdescription}}</label>
+      <br/>
+       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+      </div>
       </ul>
       </div>
      {{/ifEqual}}
