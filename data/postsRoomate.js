@@ -45,7 +45,8 @@ let exportedMethods = {
     // if(typeof coupleAllowed != "boolean") throw "Couple allowed is empty"
     // if(typeof parkingAvailable != "boolean") throw "Parking is empty"
     // if(typeof sharingAllowed != "boolean") throw "Sharing allowed is empty"
-    console.log(user,
+    console.log(
+      user,
       postDate,
       title,
       street,
@@ -58,7 +59,8 @@ let exportedMethods = {
       sharingAllowed,
       rent,
       peoplelivingcurrently,
-      otherdescription)
+      otherdescription
+    );
 
     //check for username
     checkValue(user);
@@ -115,7 +117,7 @@ let exportedMethods = {
       throw "peoplelivingcurrently must be greater than zero";
 
     const post_detail = {
-      field: "roomate",
+      field: "roommate",
       user: user,
       postDate: postDate,
       title: title,
