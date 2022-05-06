@@ -41,12 +41,16 @@ function firecontactUs(e) {
         email: emailVal,
         message_query: message_queryVal,
       },
-      success: function (resultData) {
+      success: function () {
         console.log("success");
         message.innerHTML = "We received your message successfully";
         // yournameVal.innerHTML = "";
         // emailVal.innerHTML = "";
         // message_queryVal.innerHTML = "";
+
+        document.getElementById("yourname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message_query").value = "";
       },
     });
   } else {

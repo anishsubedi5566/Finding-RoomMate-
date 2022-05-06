@@ -11,7 +11,7 @@ const postRoomData = data.postsRoom;
 router.get("/", async (req, res) => {
   if (req.session.user) {
     //1.If the user is authenticated, it will redirect to /private.
-    res.status(200).render("defaultHome", {title: "Home"})
+    res.status(200).render("defaultHome", { title: "Home" });
   } else {
     const result = await searchData.getallPost();
     res.render("defaultHome", {
@@ -869,6 +869,75 @@ router.route("/private/profile/edit").post(async (req, res) => {
       });
     }
   }
+});
+
+//forgot password
+router.get("/forgot", async (req, res) => {
+  res.render("forgot");
+});
+
+router.post("/forgot", async (req, res) => {
+  const username = xss(req.body.username);
+  const securityQues = xss(req.body.securityQues);
+  const securityAns = xss(req.body.securityAns);
+
+  if (
+    !password ||
+    !username ||
+    username.trim().length === 0 ||
+    password.trim().length === 0
+  ) {
+    res.status(400).render("forgot", { error: "Enter username or password" });
+    return;
+  }
+
+  //security question error check
+  if (!securityQues) {
+    res
+      .status(400)
+      .render("forgot", { error: "Please provide a security question" });
+    return;
+  }
+  if (typeof securityQues !== "string") {
+    res
+      .status(400)
+      .render("forgot", { error: `Security question must be a string value` });
+    return;
+  }
+  if (securityQues.trim().length === 0) {
+    res.status(400).render("forgot", {
+      error: "Security question input entered is invalid",
+    });
+    return;
+  }
+  if (securityQues == "None") {
+    res
+      .status(400)
+      .render("forgot", { error: "Security question should not be none" });
+    return;
+  }
+
+  if (!securityAns) {
+    res
+      .status(400)
+      .render("forgot", { error: "Please provide a security answer" });
+    return;
+  }
+  if (typeof securityAns !== "string") {
+    res
+      .status(400)
+      .render("forgot", { error: `Security answer must be a string value` });
+    return;
+  }
+  if (securityAns.trim().length === 0) {
+    res
+      .status(400)
+      .render("forgot", { error: "Security answer input entered is invalid" });
+    return;
+  }
+
+  try {
+  } catch (e) {}
 });
 
 router.route("/private/deleteProfile").get(async (req, res) => {
