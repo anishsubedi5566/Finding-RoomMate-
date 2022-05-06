@@ -11,10 +11,11 @@ const postRoomData = data.postsRoom;
 router.get("/", async (req, res) => {
   if (req.session.user) {
     //1.If the user is authenticated, it will redirect to /private.
-    res.redirect("/private");
+    res.status(200).render("defaultHome", {title: "Home"})
   } else {
     const result = await searchData.getallPost();
-    res.render("loggedoutlandingpage", {
+    res.render("defaultHome", {
+      title: "Home",
       allpost: result,
     });
   }
@@ -489,7 +490,7 @@ router.get("/private", async (req, res) => {
       };
       const result = await searchData.getallPost();
       res.render("private", {
-        title: "Private",
+        title: "Home",
         username: req.session.user.username,
         allpost: result,
       });
