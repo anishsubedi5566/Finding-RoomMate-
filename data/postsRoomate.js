@@ -27,6 +27,7 @@ let exportedMethods = {
     street,
     city,
     state,
+    schoolName,
     roomNumber,
     roomarea,
     petsAllowed,
@@ -86,6 +87,10 @@ let exportedMethods = {
     checkValue(state);
     checkIsString(state);
 
+    //schoolName error check
+    checkValue(schoolName);
+    checkIsString(schoolName);
+
     //roomNumber
     checkValue(roomNumber);
     checkIsNumber(roomNumber);
@@ -118,13 +123,14 @@ let exportedMethods = {
       throw "peoplelivingcurrently must be greater than zero";
 
     const post_detail = {
-      field: "roomate",
+      field: "roommate",
       user: user,
       postDate: postDate,
       title: title,
       street: street,
       city: city,
       state: state,
+      schoolName: schoolName,
       roomNumber: roomNumber,
       roomarea: roomarea,
       petsAllowed: petsAllowed,

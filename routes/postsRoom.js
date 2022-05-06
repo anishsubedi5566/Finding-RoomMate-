@@ -10,17 +10,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let { postDate, title, city, state, schoolName, budget, otherdescription } =
+  let {  title, city, state, schoolName, budget, otherdescription } =
     req.body;
   try {
-    // if(!postDate) throw "postDate is empty"
-    // if(!sizeOfApartment || typeof sizeOfApartment != "string" || sizeOfApartment == " ") throw "Enter size of apartment"
-    // if(!numberOfRooms || typeof numberOfRooms != "string" || numberOfRooms == " ") throw "Enter number of rooms"
-    // if(!city || typeof city != "string" || city == " ") throw "Enter city"
-    // if(!state || typeof state != "string" || state == " ")  throw "Enter state"
-
-    if (!postDate) throw `Enter post date`;
-    if (!title || title.trim().length === 0) throw "Enter valid title";
+   
+    const postDate = new Date().toDateString();
+   
 
     if (!city || city.trim().length === 0) throw "Enter valid city";
     if (!state || state.trim().length === 0) throw "Enter valid state";

@@ -49,7 +49,7 @@
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
       <div class="dropdown-menu">
         
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By city</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
         <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
       </li>
 
@@ -75,8 +75,9 @@
     </div>
   </div>
 </nav>
-<h1>Search city schoolName</h1>
-<form action="searchbyschoolName" id="schoolName_search" method="POST">
+<h2 class="searchbyheader">Search by University</h2>
+<br/>
+<form class="searchby-option" action="searchbyschoolName" id="schoolName_search" method="POST">
 
     
     <label for="schoolName">School Name</label>
@@ -93,12 +94,9 @@
       <option value="San Jose State University">San Jose State University</option>
       <option value="University of Washington">University of Washington</option>
     </select>
-    
+    <br/>
+    <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-
-  <label for="btn">Submit:</label>
-  <button type="submit" id="btn">Submit</button>
-
 </form>
 
   {{#if errors}}
@@ -115,7 +113,7 @@
     <ul>
     <div class=""><p>Posted By :{{this.user}}</p></div>
     
-     <br />
+     <div class="cssroom-div">
       <label>Title: {{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>City: {{this.city}} </label>
@@ -129,12 +127,15 @@
       <label>Other description: {{this.otherdescription}}</label>
       <br />
       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+     </div>
     </ul>
     </div>
   
      {{else}}
       <div class="grid-item">
       <ul>
+      <div class=""><p>Posted By :{{this.user}}</p></div>
+      <div class="cssroom-div">
       <label>Title: {{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>Street: {{this.street}}</label>
@@ -148,6 +149,9 @@
       <label>Rent: {{this.rent}}</label>
       <p>People Living Currently: {{this.peoplelivingcurrently}}</p>
       <label>Other Description: {{this.otherdescription}}</label>
+      <br/>
+       <a href="http://localhost:3000/private/post/{{this._id}}">Click here to view this whole post!</a>
+      </div>
       </ul>
       </div>
      {{/ifEqual}}

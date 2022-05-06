@@ -10,7 +10,7 @@ body {
   );
   height: 500px;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat:repeat;
   background-size: cover;
   position: relative;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -422,7 +422,7 @@ input {
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
+  padding: 10px;
   font-size: 15px;
   text-align: center;
   overflow: hidden;
@@ -468,4 +468,42 @@ input {
   flex: 1 0 21%; /* explanation below */
   margin: 5px;
   height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: dimgray;
+  justify-content:space-between
+}
+
+.grid-item a{
+  position:static;
+  padding-top: 20px;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  
+}
+
+.searchbyheader{
+  text-align: center;
+  padding-top: 20px;
+
+}
+.searchby-option{
+  text-align: center;
+}
+
+.cssroom-div label{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  text-align: center;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+
+}
+.searchby-option label{
+  font-weight: bold;
+  line-height: 26px;
 }

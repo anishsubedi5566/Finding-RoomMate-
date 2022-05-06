@@ -49,7 +49,7 @@
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
       <div class="dropdown-menu">
         
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By city</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
         <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
       </li>
 
@@ -80,8 +80,6 @@
 
     <div class="postform--group">
       <h1 ="postform--group">Find a Roommate</h1>
-      <label>Date of Posting</label>
-      <input name="postDate" type="date" placeholder="postDate" required />
     <br/>
       <label>Title</label>
       <input name="title" type="text" placeholder="Enter Title" required />
@@ -119,6 +117,25 @@
         <option value="New York">New York</option>
         <option value="Washington">Washington</option>
       </select>
+    <br/>
+
+    <label for="schoolName">School Name</label>
+    <select id="schoolName" name="schoolName" required>
+      
+      <option value="Stevens Institute of Technology">Stevens Institute of
+        Technology</option>
+      <option value="New York University">New York University</option>
+      <option value="University of Texas at Austin">University of Texas at
+        Austin</option>
+      <option value="University of Denver">University of Denver</option>
+
+      <option value="Arizona State University">Arizona State University</option>
+      <option value="University of San Francisco">University of San Francisco</option>
+      <option value="San Jose State University">San Jose State University</option>
+      <option value="University of Washington">University of Washington</option>
+      <option value="Not Applicable">Not Applicable</option>
+    </select>
+
     <br/>
     
       <label>Rooms Available</label>
@@ -175,28 +192,6 @@
       <h2>{{message}}</h2>
     {{/if}}
 
-    {{!-- <ul class="post_list">
-      {{#each allpost}}
-        <li>UserId: {{this._id}}</li>
-        <li>postedBy: {{this.user}}</li>
-        <li>postDate: {{this.postDate}}</li>
-        <li>title: {{this.title}}</li>
-        <li>street: {{this.street}}</li>
-        <li>city: {{this.city}}</li>
-        <li>state: {{this.state}}</li>
-        <li>roomNumber: {{this.roomNumber}}</li>
-        <li>roomarea: {{this.roomarea}}</li>
-        <li>petsAllowed: {{this.petsAllowed}}</li>
-        <li>parkingAvailable: {{this.parkingAvailable}}</li>
-        <li>sharingAllowed: {{this.sharingAllowed}}</li>
-        <li>rent: {{this.rent}}</li>
-        <li>peoplelivingcurrently: {{this.peoplelivingcurrently}}</li>
-        <li>otherdescription: {{this.otherdescription}}</li>
-        <br />
-        <br />
-        <br />
-      {{/each}}
-    </ul> --}}
 
     {{#if errors}}
       <h2>{{errors}}</h2>
@@ -204,7 +199,3 @@
 
   </div>
 </form>
-
-{{! <div>
-  <p> All Existing Post will Be Rendered Here</p>
-</div> }}
