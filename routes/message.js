@@ -6,8 +6,8 @@ const postMessage = data.message;
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  
   const allMessage = await postMessage.getMessage(req.session.user.username);
-  console.log("routes/message/message", allMessage[0].sendBy, allMessage[0].receivedBy)
   
   res.render("message/message", {allMessage: allMessage,
    sender: allMessage[0].sendBy,
@@ -18,14 +18,37 @@ router.get("/", async (req, res) => {
 
 router.get("/viewall/:id", async (req, res) => {
   const allMessage = await postMessage.getSpecificMessage(req.params.id);
-res.render("message/individualMessage", {allMessage: allMessage});
+  
+res.render("message/individualMessage", {allMessage: allMessage,
+  sender: allMessage[0].sendBy,
+  receiver: allMessage[0].receivedBy});
 });
 
 router.post("/", async (req, res) => {
-    let {message, messageTo} = req.body
-    let sendBy = req.session.user.username
-    receivedBy = messageTo,
+
+    let {message, messageTo,sender,receiver} = req.body
+    let sendBy, receivedBy
+    if(req.body.messageTo){
+      sendBy = req.session.user.username;
+      receivedBy = messageTo
+    }
+    if(req.body.sender || req.body.receiver){
+      sendBy =sender;
+      receivedBy = receiver
+    }
+
+    sendBy = req.session.user.username;
+    if(sendBy){
+      if(sendBy == sender){
+        receivedBy = receiver
+      }
+      else{
+        receivedBy = sender
+      }
+    }
+    
     date = new Date()
+   
   try {
     const output = await postMessage.createMessage(
         message,
@@ -33,7 +56,7 @@ router.post("/", async (req, res) => {
         sendBy,
         date
     );
-    console.log("posted routes", output)
+    
     if (output) {
       res.redirect("/private");
     }

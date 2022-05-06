@@ -120,7 +120,8 @@
     <div class=""><p>Posted By :{{this.user}}</p></div>
     
      <div class="cssroom-div">
-      <label>Title: {{this.title}} </label>
+      
+      <label>{{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>City: {{this.city}} </label>
       <label>State:{{this.state}}</label>
@@ -142,7 +143,15 @@
       <ul>
       <div class=""><p>Posted By :{{this.user}}</p></div>
       <div class="cssroom-div">
-      <label>Title: {{this.title}} </label>
+      <label>{{this.title}} </label>
+      
+      <div class="images">
+        <div class="photo">
+          {{#each postImages}}
+            <img src={{this}} alt="place" />
+          {{/each}}
+        </div>
+      </div>
       <label>Post Date:{{this.postDate}}</label>
       <label>Street: {{this.street}}</label>
       <label>City: {{this.city}} </label>
