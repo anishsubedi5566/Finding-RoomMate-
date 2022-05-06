@@ -112,12 +112,37 @@ let exportedMethods = {
     let second = arr[1]
     try {
       const messageCollection = await messages();
-      const allMessage = await messageCollection.find({ $or: [
-        { "sendBy": first },
-        { "receivedBy": second},
-        { "sendBy": second },
-        { "receivedBy": first}
-      ]}).toArray();
+      // const allMessage = await messageCollection.find({ $or: [
+      //   { "sendBy": first },
+      //   { "receivedBy": second},
+      //   { "sendBy": second },
+      //   { "receivedBy": first}
+      // ]}).toArray();
+      const allMessage = await messageCollection.find(
+      //   { $or: [
+      //   { "sendBy": first },
+      //   { "receivedBy": second},
+      //   { "sendBy": second },
+      //   { "receivedBy": first}
+      // ]}
+      {
+        $or : [
+                 { 
+                   $and : [ 
+                    { "sendBy": first },
+                    { "receivedBy": second},
+                         ]
+                 },
+                 { 
+                  $and : [ 
+                    { "sendBy": second },
+                    { "receivedBy": first}
+                  ]
+                 }
+               ]
+      } 
+      
+      ).toArray();
       allMessage.map((item) => (item._id = item._id.toString()));
       allMessage.sort((a, b) => b.postDate - a.postDate);
       return allMessage;
