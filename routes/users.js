@@ -13,7 +13,10 @@ router.get("/", async (req, res) => {
     //1.If the user is authenticated, it will redirect to /private.
     res.redirect("/private");
   } else {
-    res.redirect("/login");
+    const result = await searchData.getallPost();
+    res.render("loggedoutlandingpage", {
+      allpost: result,
+    });
   }
 });
 
