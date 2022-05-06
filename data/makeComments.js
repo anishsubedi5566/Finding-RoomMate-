@@ -52,6 +52,32 @@ async function createComment(id, user, date, comment){
 
 }
 
+async function getAllComments(id){
+  
+  checkValue(id);
+  checkIsString(id);
+  checkIsObjectID(id);
+
+  // const bandsCollection = await bands();
+  // const bandsList = await bandsCollection.find({}).toArray();
+
+  let post = await posts.get(id);
+  if (!post) throw "Post not found";
+  //if (bands["albums"].length === 0) return [];
+  // if (bands.albums.length === 0) {
+  //   return [];
+  // }
+
+  let res = post["comments"];
+
+  for (let ele of res) {
+    ele["_id"] = ele["_id"].toString();
+  }
+
+  return res;
+
+}
+
 module.exports = {
-    createComment
+  createComment, getAllComments
 }
