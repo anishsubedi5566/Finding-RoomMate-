@@ -2,6 +2,7 @@ const express = require("express");
 const data = require("../data");
 const postRoomData = data.postsRoom;
 const router = express.Router();
+const xss = require("xss");
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomData.getPost();

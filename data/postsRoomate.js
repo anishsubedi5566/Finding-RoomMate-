@@ -35,7 +35,8 @@ let exportedMethods = {
     sharingAllowed,
     rent,
     peoplelivingcurrently,
-    otherdescription
+    otherdescription,
+    picture
   ) {
     // if(!postDate) throw "postDate is empty"
     // if(!sizeOfApartment || typeof sizeOfApartment != "string" || sizeOfApartment == " ") throw "Enter size of apartment"
@@ -138,6 +139,7 @@ let exportedMethods = {
       rent: rent,
       peoplelivingcurrently: peoplelivingcurrently,
       otherdescription: otherdescription,
+      postImages: picture,
     };
 
     try {
