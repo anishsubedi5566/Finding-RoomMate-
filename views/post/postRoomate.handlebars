@@ -187,6 +187,22 @@
     <br/>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
+    <script>
+         const input = document.querySelector('#inputGroupFile02');
+
+// Listen for files selection
+input.addEventListener('change', (e) => {
+    // Retrieve all files
+    const files = input.files;
+
+    // Check files count
+    if (files.length > 4) {
+        alert(`Only 4 images are allowed to upload.`);
+        return;
+    }
+
+});
+      </script>
 
     {{#if message}}
       <h2>{{message}}</h2>
