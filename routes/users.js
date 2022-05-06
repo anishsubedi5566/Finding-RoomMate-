@@ -505,8 +505,8 @@ router.get("/private", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   req.session.destroy();
-  res.render("logout", { title: "Logged out" });
-  //res.redirect("/login");
+  // res.render("logout", { title: "Logged out" });
+  res.redirect("/");
 });
 
 //get user profile data
@@ -879,8 +879,7 @@ router.route("/private/deleteProfile").get(async (req, res) => {
   });
   const deleteUser = await userData.deleteUser(id);
   req.session.destroy();
-  // res.render("logout", { title: "Logged out" });
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 module.exports = router;
