@@ -82,11 +82,33 @@
     <li> SendBy: {{this.sendBy}}</li>
     <li>Message{{this.message}}</li>
     <li>ReceivedBy: {{this.receivedBy}}</li>
-    {{!-- <a class="nav-link active" href="/private/message/sendBy={{this.sendBy}} & receivedBy={{this.receivedBy}}">Click to Reply</a> --}}
-      <a class="nav-link active" href="/private/message/viewall/{{this.sendBy}}-{{this.receivedBy}}">Click to Reply</a>
     <br />
-    
   {{/each}}
 </ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <ul id="messages"></ul> 
+            <form>
+                {{!-- <div class="form-group">
+                    <label for="inputName">Send By</label>
+                     <input type="text" class="form-control" id="sendby" value={{{sender}}} readonly="true"">
+                     <label for="inputName1">Received By</label>
+                     <input type="text" class="form-control" id="receivedby" value={{{receiver}}} readonly="true"">
+                </div> --}}
+                <div class="form-group">
+                    <label for="inputMessage">Reply</label>
+                    <input type="text" class="form-control" id="message" onkeypress="userIsTyping()" placeholder="type here...">
+                </div>
+                <button type="submit" class="btn btn-primary" onsubmit="messageFunction()">Send Message</button>
+            </form>
+        </div>
+        {{!-- <div class="col-sm-4">
+            <h3>Users</h3>
+            <p id="userTyping"></p>
+        </div> --}}
+    </div>
+</div>
 
 <script src="/public/js/message.js"></script>
