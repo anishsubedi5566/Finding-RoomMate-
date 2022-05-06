@@ -80,8 +80,6 @@
 
     <div class="postform--group">
       <h1 ="postform--group">Find a Roommate</h1>
-      <label>Date of Posting</label>
-      <input name="postDate" type="date" placeholder="postDate" required />
     <br/>
       <label>Title</label>
       <input name="title" type="text" placeholder="Enter Title" required />
@@ -194,28 +192,6 @@
       <h2>{{message}}</h2>
     {{/if}}
 
-    {{!-- <ul class="post_list">
-      {{#each allpost}}
-        <li>UserId: {{this._id}}</li>
-        <li>postedBy: {{this.user}}</li>
-        <li>postDate: {{this.postDate}}</li>
-        <li>title: {{this.title}}</li>
-        <li>street: {{this.street}}</li>
-        <li>city: {{this.city}}</li>
-        <li>state: {{this.state}}</li>
-        <li>roomNumber: {{this.roomNumber}}</li>
-        <li>roomarea: {{this.roomarea}}</li>
-        <li>petsAllowed: {{this.petsAllowed}}</li>
-        <li>parkingAvailable: {{this.parkingAvailable}}</li>
-        <li>sharingAllowed: {{this.sharingAllowed}}</li>
-        <li>rent: {{this.rent}}</li>
-        <li>peoplelivingcurrently: {{this.peoplelivingcurrently}}</li>
-        <li>otherdescription: {{this.otherdescription}}</li>
-        <br />
-        <br />
-        <br />
-      {{/each}}
-    </ul> --}}
 
     {{#if errors}}
       <h2>{{errors}}</h2>
@@ -223,7 +199,3 @@
 
   </div>
 </form>
-
-{{! <div>
-  <p> All Existing Post will Be Rendered Here</p>
-</div> }}

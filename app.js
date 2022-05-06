@@ -104,6 +104,7 @@ app.use("/aboutUs", (req, res, next) => {
 
 app.use(async (req, res, next) => {
   const current_time = new Date();
+  console.log("current_time", current_time.toDateString());
   const expire_time = new Date();
   expire_time.setHours(expire_time.getHours() + 1);
 
@@ -118,6 +119,7 @@ const LoginCheck = function (req) {
 
 const LoginDetail = function (req, res, next) {
   var date = [new Date().toUTCString()];
+  console.log("checking date", date);
   var url = req.originalUrl;
   var method = req.method;
   if (LoginCheck(req)) {

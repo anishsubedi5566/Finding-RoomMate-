@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   let {
-    postDate,
     title,
     street,
     city,
@@ -25,7 +24,8 @@ router.post("/", async (req, res) => {
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
 
   try {
-    if (!postDate) throw `Enter post date`;
+    const postDate = new Date().toDateString();
+
     if (!title || title.trim().length === 0) throw "Enter valid title";
     if (!street || street.trim().length === 0) throw "Enter valid street";
     if (!city || city.trim().length === 0) throw "Enter valid city";
@@ -65,23 +65,6 @@ router.post("/", async (req, res) => {
     if (req.body.sharingAllowed) {
       sharingAllowed = true;
     }
-    console.log(
-      user,
-      postDate,
-      title,
-      street,
-      city,
-      state,
-      schoolName,
-      roomNumber,
-      roomarea,
-      petsAllowed,
-      parkingAvailable,
-      sharingAllowed,
-      rent,
-      peoplelivingcurrently,
-      otherdescription
-    );
 
     const output = await postRoomateData.createPost(
       user,

@@ -79,11 +79,7 @@
   <div class="postform">
     <div class="postform--group">
     <h1 class="postform-group"> Find A Room</h1>
-    <label>Date of Posting</label>
-    <input name="postDate" type="date" placeholder="postDate" />
-    <br/>
     
-
     
     <label>Title</label>
     <input name="title" type="text" placeholder="Title" />
@@ -187,26 +183,6 @@
         <h2>{{message}}</h2>
       {{/if}}
 
-{{!-- 
-  <ul class="post_list">
-    {{#each allpost}}
-    <li>PostedBy: {{this.user}}</li>
-    <li>postDate: {{this.postDate}}</li>
-    <li>title: {{this.title}}</li>
-    <li>prefState: {{this.prefState}}</li>
-    <li>roomNumber: {{this.roomNumber}}</li>
-    <li>budget: {{this.budget}}</li>
-    <li>schoolName: {{this.schoolName}}</li>
-    <li>otherdescription: {{this.otherdescription}}</li>
-    <li>parkingAvailable: {{this.parkingAvailable}}</li>
-    <li>sharingAllowed: {{this.sharingAllowed}}</li>
-    <li>student: {{this.student}}</li>
-    <li>pets: {{this.pets}}</li>
-    <br />
-    <br />
-    <br />
-    {{/each}}
-  </ul> --}}
 
     {{#if errors}}
       <h2>{{errors}}</h2>
@@ -216,7 +192,3 @@
   </div>
 </form>
 
-
-<div>
-    <p> All Existing Post will Be Rendered Here</p>
-</div>
