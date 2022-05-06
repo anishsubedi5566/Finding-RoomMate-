@@ -1,0 +1,49 @@
+<div id="contactUs_form">
+  <label for="yourname"> Name:</label>
+  <input
+    id="yourname"
+    name="yourname"
+    type="text"
+    placeholder="Enter your name"
+    spellcheck="false"
+    required
+  />
+  <br/>
+
+  <label for="email">Email address:</label>
+  <input
+    id="email"
+    name="email"
+    type="email"
+    placeholder="lorem@roomie.com"
+    spellcheck="false"
+    required
+  />
+ <br/>
+  <label for="message_query">Enter Message:</label>
+  <input
+    type="text"
+    id="message_query"
+    name="message_query"
+    placeholder="Message"
+    required=""
+  />
+ <br/>
+
+ <div id="output_text">
+    <div id="output_text"></div>
+  </div>
+
+  {{errors}}
+
+  <input
+        type="submit"
+        value="Submit"
+        onclick="firecontactUs(event)"
+      />
+  <br />
+
+
+
+
+<script src="/public/js/contactUs.js"></script>
