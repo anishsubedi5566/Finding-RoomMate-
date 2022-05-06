@@ -1,21 +1,99 @@
-<div id="contactUs_form">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/private">Roomie</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="/private"
+          >Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/profile">Profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/message">Message</a>
+        </li>
+
+
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/selectpost">Make Post</a>
+        </li> --}}
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
+      <div class="dropdown-menu">
+        
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
+      </li>
+
+
+  <li class="nav-item">
+          <a class="nav-link" href="/private/aboutUs">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="/private/contactUs">Contact Us</a>
+        </li>
+
+
+       {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/findPost">Find</a>
+        </li> --}}
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
+<div class="contactus"id="contactUs_form">
   <label for="yourname"> Name:</label>
   <input
     id="yourname"
     name="yourname"
     type="text"
-    placeholder="Enter your name"
+    placeholder="Enter your full name"
     spellcheck="false"
     required
   />
   <br/>
 
-  <label for="email">Email address:</label>
+  <label for="email">Email Address:</label>
   <input
     id="email"
     name="email"
     type="email"
-    placeholder="lorem@roomie.com"
+    placeholder="xyz@roomie.com"
     spellcheck="false"
     required
   />
@@ -37,6 +115,7 @@
   {{errors}}
 
   <input
+        class="btn btn-primary"
         type="submit"
         value="Submit"
         onclick="firecontactUs(event)"
@@ -47,3 +126,4 @@
 
 
 <script src="/public/js/contactUs.js"></script>
+</main>
