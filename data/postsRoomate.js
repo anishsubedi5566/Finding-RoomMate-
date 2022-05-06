@@ -34,7 +34,8 @@ let exportedMethods = {
     sharingAllowed,
     rent,
     peoplelivingcurrently,
-    otherdescription
+    otherdescription,
+    picture
   ) {
     // if(!postDate) throw "postDate is empty"
     // if(!sizeOfApartment || typeof sizeOfApartment != "string" || sizeOfApartment == " ") throw "Enter size of apartment"
@@ -45,7 +46,8 @@ let exportedMethods = {
     // if(typeof coupleAllowed != "boolean") throw "Couple allowed is empty"
     // if(typeof parkingAvailable != "boolean") throw "Parking is empty"
     // if(typeof sharingAllowed != "boolean") throw "Sharing allowed is empty"
-    console.log(user,
+    console.log(
+      user,
       postDate,
       title,
       street,
@@ -58,7 +60,8 @@ let exportedMethods = {
       sharingAllowed,
       rent,
       peoplelivingcurrently,
-      otherdescription)
+      otherdescription
+    );
 
     //check for username
     checkValue(user);
@@ -130,6 +133,7 @@ let exportedMethods = {
       rent: rent,
       peoplelivingcurrently: peoplelivingcurrently,
       otherdescription: otherdescription,
+      postImages: picture,
     };
 
     try {

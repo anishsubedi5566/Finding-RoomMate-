@@ -3,24 +3,24 @@ const constructorMethod = require(".");
 const data = require("../data");
 const postMessage = data.message;
 const router = express.Router();
+const xss = require("xss");
 
 router.get("/", async (req, res) => {
   const allMessage = await postMessage.getPost(req.session.user.username);
-//   res.render("post/postRoom", { allpost: allPost });
-res.render("message/message", {allMessage: allMessage});
+  //   res.render("post/postRoom", { allpost: allPost });
+  res.render("message/message", { allMessage: allMessage });
 });
 
 router.post("/", async (req, res) => {
-    let {message, messageTo} = req.body
-    let sendBy = req.session.user.username
-    receivedBy = messageTo,
-    date = new Date()
+  let { message, messageTo } = req.body;
+  let sendBy = req.session.user.username;
+  (receivedBy = messageTo), (date = new Date());
   try {
     const output = await postMessage.createMessage(
-        message,
-        receivedBy,
-        sendBy,
-        date
+      message,
+      receivedBy,
+      sendBy,
+      date
     );
     if (output) {
       res.redirect("/private");

@@ -2,6 +2,7 @@ const express = require("express");
 const data = require("../data");
 const postRoomateData = data.postsRoomate;
 const router = express.Router();
+const xss = require("xss");
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomateData.getPost();
@@ -22,7 +23,7 @@ router.post("/", async (req, res) => {
     otherdescription,
   } = req.body;
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
-
+  let postImages = [];
   try {
     if (!postDate) throw `Enter post date`;
     if (!title || title.trim().length === 0) throw "Enter valid title";
@@ -79,6 +80,17 @@ router.post("/", async (req, res) => {
       otherdescription
     );
 
+    if (req.files) {
+      let picture = req.files.postImage;
+      for (let i = 0; i < picture.length; i++) {
+        let pictureName = picture[i].name.replaceAll(" ", "-");
+        picture[i].mv(`./public/uploads/` + pictureName);
+        postImages.push(`/public/uploads/` + pictureName);
+      }
+    } else if (!req.files) {
+      postImages.push(`/public/images/house_default.png`);
+    }
+
     const output = await postRoomateData.createPost(
       user,
       postDate,
@@ -93,7 +105,8 @@ router.post("/", async (req, res) => {
       sharingAllowed,
       rent,
       peoplelivingcurrently,
-      otherdescription
+      otherdescription,
+      postImages
     );
     if (output) {
       res.redirect("/private/postRoomate");

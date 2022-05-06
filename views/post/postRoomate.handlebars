@@ -75,7 +75,7 @@
     </div>
   </div>
 </nav>
-<form action="/private/postRoomate" id="post-form" method="POST">
+<form action="/private/postRoomate" id="post-form" method="POST" enctype="multipart/form-data">
   <div class="postform">
 
     <div class="postform--group">
@@ -157,12 +157,12 @@
       <p class="userImage">Upload a picture of the room if you
           want</p>
         <div class="input-group mb-3" id="image_upload_option">
-          <input
+          <input multiple
             type="file"
             class="form-control"
             id="inputGroupFile02"
-            id="picture"
-            name="picture"
+           
+            name="postImage"
             accept=".jpg,.gif,.png,.jpeg"
           />
 

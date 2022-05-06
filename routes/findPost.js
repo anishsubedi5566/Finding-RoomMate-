@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 const searchData = data.search;
+const xss = require("xss");
 
 router.get("/", async (req, res) => {
   res.render("find/findPost");
