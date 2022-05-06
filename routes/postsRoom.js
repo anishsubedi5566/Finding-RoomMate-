@@ -57,7 +57,8 @@ router.post("/", async (req, res) => {
       sharingAllowed,
       budget,
       student,
-      otherdescription
+      otherdescription,
+      comments
     );
     if (output) {
       res.redirect("/private");

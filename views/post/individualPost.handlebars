@@ -8,6 +8,15 @@ PetAllowed{{postDetail.petsAllowed}}
 
 <p>Send a message to {{postDetail.user}}</p> 
 
+<dd>
+        <ul>
+          {{#each postDetail.comments}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+
+</dd> 
+
 <form
       action="/private/message"
       id="message-form"

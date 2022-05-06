@@ -21,6 +21,7 @@ router.post("/", async (req, res) => {
     rent,
     peoplelivingcurrently,
     otherdescription,
+    comments
   } = req.body;
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
 
@@ -80,7 +81,8 @@ router.post("/", async (req, res) => {
       sharingAllowed,
       rent,
       peoplelivingcurrently,
-      otherdescription
+      otherdescription,
+      comments
     );
 
     const output = await postRoomateData.createPost(
@@ -98,7 +100,8 @@ router.post("/", async (req, res) => {
       sharingAllowed,
       rent,
       peoplelivingcurrently,
-      otherdescription
+      otherdescription,
+      comments
     );
     if (output) {
       res.redirect("/private/postRoomate");
