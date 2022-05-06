@@ -65,16 +65,10 @@ router.post("/searchbyschoolName", async (req, res) => {
 //Mypost
 
 router.get("/searchbymyPost", async (req, res) => {
-  res.render("find/searchbymyPost");
-});
-
-router.post("/searchbymyPost", async (req, res) => {
-  user = req.session.user.username;
-
+  const user = req.session.user.username;
   try {
     //check if user is provided and valid
-    if (!user || user.trim().length === 0) throw "Enter valid user name";
-
+    
     const result = await searchData.searchmyPost(user);
     console.log("result in routes", result);
     res.render("find/searchbymyPost", { allpost: result });
@@ -89,5 +83,27 @@ router.post("/searchbymyPost", async (req, res) => {
     }
   }
 });
+
+// router.post("/searchbymyPost", async (req, res) => {
+//   user = req.session.user.username;
+
+//   try {
+//     //check if user is provided and valid
+//     if (!user || user.trim().length === 0) throw "Enter valid user name";
+
+//     const result = await searchData.searchmyPost(user);
+//     console.log("result in routes", result);
+//     res.render("find/searchbymyPost", { allpost: result });
+//   } catch (e) {
+//     if (e) {
+//       res.status(400).render("find/searchbymyPost", { errors: e });
+//       return;
+//     } else {
+//       res.status(500).json({
+//         error: "Internal Server Error",
+//       });
+//     }
+//   }
+// });
 
 module.exports = router;
