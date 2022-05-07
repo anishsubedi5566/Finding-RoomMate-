@@ -3,20 +3,20 @@ const mongoCollections = require("../config/mongoCollections");
 const { all } = require("../routes/users");
 const posts = mongoCollections.posts;
 
-function checkValue(value) {
-  if (!value) throw `${value} not provided, please provide.`;
+function checkValue(value, var_Name) {
+  if (!value) throw `${var_Name} not provided, please provide.`;
 }
 
-function checkIsString(str) {
+function checkIsString(str, var_Name) {
   if (typeof str !== "string") throw `${str} is not a string`;
   if (str.trim().length === 0) throw "String contains only spaces";
-  if (str.length === 0) throw `${str} is empty`;
+  if (str.length === 0) throw `${var_Name} is empty`;
 }
 
-function checkIsNumber(num) {
-  if (typeof num !== "number") throw `${num} is not a number`;
+function checkIsNumber(num,var_Name) {
+  if (typeof num !== "number") throw `${var_Name} is not a number`;
 
-  if (isNaN(num)) throw `${num} is NaN`;
+  if (isNaN(num)) throw `${var_Name} is NaN`;
 }
 
 let exportedMethods = {
@@ -65,58 +65,58 @@ let exportedMethods = {
     );
 
     //check for username
-    checkValue(user);
-    checkIsString(user);
+    checkValue(user,'user');
+    checkIsString(user,'user');
 
     //check postdate is valid or not
     if (!postDate) throw "postDate is empty";
 
     //check title is valid or not
-    checkValue(title);
-    checkIsString(title);
+    checkValue(title,'title');
+    checkIsString(title,'title');
 
     //check street is valid or not
-    checkValue(street);
-    checkIsString(street);
+    checkValue(street,'street');
+    checkIsString(street,'street');
 
     //city error check
-    checkValue(city);
-    checkIsString(city);
+    checkValue(city,'city');
+    checkIsString(city,'city');
 
     //state error check
-    checkValue(state);
-    checkIsString(state);
+    checkValue(state,'state');
+    checkIsString(state,'state');
 
     //schoolName error check
-    checkValue(schoolName);
-    checkIsString(schoolName);
+    checkValue(schoolName,'schoolName');
+    checkIsString(schoolName,'schoolName');
 
     //roomNumber
-    checkValue(roomNumber);
-    checkIsNumber(roomNumber);
+    checkValue(roomNumber,'roomNumber');
+    checkIsNumber(roomNumber,'roomNumber');
     //convert roomNumber into integer
     roomNumber = parseInt(roomNumber);
     if (roomNumber < 1 || roomNumber > 15)
       throw "roomNumber must be between 1 to 15";
 
     //roomarea
-    checkValue(roomarea);
-    checkIsNumber(roomarea);
+    checkValue(roomarea,'roomarea');
+    checkIsNumber(roomare,'roomarea');
     //convert roomarea into integer
     roomarea = parseInt(roomarea);
     if (roomarea < 100) throw "roomarea must be greater eqaul to 100";
 
     //rent
-    checkValue(rent);
-    checkIsNumber(rent);
+    checkValue(rent,'rent');
+    checkIsNumber(rent,'rent');
     //convert rent into integer
     rent = parseInt(rent);
     console.log("data rent", rent, rent < 100, typeof rent);
     if (rent < 100) throw "rent must be greater eqaul to 100";
 
     //peoplelivingcurrently
-    checkValue(peoplelivingcurrently);
-    checkIsNumber(peoplelivingcurrently);
+    checkValue(peoplelivingcurrently,'peoplelivingcurrently');
+    checkIsNumber(peoplelivingcurrently,'peoplelivingcurrently');
     //convert peoplelivingcurrently into integer
     peoplelivingcurrently = parseInt(peoplelivingcurrently);
     if (peoplelivingcurrently < 1)

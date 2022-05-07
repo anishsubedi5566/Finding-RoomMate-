@@ -6,24 +6,17 @@ const bcryptjs = require("bcryptjs");
 const { get } = require("express/lib/response");
 const salRounds = 11;
 
-function checkIsString(str) {
+function checkIsString(str, var_Name) {
   if (typeof str !== "string") throw `${str} is not a string`;
   if (str.trim().length === 0) throw "String contains only spaces";
-  if (str.length === 0) throw `${str} is empty`;
+  if (str.length === 0) throw `${var_Name} is empty`;
 }
 
-function checkIsArray(arr) {
-  if (!Array.isArray(arr)) throw "Not an array";
-  if (arr.length === 0) throw "Array is an empty array";
-  for (let i = 0; i < arr.length; i++) {
-    checkIsString(arr[i]);
-  }
-}
 
-function checkIsNumber(num) {
+function checkIsNumber(num,var_Name) {
   if (typeof num !== "number") throw `${num} is not a number`;
 
-  if (isNaN(num)) throw `${num} is NaN`;
+  if (isNaN(num)) throw `${var_Name} is NaN`;
 }
 
 function checkIsObjectID(id) {
@@ -31,8 +24,8 @@ function checkIsObjectID(id) {
     throw "ID is not a valid Object ID";
   }
 }
-function checkValue(value) {
-  if (!value) throw `${value} not provided, please provide.`;
+function checkValue(value, var_Name) {
+  if (!value) throw `${var_Name} not provided, please provide.`;
 }
 
 function validateEmail(email) {
@@ -111,61 +104,61 @@ let exportedMethods = {
     const hashPass = await bcrypt.hash(password, salRounds);
 
     //security question error handling
-    checkValue(securityQues);
-    checkIsString(securityQues);
+    checkValue(securityQues,'securityQues');
+    checkIsString(securityQues,'securityQues');
     if (securityQues == "None") {
       throw "Security question should not be none";
     }
 
     //Email error handling
-    checkValue(email);
-    checkIsString(email);
+    checkValue(email,'email');
+    checkIsString(email,'email');
     validateEmail(email);
 
     //First Name error check
-    checkValue(firstName);
-    checkIsString(firstName);
+    checkValue(firstName,'firstName');
+    checkIsString(firstName,'firstName');
     if (firstName.length < 2) {
       throw "First name must be of 2 or more than 2 characters";
     }
 
     //LastName error check
-    checkValue(lastName);
-    checkIsString(lastName);
+    checkValue(lastName,'lastName');
+    checkIsString(lastName,'lastName');
     if (lastName.length < 2) {
       throw "Last name must be of 2 or more than 2 characters";
     }
 
     //city error check
-    checkValue(city);
-    checkIsString(city);
+    checkValue(city,'city');
+    checkIsString(city,'city');
 
     if (city == "None") {
       throw "City should not be none";
     }
 
     //state error check
-    checkValue(state);
-    checkIsString(state);
+    checkValue(state,'state');
+    checkIsString(state,'state');
     if (state == "None") {
       throw "State should not be none";
     }
 
     //school name error check
-    checkValue(schoolName);
-    checkIsString(schoolName);
+    checkValue(schoolName,'schoolName');
+    checkIsString(schoolName,'schoolName');
     if (schoolName == "None") {
       throw "School name should not be none";
     }
 
     //age error check
-    checkValue(age);
-    checkIsNumber(age);
+    checkValue(age,'age');
+    checkIsNumber(age,'age');
     if (age < 15 || age > 100) throw "Age is invalid";
 
     //gender error check
-    checkValue(gender);
-    checkIsString(gender);
+    checkValue(gender,'gender');
+    checkIsString(gender,'gender');
     if (gender == "None") {
       throw "Gender should not be none";
     }
@@ -176,12 +169,12 @@ let exportedMethods = {
     }
 
     //securityQues error handling
-    checkValue(securityQues);
-    checkIsString(securityQues);
+    checkValue(securityQues,'securityQues');
+    checkIsString(securityQues,'securityQues');
 
     //securityAns error handling
-    checkValue(securityAns);
-    checkIsString(securityAns);
+    checkValue(securityAns,'securityAns');
+    checkIsString(securityAns,'securityAns');
 
     const usersCollection = await users();
     const user_detail = {
@@ -260,7 +253,7 @@ let exportedMethods = {
   async getUserByID(id) {
     if (!id) throw "Id parameter must be supplied";
     checkIsObjectID(id);
-    checkIsString(id);
+    checkIsString(id,'id');
 
     let newObjId = ObjectId(id);
 
@@ -289,54 +282,49 @@ let exportedMethods = {
     gender
   ) {
     //ID error handling
-    checkValue(id);
-    checkIsString(id);
+    checkValue(id,'id');
+    checkIsString(id,'id');
     checkIsObjectID(id);
 
     //Email error handling
-    checkValue(email);
-    checkIsString(email);
+    checkValue(email,'email');
+    checkIsString(email,'email');
     validateEmail(email);
 
     //First Name error check
-    checkValue(firstName);
-    checkIsString(firstName);
+    checkValue(firstName,'firstName');
+    checkIsString(firstName,'firstName');
     if (firstName.length < 2) {
       throw "First name must be of 2 or more than 2 characters";
     }
 
     //LastName error check
-    checkValue(lastName);
-    checkIsString(lastName);
+    checkValue(lastName,'lastName');
+    checkIsString(lastName,'lastName');
     if (lastName.length < 2) {
       throw "Last name must be of 2 or more than 2 characters";
     }
     //city error check
-    checkValue(city);
-    checkIsString(city);
+    checkValue(city,'city');
+    checkIsString(city,'city');
 
     //state error check
-    checkValue(state);
-    checkIsString(state);
+    checkValue(state,'state');
+    checkIsString(state,'state');
 
     //school name error check
-    checkValue(schoolName);
-    checkIsString(schoolName);
+    checkValue(schoolName,'schoolName');
+    checkIsString(schoolName,'schoolName');
 
     //age error check
-    checkValue(age);
-    checkIsNumber(age);
+    checkValue(age,'age');
+    checkIsNumber(age,'age');
     if (age < 15 && age > 110) throw "Age is invalid";
 
     //gender error check
-    checkValue(gender);
-    checkIsString(gender);
+    checkValue(gender,'gender');
+    checkIsString(gender,'gender');
 
-    //homeCountry error check
-    // checkIsString(homeCountry);
-
-    // //bio error check
-    // checkIsString(bio);
 
     let obj = ObjectId(id);
     let usersCollection = await users();

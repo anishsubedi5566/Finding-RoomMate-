@@ -175,18 +175,19 @@
     <input name="otherdescription" type="text" placeholder="Additional Information" />
       <br/>
 
+     {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
    
     <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
     {{#if message}}
-        <h2>{{message}}</h2>
+        <p>{{message}}</p>
       {{/if}}
 
 
-    {{#if errors}}
-      <h2>{{errors}}</h2>
-    {{/if}}
+   
 
    
   </div>

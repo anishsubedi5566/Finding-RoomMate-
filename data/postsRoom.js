@@ -2,19 +2,19 @@ let { ObjectId } = require("mongodb");
 const mongoCollections = require("../config/mongoCollections");
 const posts = mongoCollections.posts;
 
-function checkValue(value) {
-  if (!value) throw `${value} not provided, please provide.`;
+function checkValue(value, var_Name) {
+  if (!value) throw `${var_Name} not provided, please provide.`;
 }
 
-function checkIsString(str) {
+function checkIsString(str, var_Name) {
   if (typeof str !== "string") throw `${str} is not a string`;
   if (str.trim().length === 0) throw "String contains only spaces";
-  if (str.length === 0) throw `${str} is empty`;
+  if (str.length === 0) throw `${var_Name} is empty`;
 }
 
-function checkIsNumber(num) {
+function checkIsNumber(num,var_Name) {
   if (typeof num !== "number") throw `${num} is not a number`;
-  if (isNaN(num)) throw `${num} is NaN`;
+  if (isNaN(num)) throw `${var_Name} is NaN`;
 }
 
 let exportedMethods = {
@@ -44,31 +44,31 @@ let exportedMethods = {
     // if(typeof sharingAllowed != "boolean") throw "Sharing allowed is empty"
 
     //check for username
-    checkValue(user);
-    checkIsString(user);
+    checkValue(user,'user');
+    checkIsString(user,'user');
 
     //check postdate is valid or not
     if (!postDate) throw "postDate is empty";
 
     //check title is valid or not
-    checkValue(title);
-    checkIsString(title);
+    checkValue(title, "title");
+    checkIsString(title,"title");
 
     //city error check
-    checkValue(city);
-    checkIsString(city);
+    checkValue(city,'city');
+    checkIsString(city,'city');
 
     //state error check
-    checkValue(state);
-    checkIsString(state);
+    checkValue(state,'state');
+    checkIsString(state,'state');
 
     //schoolName error check
-    checkValue(schoolName);
-    checkIsString(schoolName);
+    checkValue(schoolName,'schoolName');
+    checkIsString(schoolName,'schoolName');
 
     //budget
-    checkValue(budget);
-    checkIsNumber(budget);
+    checkValue(budget,'budget');
+    checkIsNumber(budget,'budget');
     //convert budget into integer
     budget = parseInt(budget);
     if (budget < 100) throw "budget must be greater eqaul to 100";

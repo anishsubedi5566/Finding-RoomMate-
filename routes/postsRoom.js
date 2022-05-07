@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
    
     const postDate = new Date().toDateString();
    
-
+    
     if (!city || city.trim().length === 0) throw "Enter valid city";
     if (!state || state.trim().length === 0) throw "Enter valid state";
     if (!schoolName || schoolName.trim().length === 0)
