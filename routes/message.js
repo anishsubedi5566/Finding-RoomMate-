@@ -6,41 +6,39 @@ const postMessage = data.message;
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  
+  console.log("Readched here")
   const allMessage = await postMessage.getMessage(req.session.user.username);
-  
-  res.render("message/message", {allMessage: allMessage,
-   sender: allMessage[0].sendBy,
-     receiver: allMessage[0].receivedBy
+  console.log(allMessage)
+  res.render("message/message", {allMessage: allMessage
   });
 });
 
 router.get("/groupmessage", async (req, res) => {
-  
-  // const allMessage = await postMessage.getMessage(req.session.user.username);
-  
   res.render("message/groupmessage");
 });
 
 router.post("/groupmessage", async (req, res) => {
+
+  let allUserArray = req.body.sendto.split(",");
+  let output;
+  let sendBy = req.session.user.username;
+  let date = new Date()
+  let message = req.body.message
+  let i = 0
+  let receivedBy;
   
-  const allUserArray = req.body.sendto.split(" ");
-  for(let i = 0 ; i < allUserArray.length -1 ; i++){
 try {
-  console.log("passed one")
-  sendBy = req.session.user.username;
-  date = new Date()
-  message = req.body.message
+  for(i = 0 ; i < allUserArray.length ; i++){
   receivedBy = allUserArray[i]
-  const output = await postMessage.createMessage(
+  output = await postMessage.createMessage(
       message,
       receivedBy,
       sendBy,
       date
   );
-  
+  }
   if (output) {
-    res.redirect("/private");
+    res.redirect("/private/message");
   }
 } catch (e) {
   if (e) {
@@ -53,12 +51,10 @@ try {
     });
   }
 }
-  }
-  res.render("message/groupmessage");
 });
 
 router.get("/viewall/:id", async (req, res) => {
-  const allMessage = await postMessage.getSpecificMessage(req.params.id);
+const allMessage = await postMessage.getSpecificMessage(req.params.id);
   
 res.render("message/individualMessage", {allMessage: allMessage,
   sender: allMessage[0].sendBy,
