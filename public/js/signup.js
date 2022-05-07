@@ -36,7 +36,14 @@ function validateSignUpInputs(e) {
   } else if (passwordVal.length < 6) {
     errorMessage = "Password must be more than 5 characters";
   } else if (securityQuesVal == "None") {
-    errorMessage = "Please select a security question";
+    errorMessage = "Please select the security question";
+  } else if (
+    !securityAnsVal ||
+    securityAnsVal.trim().length == "" ||
+    securityAnsVal == null ||
+    securityAnsVal == undefined
+  ) {
+    errorMessage = "Please provide a Answer to the security question";
   } else if (
     !firstNameVal ||
     firstNameVal.trim().length == "" ||
