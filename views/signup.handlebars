@@ -127,7 +127,7 @@
         <label for="schoolName">School Name</label>
 
         <select id="schoolName" name="schoolName" required>
-
+          <option value="None">None</option>
           <option value="Stevens Institute of Technology">Stevens Institute of
             Technology</option>
           <option value="New York University">New York University</option>
@@ -229,19 +229,15 @@
         </select>
         <br />
 
-        <p class="userImage">Upload a profile picture for your profile if you
-          want</p>
-        <div class="input-group mb-3" id="image_upload_option">
-          <input
-            type="file"
-            class="form-control"
-            id="inputGroupFile02"
-            id="picture"
-            name="picture"
-            accept=".jpg,.gif,.png,.jpeg"
-          />
+        <label for="picture">Profile Image</label>
 
-        </div>
+        <input
+          type="file"
+          id="picture"
+          name="picture"
+          accept=".jpg,.gif,.png,.jpeg"
+        />
+
         <br />
         {{!-- {{#if error}}
       <h2>{{error}}</h2>
@@ -261,8 +257,6 @@
       </div>
     </form>
 
-    <a id="forgot" class="link-primary" href="/forgot">Forgot Password?</a>
-    <br />
     <a id="Home" class="link-primary" href="/login">Already have an account?
       Click here to log-in</a>
   </div>
