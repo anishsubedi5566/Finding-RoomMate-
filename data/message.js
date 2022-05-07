@@ -5,6 +5,34 @@ const messages = mongoCollections.messages;
 
 
 let exportedMethods = {
+  async createGroupMessage(
+    message,
+    receivedBy,
+    sendBy,
+    date
+  ) {
+   
+    const message_detail = {
+      message: message,
+      date: date,
+      sendBy: sendBy,
+      receivedBy: receivedBy,
+    };
+    try {
+      const messageCollection = await messages();
+      const inserted_user = await messageCollection.insertOne(message_detail);
+      if (!inserted_user.acknowledged) {
+        throw `insertion of post failed`;
+      } else {
+        return { message: "Message is sent successfully" };
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  },
+
+
+  
   async createMessage(
     message,
     receivedBy,
