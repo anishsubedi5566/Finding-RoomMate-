@@ -3,6 +3,7 @@ const mongoCollections = require("../config/mongoCollections");
 const users = mongoCollections.users;
 const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs");
+const { get } = require("express/lib/response");
 const salRounds = 11;
 
 function checkIsString(str) {
@@ -382,18 +383,69 @@ let exportedMethods = {
     };
   },
 
-  async getUserByUsername(username) {
-    if (!username) throw "You should provide a username";
-    if (username.length == 0) throw "username is blank";
-    if (username == null) throw "username cannot be null";
-    if (username == undefined) throw "username should be defined";
-    if (typeof username != "string") throw "username is not string";
-    const user = await users();
-    const getUser = await user.findOne({ username });
-    getUser._id = getUser._id.toString();
-    if (getUser == null || getUser == undefined) throw "No User with that id";
-    return getUser;
+  async updatePassword(username, password) {
+    //1. Both username and password must be supplied or you will throw an error
+    if (!username) throw `please provide username`;
+    //2.For username, it should be a valid string (no empty spaces, no spaces in the username and only alphanumeric characters) and should be at least 4 characters long. If it fails any of those conditions, you will throw an error.
+    username_string_Check(username, "username");
+    username = username.trim();
+    //3. The username should be case-insensitive. So "PHILL", "phill", "Phill" should be treated as the same username.
+    username = username.toLowerCase();
+
+    //password error check
+    if (!password) throw `please enter password`;
+    //5. For the password, it must be a valid string (no empty spaces and no spaces but can be any other character including special characters) and should be at least 6 characters long. If it fails any of those conditions, you will throw an error.
+    password_string_check(password, "password");
+
+    password = password.trim();
+    const hashPass = await bcrypt.hash(password, salRounds);
+
+    let usersCollection = await users();
+    const updateInfo = await usersCollection.updateOne(
+      { username: username },
+      { $set: { password: hashPass } }
+    );
+
+    if (!updateInfo.matchedCount && !updateInfo.modifiedCount) {
+      throw "Update failed";
+    } else {
+      return { updated: true };
+    }
   },
+
+  // async getUserByUsername(username) {
+  //   if (!username) throw "You should provide a username";
+  //   if (username.length == 0) throw "username is blank";
+  //   if (username == null) throw "username cannot be null";
+  //   if (username == undefined) throw "username should be defined";
+  //   if (typeof username != "string") throw "username is not string";
+  //   const user = await users();
+  //   const getUser = await user.findOne({ username });
+
+  //   getUser._id = getUser._id.toString();
+  //   if (getUser == null || getUser == undefined) throw "No User with that Name";
+  //   return getUser;
+  // },
+
+  async getUserByUsername(username) {
+    //1. Both username and password must be supplied or you will throw an error
+    if (!username) throw `please provide username`;
+    //2.For username, it should be a valid string (no empty spaces, no spaces in the username and only alphanumeric characters) and should be at least 4 characters long. If it fails any of those conditions, you will throw an error.
+    username_string_Check(username, "username");
+    username = username.trim();
+    //3. The username should be case-insensitive. So "PHILL", "phill", "Phill" should be treated as the same username.
+    username = username.toLowerCase();
+
+    const userCollection = await users();
+    const exist_user = await userCollection.findOne({ username: username });
+    if (exist_user) {
+      console.log("data updated successfully");
+      return exist_user;
+    } else {
+      throw "User does not exist";
+    }
+  },
+
   //Checked
   async getAllUsers() {
     const userget = await users();
@@ -405,6 +457,7 @@ let exportedMethods = {
       throw "User does not exists!";
     return getAllUser;
   },
+
   async deleteUser(_id) {
     if (_id === undefined || _id === null) {
       throw "Id is undefined";

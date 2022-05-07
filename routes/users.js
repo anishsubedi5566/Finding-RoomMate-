@@ -354,61 +354,8 @@ router.post("/signup", async (req, res) => {
     const error = e;
     res.status(400).render("signup", { title: "Error", error: error });
   }
-
-  //   try {
-  //     //defult user image will appear
-  //     if (!req.files) {
-  //       const adduser = await userData.create(
-  //         username,
-  //         password,
-  //         securityQues,
-  //         securityAns,
-  //         firstName,
-  //         lastName,
-  //         email,
-  //         schoolName,
-  //         city,
-  //         state,
-  //         homeCountry,
-  //         age,
-  //         gender,
-
-  //         `/public/images/user_profile_default.png`
-  //       );
-  //       res.redirect("/login?msg=Congratulations, you are user now");
-  //     } else {
-  //       //user can upload image
-  //       let picture = req.files.picture;
-  //       //console.log(req.files);
-  //       let pictureName = picture.name.replaceAll(" ", "-");
-  //       picture.mv(`./public/uploads/` + pictureName);
-
-  //       const adduser = await userData.create(
-  //         username,
-  //         password,
-  //         securityQues,
-  //         securityAns,
-  //         firstName,
-  //         lastName,
-  //         email,
-  //         schoolName,
-  //         city,
-  //         state,
-  //         homeCountry,
-  //         age,
-  //         gender,
-
-  //         `/public/uploads/` + pictureName
-  //       );
-
-  //       res.status(200).render("login", { title: "Login" });
-  //       // res.redirect("/login?msg=Congratulations, you are user now");
-  //     }
-  //   } catch (e) {
-  //     const error = e;
-  //     res.status(400).render("signup", { title: "Error", error: error });
-  //   }
 });
+
 router.post("/login", async (req, res) => {
   //1.You must make sure that username and password are supplied in the req.body
   const username = xss(req.body.username);
@@ -871,74 +818,7 @@ router.route("/private/profile/edit").post(async (req, res) => {
   }
 });
 
-//forgot password
-router.get("/forgot", async (req, res) => {
-  res.render("forgot");
-});
 
-router.post("/forgot", async (req, res) => {
-  const username = xss(req.body.username);
-  const securityQues = xss(req.body.securityQues);
-  const securityAns = xss(req.body.securityAns);
-
-  if (
-    !password ||
-    !username ||
-    username.trim().length === 0 ||
-    password.trim().length === 0
-  ) {
-    res.status(400).render("forgot", { error: "Enter username or password" });
-    return;
-  }
-
-  //security question error check
-  if (!securityQues) {
-    res
-      .status(400)
-      .render("forgot", { error: "Please provide a security question" });
-    return;
-  }
-  if (typeof securityQues !== "string") {
-    res
-      .status(400)
-      .render("forgot", { error: `Security question must be a string value` });
-    return;
-  }
-  if (securityQues.trim().length === 0) {
-    res.status(400).render("forgot", {
-      error: "Security question input entered is invalid",
-    });
-    return;
-  }
-  if (securityQues == "None") {
-    res
-      .status(400)
-      .render("forgot", { error: "Security question should not be none" });
-    return;
-  }
-
-  if (!securityAns) {
-    res
-      .status(400)
-      .render("forgot", { error: "Please provide a security answer" });
-    return;
-  }
-  if (typeof securityAns !== "string") {
-    res
-      .status(400)
-      .render("forgot", { error: `Security answer must be a string value` });
-    return;
-  }
-  if (securityAns.trim().length === 0) {
-    res
-      .status(400)
-      .render("forgot", { error: "Security answer input entered is invalid" });
-    return;
-  }
-
-  try {
-  } catch (e) {}
-});
 
 router.route("/private/deleteProfile").get(async (req, res) => {
   const username = req.session.user.username;

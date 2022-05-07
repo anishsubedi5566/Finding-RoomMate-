@@ -1,7 +1,9 @@
+
+<form action="/forgot" id="forgot-form" method="POST">
 <div class="form">
 
   <label>Username</label>
-
+  
   <input
     id="username"
     name="username"
@@ -38,4 +40,24 @@
   />
   <br />
 
+  <label
+          for="exampleDropdownFormPassword1"
+          class="form-label"
+        >Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="exampleDropdownFormPassword1"
+          placeholder="Password"
+        />
+      </div>
+  <br/>
+  <button type="submit" class="btn btn-primary">Login</button>
+
 </div>
+</form>
+
+{{#if error}}
+  <h2>{{error}}</h2>
+{{/if}}
