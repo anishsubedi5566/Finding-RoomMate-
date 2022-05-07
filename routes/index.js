@@ -9,6 +9,7 @@ const aboutUsNotAuthRoute = require("./notAuth");
 const makeCommentRoute = require("./makeComments");
 const individualPostRoute = require("./individualPostRoute");
 const messageRoute = require("./message");
+const forgotRoute = require("./forgot");
 
 const constructorMethod = (app) => {
   app.use("/comment", makeCommentRoute);
@@ -21,6 +22,7 @@ const constructorMethod = (app) => {
   app.use("/private/message", messageRoute);
   app.use("/private", aboutUsRoute);
   app.use("/private", contactUsRoute);
+  app.use("/forgot", forgotRoute);
   app.use("/", aboutUsNotAuthRoute);
   app.use("*", (request, response) => {
     const error = { error: "Error 404 Not found" };
