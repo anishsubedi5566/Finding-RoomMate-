@@ -24,11 +24,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/private/profile">Profile</a>
+          <a class="nav-link active" href="/private/profile">Profile</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="/private/message">Message</a>
+          <a class="nav-link" href="/private/message">Message</a>
         </li>
 
 
@@ -59,7 +59,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/private/contactUs">Contact Us</a>
+          <a class="nav-link" href="/private/aboutUs">Contact Us</a>
         </li>
 
 
@@ -76,18 +76,37 @@
   </div>
 </nav>
 
-<p> <a href="/private/message/groupmessage">Send message to Multiple User At once</a> </p>
 
 <ul class="message_list">
   {{#each allMessage}}
-    <li> SendBy: {{this.sendBy}}</li>
+    <li> Sent: {{this.sendBy}}</li>
     <li>Message{{this.message}}</li>
-    <li>ReceivedBy: {{this.receivedBy}}</li>
-    {{!-- <a class="nav-link active" href="/private/message/sendBy={{this.sendBy}} & receivedBy={{this.receivedBy}}">Click to Reply</a> --}}
-      <a class="nav-link active" href="/private/message/viewall/{{this.sendBy}}-{{this.receivedBy}}">Click to Reply</a>
+    <li>Received: {{this.receivedBy}}</li>
+    <li>Date: {{this.date}}</li>
     <br />
-    
   {{/each}}
 </ul>
 
-<script src="/public/js/message.js"></script>
+
+<form
+      action="/private/message/groupmessage"
+      id="message-form"
+      method="POST"
+    >
+      <div class="form">
+          <label>Enter Multiple User Name: </label>
+        <input type="text" name="sendto"/>
+        <input
+          id="message"
+          name="message"
+          type="text"
+          placeholder="Enter Message"
+        />
+        <br />
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+    </div>
+    </div>
+
+
