@@ -8,23 +8,23 @@ const { all } = require("../routes/users");
 const posts = mongoCollections.posts;
 
 
-function checkValue(value) {
-    if (!value) throw `${value} not provided, please provide.`;
-  }
+function checkValue(value, var_Name) {
+  if (!value) throw `${var_Name} not provided, please provide.`;
+}
   
-  function checkIsString(str) {
-    if (typeof str !== "string") throw `${str} is not a string`;
-    if (str.trim().length === 0) throw "String contains only spaces";
-    if (str.length === 0) throw `${str} is empty`;
-  }
+function checkIsString(str, var_Name) {
+  if (typeof str !== "string") throw `${str} is not a string`;
+  if (str.trim().length === 0) throw "String contains only spaces";
+  if (str.length === 0) throw `${var_Name} is empty`;
+}
 
 async function createComment(id, user, date, comment){
-    checkValue(user);
-    checkIsString(user);
+    checkValue(user,'user');
+    checkIsString(user,'user');
 
     if (!date) throw "date is empty";
 
-    checkIsString(comment);
+    checkIsString(comment,'comment');
 
 
     const comment_detail = {

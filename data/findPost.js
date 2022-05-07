@@ -2,10 +2,10 @@ let { ObjectId } = require("mongodb");
 const mongoCollections = require("../config/mongoCollections");
 const posts = mongoCollections.posts;
 
-function checkIsString(str) {
+function checkIsString(str, var_Name) {
   if (typeof str !== "string") throw `${str} is not a string`;
   if (str.trim().length === 0) throw "String contains only spaces";
-  if (str.length === 0) throw `${str} is empty`;
+  if (str.length === 0) throw `${var_Name} is empty`;
 }
 
 function checkIsObjectID(id) {
@@ -14,16 +14,16 @@ function checkIsObjectID(id) {
   }
 }
 
-function checkValue(value) {
-  if (!value) throw `${value} not provided, please provide.`;
+function checkValue(value, var_Name) {
+  if (!value) throw `${var_Name} not provided, please provide.`;
 }
 
 let exportedMethods = {
   async searchCity(city) {
     console.log("city in data", city);
 
-    checkValue(city);
-    checkIsString(city);
+    checkValue(city,'city');
+    checkIsString(city,'city');
 
     const postCollection = await posts();
     const fetch_data = await postCollection.find({ city: city }).toArray();
@@ -38,8 +38,8 @@ let exportedMethods = {
 
   async searchschoolName(schoolName) {
     //schoolName error check
-    checkValue(schoolName);
-    checkIsString(schoolName);
+    checkValue(schoolName,'schoolName');
+    checkIsString(schoolName,'schoolName');
 
     const postCollection = await posts();
     const fetch_data = await postCollection
@@ -56,8 +56,8 @@ let exportedMethods = {
 
   async searchmyPost(user) {
     //user error check
-    checkValue(user);
-    checkIsString(user);
+    checkValue(user,'user');
+    checkIsString(user,'user');
 
     const postCollection = await posts();
     const fetch_data = await postCollection.find({ user: user }).toArray();
