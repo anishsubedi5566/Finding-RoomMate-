@@ -13,7 +13,7 @@ function checkIsString(str, var_Name) {
   if (str.length === 0) throw `${var_Name} is empty`;
 }
 
-function checkIsNumber(num,var_Name) {
+function checkIsNumber(num, var_Name) {
   if (typeof num !== "number") throw `${var_Name} is not a number`;
 
   if (isNaN(num)) throw `${var_Name} is NaN`;
@@ -65,58 +65,58 @@ let exportedMethods = {
     );
 
     //check for username
-    checkValue(user,'user');
-    checkIsString(user,'user');
+    checkValue(user, "user");
+    checkIsString(user, "user");
 
     //check postdate is valid or not
     if (!postDate) throw "postDate is empty";
 
     //check title is valid or not
-    checkValue(title,'title');
-    checkIsString(title,'title');
+    checkValue(title, "title");
+    checkIsString(title, "title");
 
     //check street is valid or not
-    checkValue(street,'street');
-    checkIsString(street,'street');
+    checkValue(street, "street");
+    checkIsString(street, "street");
 
     //city error check
-    checkValue(city,'city');
-    checkIsString(city,'city');
+    checkValue(city, "city");
+    checkIsString(city, "city");
 
     //state error check
-    checkValue(state,'state');
-    checkIsString(state,'state');
+    checkValue(state, "state");
+    checkIsString(state, "state");
 
     //schoolName error check
-    checkValue(schoolName,'schoolName');
-    checkIsString(schoolName,'schoolName');
+    checkValue(schoolName, "schoolName");
+    checkIsString(schoolName, "schoolName");
 
     //roomNumber
-    checkValue(roomNumber,'roomNumber');
-    checkIsNumber(roomNumber,'roomNumber');
+    checkValue(roomNumber, "roomNumber");
+    checkIsNumber(roomNumber, "roomNumber");
     //convert roomNumber into integer
     roomNumber = parseInt(roomNumber);
     if (roomNumber < 1 || roomNumber > 15)
       throw "roomNumber must be between 1 to 15";
 
     //roomarea
-    checkValue(roomarea,'roomarea');
-    checkIsNumber(roomare,'roomarea');
+    checkValue(roomarea, "roomarea");
+    checkIsNumber(roomarea, "roomarea");
     //convert roomarea into integer
     roomarea = parseInt(roomarea);
     if (roomarea < 100) throw "roomarea must be greater eqaul to 100";
 
     //rent
-    checkValue(rent,'rent');
-    checkIsNumber(rent,'rent');
+    checkValue(rent, "rent");
+    checkIsNumber(rent, "rent");
     //convert rent into integer
     rent = parseInt(rent);
     console.log("data rent", rent, rent < 100, typeof rent);
     if (rent < 100) throw "rent must be greater eqaul to 100";
 
     //peoplelivingcurrently
-    checkValue(peoplelivingcurrently,'peoplelivingcurrently');
-    checkIsNumber(peoplelivingcurrently,'peoplelivingcurrently');
+    checkValue(peoplelivingcurrently, "peoplelivingcurrently");
+    checkIsNumber(peoplelivingcurrently, "peoplelivingcurrently");
     //convert peoplelivingcurrently into integer
     peoplelivingcurrently = parseInt(peoplelivingcurrently);
     if (peoplelivingcurrently < 1)

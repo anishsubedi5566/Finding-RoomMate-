@@ -55,7 +55,7 @@
 
 
   <li class="nav-item">
-          <a class="nav-link" href="/private/aboutUs">About Us</a>
+          <a class="nav-link" href="/aboutUs">About Us</a>
         </li>
 
 
@@ -94,7 +94,7 @@
     <div class=""><p>Posted By :{{this.user}}</p></div>
     
      <div class="cssroom-div">
-      <label>Title: {{this.title}} </label>
+      <label>{{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>City: {{this.city}} </label>
       <label>State:{{this.state}}</label>
@@ -102,7 +102,7 @@
       <label>Parking Available:{{this.parkingAvailable}}</label>
       <label>Pets Allowed: {{this.petsAllowed}} </label>
       <label>Sharing allowed: {{this.sharingAllowed}}</label>
-      <label>Budget: {{this.budget}}</label>
+      <label>Budget:$ {{this.budget}}</label>
       <label>Is a student?: {{this.student}}</label>
       <label>Other description: {{this.otherdescription}}</label>
       <br />
@@ -113,19 +113,19 @@
      {{else}}
       <div class="grid-item">
       <ul>
-      <div class=""><p>Posted By :{{this.user}}</p></div>
+      <p>Posted By :{{this.user}}</p>
      <div class="cssroom-div">
-      <label>Title: {{this.title}} </label>
+      <label>{{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
       <label>Street: {{this.street}}</label>
       <label>City: {{this.city}} </label>
       <label>State:{{this.state}}</label>
       <label>Number of Rooms:{{roomNumber}}</label>
-      <label>Room Area: {{roomarea}}</label>
+      <label>Room Area: {{roomarea}} sqft</label>
       <label>Parking Available:{{this.parkingAvailable}}</label>
       <label>Pets Allowed: {{this.petsAllowed}} </label>
       <label>Sharing allowed: {{this.sharingAllowed}}</label>
-      <label>Rent: {{this.rent}}</label>
+      <label>Rent:$ {{this.rent}}</label>
       <p>People Living Currently: {{this.peoplelivingcurrently}}</p>
       <label>Other Description: {{this.otherdescription}}</label>
       <br/>
