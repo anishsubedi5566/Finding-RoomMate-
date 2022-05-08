@@ -245,8 +245,8 @@ input {
 }
 
 .edit_profile_card img {
-  width: 25%;
-  height: 25%;
+  width: 150px;
+  height: 150px;
   margin-top: 10px;
   margin-bottom: 10px;
   clip-path: circle();
@@ -273,6 +273,13 @@ input {
 .edit_profile label {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.edit_profile #picture {
+  height: 40px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
 }
 
 /* About Us */
@@ -312,7 +319,7 @@ input {
 .about_us_body p {
   text-align: justify;
 }
-
+/* Post room and roommate css */
 .heading-room {
   text-align: center;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -320,6 +327,14 @@ input {
 .postform--group {
   text-align: center;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.postform #picture {
+  width: 300px;
+  height: 30px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
 }
 .postform--group {
   margin: 100px auto;
@@ -452,7 +467,6 @@ input {
 }
 
 .grid-item a {
-  
   position: static;
   padding-top: 20px;
   left: 50%;
@@ -559,15 +573,12 @@ p {
   height: 40px;
 }
 
-  
-.grid-container-message{
+.grid-container-message {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
-.grid-item-message{
-  
+.grid-item-message {
   position: fixed;
   top: -900px;
   left: 700px;
@@ -609,7 +620,7 @@ p {
   color: black;
 }
 .grid-item-message label {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif; 
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: bold;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -636,36 +647,35 @@ p {
   transform: translate(-50%, -50%);
   margin: 0 auto;
 }
-.grid-item-message h3{
+.grid-item-message h3 {
   margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
 }
-.grid-container h3{
+.grid-container h3 {
   margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
-
 }
-.grid-container-commentinput{
+.grid-container-commentinput {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.grid-item-commentinput h3{
+.grid-item-commentinput h3 {
   margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
 }
-.grid-item-commentinput{
+.grid-item-commentinput {
   bottom: 50px;
-  
+
   text-align: center;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   background-color: rgba(255, 255, 255, 0.8);
@@ -703,17 +713,12 @@ p {
   padding-bottom: 20px;
   color: black;
 }
-.grid-container-comments{
+.grid-container-comments {
   display: fixed;
   flex-wrap: wrap;
   justify-content: center;
-  
-  
-  
-
 }
-.grid-item-comments{
-  
+.grid-item-comments {
   top: -900px;
   left: 700px;
   bottom: 50px;
@@ -754,27 +759,29 @@ p {
   padding-bottom: 20px;
   color: black;
 }
-.grid-item-comments label{
+.grid-item-comments label {
   font-size: small;
   color: dimgray;
 }
-.grid-item-comments a{
+.grid-item-comments a {
   font-size: medium;
   font-weight: bold;
   color: dimgray;
 }
-.grid-item-comments h3{
+.grid-item-comments h3 {
   margin-top: 10px;
   text-align: center;
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
 }
-.grid-container-messagepage{
+.grid-container-messagepage {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;}
-.grid-item-messagepage{
+  justify-content: center;
+  margin-top: 30px;
+}
+.grid-item-messagepage {
   text-align: center;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   background-color: rgba(255, 255, 255, 0.8);
@@ -811,23 +818,44 @@ p {
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
   color: black;
-
 }
-.grid-item-messagepage label{
+.grid-item-messagepage label {
   font-size: small;
-  color: dimgray;}
-  .grid-item-messagepage a{
-    font-size: medium;
-    font-weight: bold;
-    color: dimgray;
-    border-bottom: 1px solid dimgray;
-    
-  }
-  .groupmessage-class{
-    text-align: center;
-    color: dimgray;
-  }
-  .labelmessage-individual{
-    font-weight: bold;
-    font-size: large;
-  }
+  color: dimgray;
+}
+.grid-item-messagepage groupmessage-class {
+  font-size: medium;
+  font-weight: bold;
+  color: white;
+  border-bottom: 1px solid dimgray;
+  width: 500px;
+  height: 50px;
+  margin: 20px auto;
+}
+.grid-item-messagepage a {
+  border-bottom: 1px solid #006ebd;
+  padding-bottom: 10px;
+}
+.grid-item-messagepage h2 {
+  margin-top: 10px;
+  text-align: center;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  color: black;
+  background-color: aliceblue;
+}
+
+.grid-item-messagepage h5 {
+  padding-top: 10px;
+}
+
+.groupmessage-class {
+  text-align: center;
+  color: dimgray;
+}
+.labelmessage-individual {
+  font-weight: bold;
+  font-size: large;
+}

@@ -7,7 +7,7 @@ const userData = data.users;
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomateData.getPost();
-  res.render("post/postRoomate", { allpost: allPost });
+  res.render("post/postRoomate", { title: "Find a roommie", allpost: allPost });
 });
 
 router.post("/", async (req, res) => {
@@ -22,20 +22,18 @@ router.post("/", async (req, res) => {
   //   rent,
   //   peoplelivingcurrently,
   //   otherdescription,
-  // } 
-  
-  let title=xss(req.body.title);
-  let street=xss(req.body.street);
-  let city=xss(req.body.city);
-  let state=xss(req.body.state);
-  let schoolName=xss(req.body.schoolName);
-  let roomNumber=xss(req.body.roomNumber);
-  let roomarea=xss(req.body.roomarea);
-  let rent=xss(req.body.rent);
-  let peoplelivingcurrently=xss(req.body.peoplelivingcurrently);
-  let otherdescription=xss(req.body.otherdescription);
+  // }
 
-
+  let title = xss(req.body.title);
+  let street = xss(req.body.street);
+  let city = xss(req.body.city);
+  let state = xss(req.body.state);
+  let schoolName = xss(req.body.schoolName);
+  let roomNumber = xss(req.body.roomNumber);
+  let roomarea = xss(req.body.roomarea);
+  let rent = xss(req.body.rent);
+  let peoplelivingcurrently = xss(req.body.peoplelivingcurrently);
+  let otherdescription = xss(req.body.otherdescription);
 
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
   let postImages = [];

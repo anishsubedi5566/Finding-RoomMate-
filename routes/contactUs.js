@@ -4,15 +4,15 @@ const router = express.Router();
 const xss = require("xss");
 
 router.get("/contactUs", async (req, res) => {
-  res.render("other/contactUs");
+  res.render("other/contactUs", { title: "Contact Us" });
 });
 
 router.post("/contactUs", async (req, res) => {
-  // let { yourname, email, message_query } 
+  // let { yourname, email, message_query }
 
-  let yourname=xss(req.body.yourname);
-  let email=xss(req.body.email);
-  let message_query=xss(req.body.message_query);
+  let yourname = xss(req.body.yourname);
+  let email = xss(req.body.email);
+  let message_query = xss(req.body.message_query);
 
   console.log("yes get inside route");
   try {

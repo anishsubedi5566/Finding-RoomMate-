@@ -8,7 +8,7 @@ let { ObjectId } = require("mongodb");
 
 //forgot password
 router.get("/", async (req, res) => {
-  res.render("forgot");
+  res.status(200).render("forgot", { title: "Forgot Password" });
 });
 
 router.post("/", async (req, res) => {
@@ -24,7 +24,12 @@ router.post("/", async (req, res) => {
     username.trim().length === 0 ||
     password.trim().length === 0
   ) {
-    res.status(400).render("forgot", { error: "Enter username or password" });
+    res
+      .status(400)
+      .render("forgot", {
+        title: "Error",
+        error: "Enter username or password",
+      });
     return;
   }
 
@@ -104,15 +109,18 @@ router.post("/", async (req, res) => {
         console.log("success");
         res.redirect("/");
       } else {
-        res.status(400).render("forgot", {
-          error: "Sequrity question and answer does not match",
-        });
+        res
+          .status(400)
+          .render("forgot", {
+            title: "Error",
+            error: "Sequrity question and answer does not match",
+          });
         return;
       }
     }
   } catch (e) {
     console.log("error", e);
-    res.status(400).render("forgot", { error: e });
+    res.status(400).render("forgot", { title: "Error", error: e });
     return;
   }
 });
