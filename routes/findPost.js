@@ -13,7 +13,7 @@ router.get("/searchbyCity", async (req, res) => {
 });
 
 router.post("/searchbyCity", async (req, res) => {
-  const city = req.body.city;
+  const city = xss(req.body.city);
   console.log(city);
   try {
     //check if city is provided and valid
@@ -40,7 +40,7 @@ router.get("/searchbyschoolName", async (req, res) => {
 });
 
 router.post("/searchbyschoolName", async (req, res) => {
-  const schoolName = req.body.schoolName;
+  const schoolName =xss(req.body.schoolName);
 
   try {
     //check if schoolName is provided and valid

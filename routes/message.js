@@ -23,11 +23,12 @@ router.get("/groupmessage", async (req, res) => {
 });
 
 router.post("/groupmessage", async (req, res) => {
-  let allUserArray = req.body.sendto.split(",");
+  let allUserArray = xss(req.body.sendto).split(",");
+  console.log(allUserArray);
   let output;
   let sendBy = req.session.user.username;
   let date = new Date().toDateString();
-  let message = req.body.message;
+  let message = xss(req.body.message);
   let i = 0;
   let receivedBy;
 
@@ -111,13 +112,20 @@ router.get("/viewall/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    let { message, messageTo, sender, receiver } = req.body;
+
+    // let { message, messageTo, sender, receiver } 
+    let message=xss(req.body.message);
+    let  messageTo=xss(req.body.messageTo);
+    let sender=xss(req.body.sender);
+    let receiver=xss(req.body.receiver)
+
+    
     let sendBy, receivedBy;
-    if (req.body.messageTo) {
+    if (xss(req.body.messageTo)) {
       sendBy = req.session.user.username;
       receivedBy = messageTo;
     }
-    if (req.body.sender || req.body.receiver) {
+    if (xss(req.body.sender) || xss(req.body.receiver)) {
       sendBy = sender;
       receivedBy = receiver;
     }

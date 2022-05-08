@@ -32,6 +32,12 @@ router.route("/:postRoomId").post(async (req, res) => {
   const date = new Date().toDateString();
   const comment = xss(req.body.comment);
   const postRoomId = req.params.postRoomId;
+
+  // if (!comment || comment.trim().length === 0) {
+  //   res.render("post/individualPost", { error: "Please provide comment" });
+  //   return;
+  // }
+
   if (!req.params.postRoomId) {
     res.status(400).json({ error: "Please provide ID" });
     return;
