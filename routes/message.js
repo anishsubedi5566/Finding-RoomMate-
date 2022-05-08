@@ -33,7 +33,6 @@ router.get("/groupmessage", async (req, res) => {
 
 router.post("/groupmessage", async (req, res) => {
   let allUserArray = xss(req.body.sendto).split(",");
-  console.log(allUserArray);
   let output;
   let sendBy = req.session.user.username;
   let date = new Date().toDateString();
@@ -41,28 +40,18 @@ router.post("/groupmessage", async (req, res) => {
   let i = 0;
   let receivedBy;
 
-  // try {
-  //   for (let i = 0; i < allUserArray.length; i++) {
-  //     await userData.getUserByUsername(allUserArray[i]);
-  //   }
-  // } catch (e) {
-  //   console.log("error", e);
-  //   res.status(400).render("message/groupmessage", {
-  //     error: "Please verify if all the usernames are correct",
-  //   });
-  //   return;
-  // }
-
   try {
     if (xss(req.body.sendto.length < 1)) throw "Send field cannot be empty";
     if (xss(req.body.message < 1)) throw "Send message cannot be empty";
-    for (let i = 0; i < allUserArray.length; i++) {
-      await userData.getUserByUsername(allUserArray[i]);
-    }
+    
     allUserArray = allUserArray.map((each) => each.trim(each));
     allUserArray = allUserArray.filter((element) => {
       return element !== "";
     });
+
+    for (let i = 0; i < allUserArray.length; i++) {
+      await userData.getUserByUsername(allUserArray[i]);
+    }
 
     for (i = 0; i < allUserArray.length; i++) {
       receivedBy = allUserArray[i];
@@ -133,10 +122,10 @@ router.get("/viewall/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  let message = xss(req.body.message);
+  let receivedBy = xss(req.body.receiver);
+  let sendBy = xss(req.body.sender);
   try {
-    let message = xss(req.body.message);
-    let receivedBy = xss(req.body.receiver);
-    let sendBy = xss(req.body.sender);
     if(!message || typeof message != "string") throw "must have message"
     if(!receivedBy || typeof receivedBy != "string") throw "must have receiver name"
     if(!sendBy || typeof sendBy != "string") throw "must have sender name"
@@ -155,9 +144,8 @@ router.post("/", async (req, res) => {
   } catch (e) {
     if (e) {
       const out = { errors: e };
-      res
-        .status(400)
-        .render("post/postRoom", { title: "Error", error: e.message });
+      
+        res.redirect(`/private/message/viewall/${sendBy}-${receivedBy}`);
       return;
     } else {
       res.status(500).json({
