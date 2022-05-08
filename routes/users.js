@@ -374,7 +374,9 @@ router.post("/login", async (req, res) => {
     username.trim() === 0 ||
     password.trim() === 0
   ) {
-    res.status(400).render("login", { error: "Enter username or password" });
+    res
+      .status(400)
+      .render("login", { title: "Error", error: "Enter username or password" });
     return;
   }
 
@@ -425,7 +427,7 @@ router.post("/login", async (req, res) => {
     }
   } catch (e) {
     if (e) {
-      const out = { error: e };
+      const out = { title: "Error", error: e };
       res.status(400).render("login", out);
       return;
     } else {

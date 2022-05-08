@@ -90,7 +90,7 @@
 
 <div class="grid-container indiMessage">
   <div class="grid-item">
-    <h3>Message</h3>
+    <h1>Message</h1>
 
     {{#each allMessage}}
       <label>From:
@@ -99,7 +99,7 @@
         {{this.receivedBy}},
         {{this.date}}</label>
       {{!-- <label>Date: {{this.date}}</label> --}}
-      <h4>{{this.message}}</h4>
+      <h2>{{this.message}}</h2>
 
       <br />
     {{/each}}
@@ -121,7 +121,7 @@
           hidden
         />
 
-        <label>Reply</label>
+        <label for="message">Reply</label>
         <input
           id="message"
           name="message"

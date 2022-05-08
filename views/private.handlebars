@@ -95,10 +95,9 @@
 
       <div class="grid-item">
 
-        <h6>Posted By :{{this.user}}</h6>
-
         <div class="cssroom-div">
           <h1>{{this.title}} </h1>
+          <label>Posted By :{{this.user}}</label>
           <label>Post Date:{{this.postDate}}</label>
           <label>City: {{this.city}} </label>
           <label>State:{{this.state}}</label>
@@ -119,9 +118,9 @@
     {{else}}
       <div class="grid-item">
 
-        <h6>Posted By :{{this.user}}</h6>
         <div class="cssroom-div">
           <h1>{{this.title}} </h1>
+          <label>Posted By :{{this.user}}</label>
           <div class="images">
             <div class="photo">
               {{#each postImages}}

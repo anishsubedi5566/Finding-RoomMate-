@@ -100,17 +100,17 @@
 
 <div class="groupMessageCont">
 
-  <h2>Sent Group Message</h2>
+  <h1>Sent Group Message</h1>
   <form action="/private/message/groupmessage" id="message-form" method="POST">
     <div class="form">
-
-      <br />
+      <label for="sendTo">Usernames: </label>
       <input
         type="text"
         name="sendto"
         placeholder="Enter Multiple User Name"
         required
       />
+      <label for="message">Message: </label>
 
       <input
         id="message"

@@ -98,11 +98,12 @@
   
  
     <div class="grid-item">
-    <ul>
-    <div class=""><p>Posted By: {{this.user}}</p></div>
+    
+    
     
     <div class="cssroom-div">
       <h1>{{this.title}} </h1>
+      <label>Posted By: {{this.user}}</label>
       <label>Post Date:{{this.postDate}}</label>
       <label>City: {{this.city}} </label>
       <label>State:{{this.state}}</label>
@@ -117,15 +118,16 @@
       
       
     </div>
-    </ul>
+   
     </div>
   
      {{else}}
       <div class="grid-item">
-      <ul>
-      <div class=""><p>Posted By: {{this.user}}</p></div>
+      
+      
       <div class="cssroom-div">
       <h1>{{this.title}} </h1>
+      <label>Posted By: {{this.user}}</label>
       <div class="images">
         <div class="photo">
           {{#each postImages}}
@@ -148,7 +150,7 @@
       <br/>
       
       </div>
-      </ul>
+      
       </div>
      {{/ifEqual}}
 
