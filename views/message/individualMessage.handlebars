@@ -92,11 +92,11 @@
 </div>
 <div class="grid-container-commentinput">
     <div class="grid-item-commentinput">
-<div
+{{!-- <div
       action="/private/message"
       id="message-form"
       method="POST"
-    >
+    > --}}
       
 <form
       action="/private/message/"
@@ -104,8 +104,8 @@
       method="POST"
     >
       <div class="form">
-        <input type="text" name="sender" value={{{sender}}} readonly="true" hidden/>
-        <input type="text" name="receiver" value={{{receiver}}} readonly="true" hidden/>
+       sender <input type="text" name="sender" value={{{sender}}} readonly="true" />
+       receiver <input type="text" name="receiver" value={{{receiver}}} readonly="true" />
 
         <label>Reply</label>
         <input
@@ -119,7 +119,7 @@
       </div>
     </form>
   
-      </div>
+      {{!-- </div> --}}
       </div>
 
 {{!-- <script src="/public/js/message.js"></script> --}}

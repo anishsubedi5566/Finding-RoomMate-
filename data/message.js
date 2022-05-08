@@ -80,7 +80,7 @@ let exportedMethods = {
 
       allMessage.map((item) => (item._id = item._id.toString()));
       allMessage.sort((a, b) => b.postDate - a.postDate);
-     let  x = allMessage.map(item => item.receivedBy)
+     let  x = allMessage.map(item => item.sendBy)
     .filter((value, index, self) => self.indexOf(value) === index)
     let y = allMessage.map(item => item.receivedBy)
     .filter((value, index, self) => self.indexOf(value) === index)
