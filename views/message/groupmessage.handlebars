@@ -16,11 +16,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
 
         <li class="nav-item">
@@ -31,28 +27,43 @@
           <a class="nav-link" href="/private/message">Message</a>
         </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Make Post</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+            <a class="dropdown-item" href="/private/postRoomate">
+              Find Roomate</a>
+          </div>
+        </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Find</a>
+          <div class="dropdown-menu">
 
-      
+            <a class="dropdown-item" href="/private/findPost/searchbyCity">
+              Find By city</a>
+            <a
+              class="dropdown-item"
+              href="/private/findPost/searchbyschoolName"
+            >Find By University</a>
+          </div>
+        </li>
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
-        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
-      </li>
-
-
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
-      <div class="dropdown-menu">
-        
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By city</a>
-        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
-      </li>
-
-
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/private/aboutUs">About Us</a>
         </li>
 
@@ -60,10 +71,9 @@
           <a class="nav-link" href="/private/aboutUs">Contact Us</a>
         </li>
 
-
-       {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
+        </li> }}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -74,53 +84,54 @@
   </div>
 </nav>
 
- <div class="grid-container-comments">
+{{!-- <div class="grid-container-comments">
   <div class="grid-item-comments">
-<ul class="message_list">
-  {{#each allMessage}}
-    <li> Sent: {{this.sendBy}}</li>
-    <li>Message{{this.message}}</li>
-    <li>Received: {{this.receivedBy}}</li>
-    <li>Date: {{this.date}}</li>
-    <br />
-  {{/each}}
-</ul>
-</div></div>
-  
-<div class="grid-container-commentinput">
-    <div class="grid-item-commentinput">
-<form
-      action="/private/message/groupmessage"
-      id="message-form"
-      method="POST"
-    >
-      <div class="form">
-          <label>Enter Multiple User Name: </label>
-
-
-          <br/>
-        <input type="text" name="sendto"/>
-
-        <input
-          id="message"
-          name="message"
-          type="text"
-          placeholder="Enter Message"
-        />
+    <h2>Sent Group Message</h2>
+    <ul class="message_list">
+      {{#each allMessage}}
+        <li> Sent: {{this.sendBy}}</li>
+        <li>Message{{this.message}}</li>
+        <li>Received: {{this.receivedBy}}</li>
+        <li>Date: {{this.date}}</li>
         <br />
-        <button type="submit" class="btn btn-primary">Send</button>
-      </div>
-    </form>
-   
-   
- {{#if error}}
-          <div class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
-        {{else}}
-          <div class="alert alert-danger" hidden role="alert">
-            {{error}}
-          </div>
-        {{/if}}
+      {{/each}}
+    </ul>
+  </div></div> --}}
+
+<div class="groupMessageCont">
+
+  <h2>Sent Group Message</h2>
+  <form action="/private/message/groupmessage" id="message-form" method="POST">
+    <div class="form">
+
+      <br />
+      <input
+        type="text"
+        name="sendto"
+        placeholder="Enter Multiple User Name"
+        required
+      />
+
+      <input
+        id="message"
+        name="message"
+        type="text"
+        placeholder="Enter Message"
+        required
+      />
+      <br />
+      <button type="submit" class="btn btn-primary">Send</button>
     </div>
+  </form>
+
+  {{#if error}}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+  {{else}}
+    <div class="alert alert-danger" hidden role="alert">
+      {{error}}
+    </div>
+  {{/if}}
+
 </div>
