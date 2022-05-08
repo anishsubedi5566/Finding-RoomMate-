@@ -87,7 +87,7 @@
     
      <div class="cssroom-div">
       
-      <label>{{postDetail.title}} </label>
+      <h2>{{postDetail.title}} </h2>
       <label>Post Date:{{postDetail.postDate}}</label>
       <label>City: {{postDetail.city}} </label>
       <label>State:{{postDetail.state}}</label>
@@ -109,11 +109,11 @@
       <ul>
       <div class=""><p>Posted By :{{postDetail.user}}</p></div>
       <div class="cssroom-div">
-      <label>{{postDetail.title}} </label>
+      <h2>{{postDetail.title}} </h2>
       
       <div class="images">
         <div class="photo">
-          {{#each postImages}}
+          {{#each postDetail.postImages}}
             <img src={{this}} alt="place" />
           {{/each}}
         </div>
@@ -139,8 +139,8 @@
      </div>
 
 
-  <div class="grid-container-comments">
-    <div class="grid-item-comments">
+  <div class="grid-container-commentinput">
+    <div class="grid-item-commentinput">
       <h3>Leave a comment</h3>
       <form action="/private/post/{{postDetail._id}}" 
             id="comment-form"
@@ -187,11 +187,12 @@
     </div>
     <div class="grid-container-comments">
     <div class="grid-item-comments">
+      <h3>Comments</h3>
        <ul class="comment_list">
       {{#each postDetail.comments}}
-      <li> Username: {{this.username}}</li>
-      <li>Date: {{this.commentDate}}</li>
-      <li>{{this.comment}}</li>
+      <label> Username: {{this.username}} | Date: {{this.commentDate}}</label>
+      <br/>
+      <a>{{this.comment}}</a>
       <br />
       {{/each}}
     </div>
