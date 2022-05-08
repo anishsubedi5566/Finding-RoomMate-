@@ -10,19 +10,18 @@ const userData = data.users;
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomData.getPost();
-  res.render("post/postRoom", { allpost: allPost });
+  res.render("post/postRoom", { title: "Find a room", allpost: allPost });
 });
 
 router.post("/", async (req, res) => {
-  // let { title, city, state, schoolName, budget, otherdescription } 
-  
-  let title=xss(req.body.title);
-  let city=xss(req.body.city);
-  let state=xss(req.body.state);
-  let schoolName=xss(req.body.schoolName);
-  let budget=xss(req.body.budget);
-  let otherdescription=xss(req.body.otherdescription);
+  // let { title, city, state, schoolName, budget, otherdescription }
 
+  let title = xss(req.body.title);
+  let city = xss(req.body.city);
+  let state = xss(req.body.state);
+  let schoolName = xss(req.body.schoolName);
+  let budget = xss(req.body.budget);
+  let otherdescription = xss(req.body.otherdescription);
 
   try {
     const postDate = new Date().toDateString();
@@ -96,4 +95,3 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
-

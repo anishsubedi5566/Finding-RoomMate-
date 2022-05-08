@@ -10,16 +10,25 @@ router.get("/", async (req, res) => {
   const allMessage = await postMessage.getMessage(req.session.user.username);
 
   if (allMessage == [] || allMessage == "") {
-    res
-      .status(200)
-      .render("message/message", { noMessage: "There is no message" });
+    res.status(200).render("message/message", {
+      title: "Conversations",
+      noMessage: "There is no message",
+    });
+    return;
   }
 
-  res.status(200).render("message/message", { allMessage: allMessage });
+  res
+    .status(200)
+    .render("message/message", {
+      title: "Conversations",
+      allMessage: allMessage,
+    });
 });
 
 router.get("/groupmessage", async (req, res) => {
-  res.status(200).render("message/groupmessage");
+  res
+    .status(200)
+    .render("message/groupmessage", { title: "Group Conversations" });
 });
 
 router.post("/groupmessage", async (req, res) => {
@@ -70,7 +79,9 @@ router.post("/groupmessage", async (req, res) => {
   } catch (e) {
     if (e) {
       console.log("error", e);
-      res.status(400).render("message/groupmessage", { error: e });
+      res
+        .status(400)
+        .render("message/groupmessage", { title: "Error", error: e });
       return;
     } else {
       res.status(500).json({
@@ -92,6 +103,7 @@ router.get("/viewall/:id", async (req, res) => {
       });
     }
     res.render("message/individualMessage", {
+      title: "Conversations",
       allMessage: allMessage,
       sender: allMessage[0].sendBy,
       receiver: allMessage[0].receivedBy,
@@ -100,7 +112,9 @@ router.get("/viewall/:id", async (req, res) => {
     if (e) {
       const out = { errors: e };
       console.log("error", e);
-      res.status(400).render("message/groupmessage", { error: e.message });
+      res
+        .status(400)
+        .render("message/groupmessage", { title: "Error", error: e.message });
       return;
     } else {
       res.status(500).json({
@@ -112,14 +126,12 @@ router.get("/viewall/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    // let { message, messageTo, sender, receiver }
+    let message = xss(req.body.message);
+    let messageTo = xss(req.body.messageTo);
+    let sender = xss(req.body.sender);
+    let receiver = xss(req.body.receiver);
 
-    // let { message, messageTo, sender, receiver } 
-    let message=xss(req.body.message);
-    let  messageTo=xss(req.body.messageTo);
-    let sender=xss(req.body.sender);
-    let receiver=xss(req.body.receiver)
-
-    
     let sendBy, receivedBy;
     if (xss(req.body.messageTo)) {
       sendBy = req.session.user.username;
@@ -152,7 +164,9 @@ router.post("/", async (req, res) => {
   } catch (e) {
     if (e) {
       const out = { errors: e };
-      res.status(400).render("post/postRoom", { error: e.message });
+      res
+        .status(400)
+        .render("post/postRoom", { title: "Error", error: e.message });
       return;
     } else {
       res.status(500).json({

@@ -16,11 +16,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
 
         <li class="nav-item">
@@ -31,30 +27,47 @@
           <a class="nav-link" href="/private/message">Message</a>
         </li>
 
-
-
-        {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/selectpost">Make Post</a>
-        </li> --}}
+        </li> }}
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
-        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
-      </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Make Post</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+            <a class="dropdown-item" href="/private/postRoomate">
+              Find Roomate</a>
+          </div>
+        </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Find</a>
+          <div class="dropdown-menu">
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
-      <div class="dropdown-menu">
-        
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
-        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
-      </li>
+            <a class="dropdown-item" href="/private/findPost/searchbyCity">
+              Find By City</a>
+            <a
+              class="dropdown-item"
+              href="/private/findPost/searchbyschoolName"
+            >Find By University</a>
+          </div>
+        </li>
 
-
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/private/aboutUs">About Us</a>
         </li>
 
@@ -62,10 +75,9 @@
           <a class="nav-link active" href="/private/contactUs">Contact Us</a>
         </li>
 
-
-       {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
+        </li> }}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -76,52 +88,52 @@
   </div>
 </nav>
 <main>
-<div class="contactus"id="contactUs_form">
-  <h1>Contact Us</h1>
-  <label for="yourname"> Name:</label>
-  <input
-    id="yourname"
-    name="yourname"
-    type="text"
-    placeholder="Enter your full name"
-    spellcheck="false"
-    required
-  />
-  <br/>
+  <div class="contactus" id="contactUs_form">
+    <h1>Contact Us</h1>
+    <label for="yourname"> Name:</label>
+    <input
+      id="yourname"
+      name="yourname"
+      type="text"
+      placeholder="Enter your full name"
+      spellcheck="false"
+      required
+    />
+    <br />
 
-  <label for="email">Email Address:</label>
-  <input
-    id="email"
-    name="email"
-    type="email"
-    placeholder="xyz@roomie.com"
-    spellcheck="false"
-    required
-  />
- <br/>
-  <label for="message_query">Enter Message:</label>
-  <input
-    type="text"
-    id="message_query"
-    name="message_query"
-    placeholder="Message"
-    required=""
-  />
- <br/>
+    <label for="email">Email Address:</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="xyz@roomie.com"
+      spellcheck="false"
+      required
+    />
+    <br />
+    <label for="message_query">Enter Message:</label>
+    <input
+      type="text"
+      id="message_query"
+      name="message_query"
+      placeholder="Message"
+      required=""
+    />
+    <br />
 
- <div id="output_text">
-    <div id="output_text"></div>
+    <div class="output_text">
+      <div id="output_text"></div>
+    </div>
+
+    {{errors}}
+
+    <input
+      class="btn btn-primary"
+      type="submit"
+      value="Submit"
+      onclick="firecontactUs(event)"
+    />
+    <br />
   </div>
-
-  {{errors}}
-
-  <input
-        class="btn btn-primary"
-        type="submit"
-        value="Submit"
-        onclick="firecontactUs(event)"
-      />
-  <br />
-
-<script src="/public/js/contactUs.js"></script>
+  <script src="/public/js/contactUs.js"></script>
 </main>

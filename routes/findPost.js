@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/searchbyCity", async (req, res) => {
-  res.render("find/searchbyCity");
+  res.render("find/searchbyCity", { title: "Find" });
 });
 
 router.post("/searchbyCity", async (req, res) => {
@@ -21,7 +21,7 @@ router.post("/searchbyCity", async (req, res) => {
 
     const result = await searchData.searchCity(city);
 
-    res.render("find/searchbyCity", { allpost: result });
+    res.render("find/searchbyCity", { title: "Find", allpost: result });
   } catch (e) {
     if (e) {
       res.status(400).render("find/searchbyCity", { errors: e });
@@ -36,11 +36,11 @@ router.post("/searchbyCity", async (req, res) => {
 
 //searchbyschoolName
 router.get("/searchbyschoolName", async (req, res) => {
-  res.render("find/searchbyschoolName");
+  res.render("find/searchbyschoolName", { title: "Find" });
 });
 
 router.post("/searchbyschoolName", async (req, res) => {
-  const schoolName =xss(req.body.schoolName);
+  const schoolName = xss(req.body.schoolName);
 
   try {
     //check if schoolName is provided and valid
@@ -49,7 +49,7 @@ router.post("/searchbyschoolName", async (req, res) => {
 
     const result = await searchData.searchschoolName(schoolName);
     // console.log(result);
-    res.render("find/searchbyschoolName", { allpost: result });
+    res.render("find/searchbyschoolName", { title: "Find", allpost: result });
   } catch (e) {
     if (e) {
       res.status(400).render("find/searchbyschoolName", { errors: e });
@@ -68,10 +68,10 @@ router.get("/searchbymyPost", async (req, res) => {
   const user = req.session.user.username;
   try {
     //check if user is provided and valid
-    
+
     const result = await searchData.searchmyPost(user);
     console.log("result in routes", result);
-    res.render("find/searchbymyPost", { allpost: result });
+    res.render("find/searchbymyPost", { title: "Find", allpost: result });
   } catch (e) {
     if (e) {
       res.status(400).render("find/searchbymyPost", { errors: e });

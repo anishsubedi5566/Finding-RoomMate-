@@ -35,7 +35,7 @@ function validateSignUpInputs(e) {
     errorMessage = "Please provide a valid password";
   } else if (passwordVal.length < 6) {
     errorMessage = "Password must be more than 5 characters";
-  } else if (securityQuesVal == "None") {
+  } else if (securityQuesVal == "") {
     errorMessage = "Please select the security question";
   } else if (
     !securityAnsVal ||
@@ -66,17 +66,17 @@ function validateSignUpInputs(e) {
     errorMessage = "Please provide your email";
   } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailVal)) {
     errorMessage = "Provided email is invalid";
-  } else if (schoolNameVal == "None") {
+  } else if (schoolNameVal == "") {
     errorMessage = "Please select your school";
-  } else if (cityVal == "None") {
+  } else if (cityVal == "") {
     errorMessage = "Please select a city where you want to live";
-  } else if (stateVal == "None") {
+  } else if (stateVal == "") {
     errorMessage = "Please select a state where you want to live";
   } else if (!ageVal || ageVal == null || ageVal == undefined) {
     errorMessage = "Please provide a age";
   } else if (ageVal < 15 || ageVal > 100) {
     errorMessage = "Age must be greater than 15 or less than 100";
-  } else if (genderVal == "None") {
+  } else if (genderVal == "") {
     errorMessage = "Please identify your gender";
   } else {
     errorMessage = null;

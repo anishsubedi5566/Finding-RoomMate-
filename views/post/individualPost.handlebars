@@ -42,6 +42,7 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" href="/private/postRoom">Find Room</a>
         <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
+        </div>
       </li>
 
 
@@ -51,6 +52,7 @@
         
         <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
         <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
+        </div>
       </li>
 
 
@@ -82,7 +84,7 @@
   
  
     <div class="grid-item">
-    <ul>
+   
     <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
     
      <div class="cssroom-div">
@@ -101,12 +103,12 @@
       {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br />
      </div>
-    </ul>
+    
     </div>
   
      {{else}}
       <div class="grid-item">
-      <ul>
+      
       <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
       <div class="cssroom-div">
       <h2>{{postDetail.title}} </h2>
@@ -128,12 +130,12 @@
       <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
       <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
       <label>Rent: $ {{postDetail.rent}}</label>
-      <p>People Living Currently: {{postDetail.peoplelivingcurrently}}</p>
+      <label>People Living Currently: {{postDetail.peoplelivingcurrently}}</label>
       <label>Other Description: {{postDetail.otherdescription}}</label>
        {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br/>
       <div/>
-      </ul>
+      
       </div>
      {{/ifEqual}}
      </div>
@@ -146,7 +148,7 @@
             id="comment-form"
             method="POST">
        <div class="comment-form">
-          <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/>
+          {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
          <input
           id="comment"
           name="comment"
@@ -170,7 +172,7 @@
       <div class="message-form">
         {{!-- <label>To:</label>
     --}}
-        <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/>
+        {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
 
         <h3>Send a Message</h3>
         <input
@@ -188,13 +190,14 @@
     <div class="grid-container-comments">
     <div class="grid-item-comments">
       <h3>Comments</h3>
-       <ul class="comment_list">
+       
       {{#each postDetail.comments}}
-      <label> Username: {{this.username}} | Date: {{this.commentDate}}</label>
+      <label>Username: {{this.username}}, {{this.commentDate}}</label>
       <br/>
-      <a>{{this.comment}}</a>
+      <h5>{{this.comment}}</h5>
       <br />
       {{/each}}
+      
     </div>
     </div>
      {{#if error}}

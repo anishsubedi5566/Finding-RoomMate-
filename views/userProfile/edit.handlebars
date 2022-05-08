@@ -16,11 +16,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
 
         <li class="nav-item">
@@ -31,30 +27,47 @@
           <a class="nav-link" href="/private/message">Message</a>
         </li>
 
-
-
-        {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/selectpost">Make Post</a>
-        </li> --}}
+        </li> }}
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
-        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
-      </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Make Post</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+            <a class="dropdown-item" href="/private/postRoomate">
+              Find Roomate</a>
+          </div>
+        </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Find</a>
+          <div class="dropdown-menu">
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
-      <div class="dropdown-menu">
-        
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
-        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
-      </li>
+            <a class="dropdown-item" href="/private/findPost/searchbyCity">
+              Find By City</a>
+            <a
+              class="dropdown-item"
+              href="/private/findPost/searchbyschoolName"
+            >Find By University</a>
+          </div>
+        </li>
 
-
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/private/aboutUs">About Us</a>
         </li>
 
@@ -62,10 +75,9 @@
           <a class="nav-link" href="/private/contactUs">Contact Us</a>
         </li>
 
-
-       {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
+        </li> }}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -94,13 +106,10 @@
           class="profile_image"
         />
         <br />
-        <div
-          class="input-group mb-3 image_upload_option"
-          >
+        <div class="input-group mb-3 image_upload_option">
           <input
             type="file"
             class="form-control"
-            
             id="picture"
             name="picture"
             accept=".jpg,.gif,.png,.jpeg"
@@ -142,12 +151,12 @@
         />
         <br />
         <label for="schoolName">School Name</label>
-        <select id="schoolName" name="schoolName" required>
+        <select id="schoolName" name="schoolName" size="1" required>
           <option
             value={{user.schoolName}}
             selected
           >{{user.schoolName}}</option>
-          
+
           <option value="Stevens Institute of Technology">Stevens Institute of
             Technology</option>
           <option value="New York University">New York University</option>
@@ -165,7 +174,7 @@
         </select>
         <br />
         <label for="city">City</label>
-        <select id="city" name="city" required>
+        <select id="city" name="city" size="1" required>
           <option value={{user.city}} selected>{{user.city}}</option>
           <option value="Austin">Austin</option>
           <option value="Boston">Boston</option>
@@ -184,7 +193,7 @@
         </select>
         <br />
         <label for="state">State</label>
-        <select id="state" name="state" required>
+        <select id="state" name="state" size="1" required>
           <option value={{user.state}} selected>{{user.state}}</option>
           <option value="Arizona">Arizona</option>
           <option value="California">California</option>
@@ -198,7 +207,7 @@
         </select>
         <br />
         <label for="homeCountry">Native Country</label>
-        <select id="homeCountry" name="homeCountry" required>
+        <select id="homeCountry" name="homeCountry" size="1" required>
           <option
             value={{user.homeCountry}}
             selected
@@ -232,7 +241,7 @@
         />
         <br />
         <label for="gender">Gender</label>
-        <select id="gender" name="gender" required>
+        <select id="gender" name="gender" size="1" required>
           <option value={{user.gender}} selected>{{user.gender}}</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -265,12 +274,11 @@
     class="btn btn-danger"
     onclick="confirmDelete();"
   >Delete Account</button>
-  
+
 </div>
 <script src="/public/js/editProfile.js"></script>
 <script>
-  function confirmDelete() { let text = "Are you sure you want to permanentlydelete your ROOMIE account? "; 
-  if (confirm(text) == true) { 
-    window.location.href='/private/deleteProfile'
-  } }
+  function confirmDelete() { let text = "Are you sure you want to
+  permanentlydelete your ROOMIE account? "; if (confirm(text) == true) {
+  window.location.href='/private/deleteProfile' } }
 </script>

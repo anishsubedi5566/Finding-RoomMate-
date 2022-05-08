@@ -18,10 +18,8 @@ function validateForgotPassInputs(e) {
     errorMessage = "Please provide a valid username";
   } else if (usernameVal.length < 4) {
     errorMessage = "Username must be more than 3 characters";
-  } else if (securityQuesVal == "None") {
+  } else if (securityQuesVal == "") {
     errorMessage = "Please select a security question";
-  } else if (securityQuesVal == "None") {
-    errorMessage = "Please select the security question";
   } else if (
     !securityAnsVal ||
     securityAnsVal.trim().length == "" ||
