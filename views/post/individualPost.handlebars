@@ -162,7 +162,21 @@
       </form>
   </div>
   </div>
-  <div class="grid-container-message">
+  
+    <div class="grid-container-comments">
+    <div class="grid-item-comments">
+      <h3>Comments</h3>
+       
+      {{#each postDetail.comments}}
+      <label>Username: {{this.username}}, {{this.commentDate}}</label>
+      <br/>
+      <h5>{{this.comment}}</h5>
+      <br />
+      {{/each}}
+      
+    </div>
+    </div>
+    <div class="grid-container-message">
     <div class="grid-item-message">
 <form
       action="/private/message/indi"
@@ -184,19 +198,6 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
-    </div>
-    </div>
-    <div class="grid-container-comments">
-    <div class="grid-item-comments">
-      <h3>Comments</h3>
-       
-      {{#each postDetail.comments}}
-      <label>Username: {{this.username}}, {{this.commentDate}}</label>
-      <br/>
-      <h5>{{this.comment}}</h5>
-      <br />
-      {{/each}}
-      
     </div>
     </div>
      {{#if error}}
