@@ -17,12 +17,10 @@ router.get("/", async (req, res) => {
     return;
   }
 
-  res
-    .status(200)
-    .render("message/message", {
-      title: "Conversations",
-      allMessage: allMessage,
-    });
+  res.status(200).render("message/message", {
+    title: "Conversations",
+    allMessage: allMessage,
+  });
 });
 
 router.get("/groupmessage", async (req, res) => {
@@ -43,7 +41,7 @@ router.post("/groupmessage", async (req, res) => {
   try {
     if (xss(req.body.sendto.length < 1)) throw "Send field cannot be empty";
     if (xss(req.body.message < 1)) throw "Send message cannot be empty";
-    
+
     allUserArray = allUserArray.map((each) => each.trim(each));
     allUserArray = allUserArray.filter((element) => {
       return element !== "";
@@ -91,14 +89,14 @@ router.get("/viewall/:id", async (req, res) => {
       });
     }
     let array = req.params.id.split("-");
-    let senderinfo = req.session.user.username
+    let senderinfo = req.session.user.username;
     let receiver;
-    if(array[0] == senderinfo){
-      receiver = array[1]
-    }else{
-      receiver = array[0]
+    if (array[0] == senderinfo) {
+      receiver = array[1];
+    } else {
+      receiver = array[0];
     }
-  
+
     res.render("message/individualMessage", {
       title: "Conversations",
       allMessage: allMessage,
@@ -126,9 +124,10 @@ router.post("/", async (req, res) => {
   let receivedBy = xss(req.body.receiver);
   let sendBy = xss(req.body.sender);
   try {
-    if(!message || typeof message != "string") throw "must have message"
-    if(!receivedBy || typeof receivedBy != "string") throw "must have receiver name"
-    if(!sendBy || typeof sendBy != "string") throw "must have sender name"
+    if (!message || typeof message != "string") throw "must have message";
+    if (!receivedBy || typeof receivedBy != "string")
+      throw "must have receiver name";
+    if (!sendBy || typeof sendBy != "string") throw "must have sender name";
 
     date = new Date().toDateString();
     const output = await postMessage.createMessage(
@@ -144,8 +143,8 @@ router.post("/", async (req, res) => {
   } catch (e) {
     if (e) {
       const out = { errors: e };
-      
-        res.redirect(`/private/message/viewall/${sendBy}-${receivedBy}`);
+
+      res.redirect(`/private/message/viewall/${sendBy}-${receivedBy}`);
       return;
     } else {
       res.status(500).json({
@@ -157,15 +156,14 @@ router.post("/", async (req, res) => {
 
 router.post("/indi", async (req, res) => {
   try {
-   
     let message = xss(req.body.message);
-    let receivedBy = xss(req.body.receiver);;
+    let receivedBy = xss(req.body.receiver);
 
-    if(!message || typeof message != "string") throw "must have message"
-    if(!receivedBy || typeof receivedBy != "string") throw "must have receiver name"
+    if (!message || typeof message != "string") throw "must have message";
+    if (!receivedBy || typeof receivedBy != "string")
+      throw "must have receiver name";
 
-   let sendBy = req.session.user.username;
-   
+    let sendBy = req.session.user.username;
 
     date = new Date().toDateString();
     const output = await postMessage.createMessage(
@@ -176,7 +174,7 @@ router.post("/indi", async (req, res) => {
     );
 
     if (output) {
-      res.redirect("/private");
+      res.redirect("/private/message");
     }
   } catch (e) {
     if (e) {
