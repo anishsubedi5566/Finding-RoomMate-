@@ -64,9 +64,31 @@ When users click the “Sign Up” button on the landing page, they are redirect
 
 When users are browsing posts from other users, they have the option to view the entire post with the “Click here to view this whole post!” button. Once the user clicks on this, they can view the individual post while also having the options to send a message to the original poster or posting a comment for other people to see. Users can see previous comments submitted by other users on this page. These individual comments display the username of the comment poster and the date.
 
-Extra Features:
+## Github Link: https://github.com/rahulpawar166/Group_07
+#### Mandatory Steps to Use Website
+1. Make sure there is internet connection, this is necessary for the data on our website.
+2. Pull code from the main branch of the repository.
+3. Use “npm install” in the terminal to install our dependencies 
+4. Seed database by running “cd tasks” -> “node seed.js” or use command “npm seed”
+5. Run the “npm start” command to start the server. 
+6. Navigate to http://localhost:3000 to be redirected to our home page.
 
-1. Getting contact details of current university students.
-2. Users can hide their contact information.
-3. Users can report other users.
-4. Users can comment below the posted post.
+####  Roomie homepage (http://localhost:3000)
+1. The navigation bar contains a link to the home page, an “About Us” page, a Login page, and a “Sign Up” page.
+2. By clicking on the “Roomie” button or “Home” button, the user is redirected to the home page that displays posts from different users. 
+3. By clicking on the “About Us” button, the user will be redirected to the About Us page where the Roomie application is explained. This is located at the URL: http://localhost:3000/aboutUs 
+4. By clicking on “Login” the user is redirected to the Login page at the URL: http://localhost:3000/login. The user can log in with their existing account and is redirected to the home page. If the login does not exist in the database, the user is prompted to retype their credentials. In the case that the user has forgotten their password, they can click on the “Forgot password” button to be redirected to http://localhost:3000/forgot to answer a security question and update their password. In the case that they do not have an account, Users can click the “Need to register? Click here to sign-up” in order to register. This redirects them to http://localhost:3000/signup . 
+5. By clicking on the “Sign Up” button, the user is redirected to http://localhost:3000/signup and prompted to fill in their account information. If the user is missing fields or entering inputs of wrong data types, the website prompts them to fill the fields out correctly. If the data is entered correctly, they are redirected to the Login page. 
+6. By clicking on the Profile button on the navigation bar, users are redirected to http://localhost:3000/private/profile and are able to edit their profile, redirecting them to http://localhost:3000/private/profile/edit in order to update their account. Users are also able to see all of their posts by clicking on the “My Posts” button, redirecting them to http://localhost:3000/private/findPost/searchbymyPost. 
+7. By clicking on the “Make Post” button, users are able to make a post based on whether they want to find an apartment, or a roommate for their apartment by choosing an option in a drop-down menu. These options lead to the routes  http://localhost:3000/private/postRoom and http://localhost:3000/private/postRoomate based on whether they want a roommate or a room. http://localhost:3000/private/postRoom allows you to fill out preferred properties of the room as well as personal preferences. http://localhost:3000/private/postRoomate allows you to post information about the user’s apartment and roommate preferences.
+8. By clicking on the Find button, users are able to search for posts based on Universities and cities in a dropdown with the options “Find by City” and “Find by University.” Both of these routes http://localhost:3000/private/findPost/searchbyCity and http://localhost:3000/private/findPost/searchbyschoolName allow the user to select their school or city to view all posts associated with them. 
+9. By clicking on the Contact Us button the user is redirected to http://localhost:3000/private/contactUs and is able to send a message to the developers. 
+10. By clicking on the Logout button, the user is redirected to the home page at http://localhost:3000/. 
+ 
+Extra Features:
+Getting contact details of current university students.
+Users can hide their contact information.
+Users can report other users.
+Users can comment below the posted post.
+
+
