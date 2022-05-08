@@ -59,8 +59,8 @@ After a user has signed up, they can click on the “Find” tab and the "Find b
 When users click the “Sign Up” button on the landing page, they are redirected to /signup and prompted to fill out the information provided above. If they already have an account they can click the link under the “sign up” button to be redirected to the login page. .
 
 5. In-built messaging
-   ● Users can chat with other users.
-   ● Multiple users can form a chatting group together.
+   ● Users can message other users.
+   ● Multiple users can be messaged at once.
 
 When users are browsing posts from other users, they have the option to view the entire post with the “Click here to view this whole post!” button. Once the user clicks on this, they can view the individual post while also having the options to send a message to the original poster or posting a comment for other people to see. Users can see previous comments submitted by other users on this page. These individual comments display the username of the comment poster and the date.
 
