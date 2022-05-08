@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/private">Roomie</a>
     <button
@@ -16,11 +16,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
 
         <li class="nav-item">
@@ -31,32 +27,47 @@
           <a class="nav-link" href="/private/message">Message</a>
         </li>
 
-
-
-        {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/selectpost">Make Post</a>
-        </li> --}}
+        </li> }}
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
-        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
-        </div>
-      </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle active"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Make Post</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+            <a class="dropdown-item" href="/private/postRoomate">
+              Find Roomate</a>
+          </div>
+        </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Find</a>
+          <div class="dropdown-menu">
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
-      <div class="dropdown-menu">
-        
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
-        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
-        </div>
-      </li>
+            <a class="dropdown-item" href="/private/findPost/searchbyCity">
+              Find By City</a>
+            <a
+              class="dropdown-item"
+              href="/private/findPost/searchbyschoolName"
+            >Find By University</a>
+          </div>
+        </li>
 
-
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/private/aboutUs">About Us</a>
         </li>
 
@@ -64,10 +75,9 @@
           <a class="nav-link" href="/private/contactUs">Contact Us</a>
         </li>
 
-
-       {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
+        </li> }}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -77,111 +87,115 @@
     </div>
   </div>
 </nav>
-    <main>
-      
- 
-    {{!-- {{#if this.field === "room"}} --}}
-    {{#ifEqual postDetail.field "room"}}
-  
- <div class="postRoomContainer">
-    
-   
-    <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
-    
-     
-      
+<main>
+
+  {{!-- {{#if this.field === "room"}} --}}
+  {{#ifEqual postDetail.field "room"}}
+
+    <div class="postRoomContainer">
+
+      <a
+        href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"
+      > Posted by: {{postDetail.user}}</a>
+
       <h2>{{postDetail.title}} </h2>
-      <br>
+      <br />
       <label>Post Date:{{postDetail.postDate}}</label>
-      <br>
+      <br />
       <label>City: {{postDetail.city}} </label>
-      <br>
+      <br />
       <label>State:{{postDetail.state}}</label>
-      <br>
+      <br />
       <label>School Name: {{postDetail.schoolName}}</label>
-      <br>
+      <br />
       <label>Parking Available:{{postDetail.parkingAvailable}}</label>
-      <br>
+      <br />
       <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
-      <br>
+      <br />
       <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
-      <br>
+      <br />
       <label>Budget:$ {{postDetail.budget}}</label>
-      <br>
+      <br />
       <label>Is a student?: {{postDetail.student}}</label>
-      <br>
+      <br />
       <label>Other description: {{postDetail.otherdescription}}</label>
       {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br />
-     
-  <div class="commentinput">
-    
-      <h3>Leave a comment</h3>
-      <form action="/private/post/{{postDetail._id}}" 
-            id="comment-form"
-            method="POST">
-       <div class="comment-form">
-          {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
-         <input
-          id="comment"
-          name="comment"
-          type="text"
-          placeholder="Enter a comment"
-        />
-       <br />
-        <button type="submit" class="btn btn-primary">Comment</button>
-       </div>    
-      </form>
-  
-  </div>
 
-  <div class="postRoomMessage">
-   
-<form
-      action="/private/message/indi"
-      id="message-form"
-      method="POST"
-    >
-      <div class="message-form">
-        {{!-- <label>To:</label>
-    --}}
-        {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
-      <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/>
-        <h3>Send a Message</h3>
-        <input
-          id="message"
-          name="message"
-          type="text"
-          placeholder="Enter Message"
-        />
-        <br />
-        <button type="submit" class="btn btn-primary">Send</button>
+      <div class="commentinput">
+
+        <h3>Leave a comment</h3>
+        <form
+          action="/private/post/{{postDetail._id}}"
+          id="comment-form"
+          method="POST"
+        >
+          <div class="comment-form">
+            {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
+            <input
+              id="comment"
+              name="comment"
+              type="text"
+              placeholder="Enter a comment"
+            />
+            <br />
+            <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
+
       </div>
-    </form>
-    
-    </div>
 
-  </div>
-  <div class="grid-container-comments">
-    <div class="grid-item-comments">
-      <h3>Comments</h3>
-       
-      {{#each postDetail.comments}}
-      <label>Username: {{this.username}}, {{this.commentDate}}</label>
-      <br/>
-      <h5>{{this.comment}}</h5>
-      <br />
-      {{/each}}
-      
+      <div class="postRoomMessage">
+
+        <form action="/private/message/indi" id="message-form" method="POST">
+          <div class="message-form">
+            {{! <label>To:</label>
+    }}
+            {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
+            <input
+              type="text"
+              name="receiver"
+              value={{postDetail.user}}
+              readonly="true"
+              hidden
+            />
+            <h3>Send a Message</h3>
+            <input
+              id="message"
+              name="message"
+              type="text"
+              placeholder="Enter Message"
+            />
+            <br />
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+
+      </div>
+
     </div>
+    <div class="grid-container-comments">
+      <div class="grid-item-comments">
+        <h3>Comments</h3>
+
+        {{#each postDetail.comments}}
+          <label>Username: {{this.username}}, {{this.commentDate}}</label>
+          <br />
+          <h5>{{this.comment}}</h5>
+          <br />
+        {{/each}}
+
+      </div>
     </div>
-     {{else}}
-      
-      <div class="postRoommateContainer">
-      <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
-      
+  {{else}}
+
+    <div class="postRoommateContainer">
+      <a
+        href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"
+      > Posted by: {{postDetail.user}}</a>
+
       <h2>{{postDetail.title}} </h2>
-      
+
       <div class="images">
         <div class="photo">
           {{#each postDetail.postImages}}
@@ -199,83 +213,83 @@
       <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
       <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
       <label>Rent: $ {{postDetail.rent}}</label>
-      <label>People Living Currently: {{postDetail.peoplelivingcurrently}}</label>
+      <label>People Living Currently:
+        {{postDetail.peoplelivingcurrently}}</label>
       <label>Other Description: {{postDetail.otherdescription}}</label>
-       {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
-      <br/>
-      <div class="commentinput">
-    
-      <h3>Leave a comment</h3>
-      <form action="/private/post/{{postDetail._id}}" 
-            id="comment-form"
-            method="POST">
-       <div class="comment-form">
-          {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
-         <input
-          id="comment"
-          name="comment"
-          type="text"
-          placeholder="Enter a comment"
-        />
-       <br />
-        <button type="submit" class="btn btn-primary">Comment</button>
-       </div>    
-      </form>
-  
-  </div>
-
-
-  <div class="postRoommateMessage">
-   
-
-<form
-      action="/private/message/indi"
-      id="message-form"
-      method="POST"
-    >
-      <div class="message-form">
-      
-        <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/>
-
-        <h3>Send a Message</h3>
-        <input
-          id="message"
-          name="message"
-          type="text"
-          placeholder="Enter Message"
-        />
-        <br />
-        <button type="submit" class="btn btn-primary">Send</button>
-      </div>
-    </form>
-    
-    </div>
-    <div class="grid-container-comments">
-    <div class="grid-item-comments">
-      <h3>Comments</h3>
-       
-      {{#each postDetail.comments}}
-      <label>Username: {{this.username}}, {{this.commentDate}}</label>
-      <br/>
-      <h5>{{this.comment}}</h5>
+      {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br />
-      {{/each}}
-      
-    </div>
-    </div>
-      
-     {{/ifEqual}}
+      <div class="commentinput">
 
-  
+        <h3>Leave a comment</h3>
+        <form
+          action="/private/post/{{postDetail._id}}"
+          id="comment-form"
+          method="POST"
+        >
+          <div class="comment-form">
+            {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
+            <input
+              id="comment"
+              name="comment"
+              type="text"
+              placeholder="Enter a comment"
+            />
+            <br />
+            <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
 
+      </div>
+
+      <div class="postRoommateMessage">
+
+        <form action="/private/message/indi" id="message-form" method="POST">
+          <div class="message-form">
+
+            <input
+              type="text"
+              name="receiver"
+              value={{postDetail.user}}
+              readonly="true"
+              hidden
+            />
+
+            <h3>Send a Message</h3>
+            <input
+              id="message"
+              name="message"
+              type="text"
+              placeholder="Enter Message"
+            />
+            <br />
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="grid-container-comments">
+        <div class="grid-item-comments">
+          <h3>Comments</h3>
+
+          {{#each postDetail.comments}}
+            <label>Username: {{this.username}}, {{this.commentDate}}</label>
+            <br />
+            <h5>{{this.comment}}</h5>
+            <br />
+          {{/each}}
+
+        </div>
+      </div>
     </div>
-     {{#if error}}
-          <div class="alert alert-danger" role="alert">
-            {{error}}
-          </div>
-        {{else}}
-          <div class="alert alert-danger" hidden role="alert">
-            {{error}}
-          </div>
-        {{/if}}
+  {{/ifEqual}}
+
+  {{#if error}}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+  {{else}}
+    <div class="alert alert-danger" hidden role="alert">
+      {{error}}
+    </div>
+  {{/if}}
 </main>

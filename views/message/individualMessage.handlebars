@@ -16,11 +16,7 @@
       <ul class="navbar-nav">
 
         <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            href="/private"
-          >Home</a>
+          <a class="nav-link" aria-current="page" href="/private">Home</a>
         </li>
 
         <li class="nav-item">
@@ -31,30 +27,47 @@
           <a class="nav-link" href="/private/message">Message</a>
         </li>
 
-
-
-        {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/selectpost">Make Post</a>
-        </li> --}}
+        </li> }}
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
-        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
-      </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Make Post</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+            <a class="dropdown-item" href="/private/postRoomate">
+              Find Roomate</a>
+          </div>
+        </li>
 
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Find</a>
+          <div class="dropdown-menu">
 
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
-      <div class="dropdown-menu">
-        
-        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By city</a>
-        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
-      </li>
+            <a class="dropdown-item" href="/private/findPost/searchbyCity">
+              Find By city</a>
+            <a
+              class="dropdown-item"
+              href="/private/findPost/searchbyschoolName"
+            >Find By University</a>
+          </div>
+        </li>
 
-
-  <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="/private/aboutUs">About Us</a>
         </li>
 
@@ -62,10 +75,9 @@
           <a class="nav-link" href="/private/contactUs">Contact Us</a>
         </li>
 
-
-       {{!-- <li class="nav-item">
+        {{! <li class="nav-item">
           <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
+        </li> }}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -76,30 +88,38 @@
   </div>
 </nav>
 
-<div class="grid-container">
-    <div class="grid-item">
-      <h3>Message</h3>
-<ul class="message_list">
-  {{#each allMessage}}
-    <label>From: {{this.sendBy}} | To: {{this.receivedBy}}, {{this.date}}</label>
-    {{!-- <label>Date: {{this.date}}</label> --}}
-    <h4>{{this.message}}</h4>
-    
-    <br />
-  {{/each}}
-</ul>
-</div>
-</div>
-<div class="grid-container-commentinput">
-    <div class="grid-item-commentinput">
-<form
-      action="/private/message/"
-      id="message-form"
-      method="POST"
-    >
+<div class="grid-container indiMessage">
+  <div class="grid-item">
+    <h3>Message</h3>
+
+    {{#each allMessage}}
+      <label>From:
+        {{this.sendBy}}
+        | To:
+        {{this.receivedBy}},
+        {{this.date}}</label>
+      {{!-- <label>Date: {{this.date}}</label> --}}
+      <h4>{{this.message}}</h4>
+
+      <br />
+    {{/each}}
+
+    <form action="/private/message/" id="message-form" method="POST">
       <div class="form">
-        <input type="text" name="sender" value={{{sender}}} readonly="true" hidden/>
-        <input type="text" name="receiver" value={{{receiver}}} readonly="true" hidden />
+        <input
+          type="text"
+          name="sender"
+          value={{{sender}}}
+          readonly="true"
+          hidden
+        />
+        <input
+          type="text"
+          name="receiver"
+          value={{{receiver}}}
+          readonly="true"
+          hidden
+        />
 
         <label>Reply</label>
         <input
@@ -112,8 +132,10 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
-  
-      {{!-- </div> --}}
-      </div>
+  </div>
 
-{{!-- <script src="/public/js/message.js"></script> --}}
+</div>
+
+{{! </div> }}
+
+{{! <script src="/public/js/message.js"></script> }}

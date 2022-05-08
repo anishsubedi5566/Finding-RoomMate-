@@ -901,3 +901,58 @@ p {
   font-weight: bold;
   font-size: large;
 }
+
+/* Individual message page */
+.indiMessage label {
+  width: 80%;
+}
+
+.indiMessage form {
+  border-top: 1px solid black;
+}
+
+.indiMessage form label {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.indiMessage form input {
+  width: 80%;
+}
+
+.indiMessage form button {
+  margin-top: 20px;
+}
+
+/* Group message css */
+.groupMessageCont {
+  margin: 100px auto;
+  width: 90%;
+  max-width: 440px;
+  height: 300px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  text-indent: none;
+  color: #333;
+}
+
+.groupMessageCont h2 {
+  font-size: 30px;
+  color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightslategray;
+}
+
+.groupMessageCont input {
+  width: 70%;
+  margin: 20px;
+  padding: 10px;
+}
