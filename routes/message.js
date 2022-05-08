@@ -17,12 +17,10 @@ router.get("/", async (req, res) => {
     return;
   }
 
-  res
-    .status(200)
-    .render("message/message", {
-      title: "Conversations",
-      allMessage: allMessage,
-    });
+  res.status(200).render("message/message", {
+    title: "Conversations",
+    allMessage: allMessage,
+  });
 });
 
 router.get("/groupmessage", async (req, res) => {
@@ -33,7 +31,6 @@ router.get("/groupmessage", async (req, res) => {
 
 router.post("/groupmessage", async (req, res) => {
   let allUserArray = xss(req.body.sendto).split(",");
-  console.log(allUserArray);
   let output;
   let sendBy = req.session.user.username;
   let date = new Date().toDateString();
@@ -41,28 +38,18 @@ router.post("/groupmessage", async (req, res) => {
   let i = 0;
   let receivedBy;
 
-  // try {
-  //   for (let i = 0; i < allUserArray.length; i++) {
-  //     await userData.getUserByUsername(allUserArray[i]);
-  //   }
-  // } catch (e) {
-  //   console.log("error", e);
-  //   res.status(400).render("message/groupmessage", {
-  //     error: "Please verify if all the usernames are correct",
-  //   });
-  //   return;
-  // }
-
   try {
     if (xss(req.body.sendto.length < 1)) throw "Send field cannot be empty";
     if (xss(req.body.message < 1)) throw "Send message cannot be empty";
-    for (let i = 0; i < allUserArray.length; i++) {
-      await userData.getUserByUsername(allUserArray[i]);
-    }
+
     allUserArray = allUserArray.map((each) => each.trim(each));
     allUserArray = allUserArray.filter((element) => {
       return element !== "";
     });
+
+    for (let i = 0; i < allUserArray.length; i++) {
+      await userData.getUserByUsername(allUserArray[i]);
+    }
 
     for (i = 0; i < allUserArray.length; i++) {
       receivedBy = allUserArray[i];
@@ -96,17 +83,25 @@ router.get("/viewall/:id", async (req, res) => {
     if (!req.params.id) throw "Id cannot be empty";
     if (typeof req.params.id !== "string") throw "Id cannot be empty";
     const allMessage = await postMessage.getSpecificMessage(req.params.id);
-    console.log("allMessage", allMessage);
     if (allMessage.length < 1) {
       res.render("message/individualMessage", {
         message: "No conversation is found",
       });
     }
+    let array = req.params.id.split("-");
+    let senderinfo = req.session.user.username;
+    let receiver;
+    if (array[0] == senderinfo) {
+      receiver = array[1];
+    } else {
+      receiver = array[0];
+    }
+
     res.render("message/individualMessage", {
       title: "Conversations",
       allMessage: allMessage,
-      sender: allMessage[0].sendBy,
-      receiver: allMessage[0].receivedBy,
+      sender: senderinfo,
+      receiver: receiver,
     });
   } catch (e) {
     if (e) {
@@ -125,30 +120,14 @@ router.get("/viewall/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  let message = xss(req.body.message);
+  let receivedBy = xss(req.body.receiver);
+  let sendBy = xss(req.body.sender);
   try {
-    // let { message, messageTo, sender, receiver }
-    let message = xss(req.body.message);
-    let messageTo = xss(req.body.messageTo);
-    let sender = xss(req.body.sender);
-    let receiver = xss(req.body.receiver);
-
-    let sendBy, receivedBy;
-    if (xss(req.body.messageTo)) {
-      sendBy = req.session.user.username;
-      receivedBy = messageTo;
-    }
-    if (xss(req.body.sender) || xss(req.body.receiver)) {
-      sendBy = sender;
-      receivedBy = receiver;
-    }
-    sendBy = req.session.user.username;
-    if (sendBy) {
-      if (sendBy == sender) {
-        receivedBy = receiver;
-      } else {
-        receivedBy = sender;
-      }
-    }
+    if (!message || typeof message != "string") throw "must have message";
+    if (!receivedBy || typeof receivedBy != "string")
+      throw "must have receiver name";
+    if (!sendBy || typeof sendBy != "string") throw "must have sender name";
 
     date = new Date().toDateString();
     const output = await postMessage.createMessage(
@@ -159,7 +138,43 @@ router.post("/", async (req, res) => {
     );
 
     if (output) {
-      res.redirect("/private");
+      res.redirect(`/private/message/viewall/${sendBy}-${receivedBy}`);
+    }
+  } catch (e) {
+    if (e) {
+      const out = { errors: e };
+
+      res.redirect(`/private/message/viewall/${sendBy}-${receivedBy}`);
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+  }
+});
+
+router.post("/indi", async (req, res) => {
+  try {
+    let message = xss(req.body.message);
+    let receivedBy = xss(req.body.receiver);
+
+    if (!message || typeof message != "string") throw "must have message";
+    if (!receivedBy || typeof receivedBy != "string")
+      throw "must have receiver name";
+
+    let sendBy = req.session.user.username;
+
+    date = new Date().toDateString();
+    const output = await postMessage.createMessage(
+      message,
+      receivedBy,
+      sendBy,
+      date
+    );
+
+    if (output) {
+      res.redirect("/private/message");
     }
   } catch (e) {
     if (e) {

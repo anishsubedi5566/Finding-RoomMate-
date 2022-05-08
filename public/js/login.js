@@ -1,11 +1,9 @@
-function validateForgotPassInputs(e) {
+function validatelogin(e) {
   e.preventDefault();
 
   let usernameVal = document.getElementById("username").value;
-  let securityQuesVal = document.getElementById("securityQues").value;
-  let securityAnsVal = document.getElementById("securityAns").value;
   let passwordVal = document.getElementById("password").value;
-  let forgotPassForm = document.getElementById("forgot-form");
+  let forgotPassForm = document.getElementById("login-form");
 
   let errorMessage = null;
 
@@ -18,15 +16,6 @@ function validateForgotPassInputs(e) {
     errorMessage = "Please provide a valid username";
   } else if (usernameVal.length < 4) {
     errorMessage = "Username must be more than 3 characters";
-  } else if (securityQuesVal == "") {
-    errorMessage = "Please select a security question";
-  } else if (
-    !securityAnsVal ||
-    securityAnsVal.trim().length == "" ||
-    securityAnsVal == null ||
-    securityAnsVal == undefined
-  ) {
-    errorMessage = "Please provide a Answer to the security question";
   } else if (
     !passwordVal ||
     passwordVal == null ||

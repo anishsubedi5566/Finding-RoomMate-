@@ -90,6 +90,7 @@
   action="searchbyschoolName"
   id="schoolName_search"
   method="POST"
+  onsubmit="validate_searchbyschoolName(event)"
 >
 
   <label for="schoolName">School Name</label>
@@ -177,3 +178,5 @@
 
   {{/each}}
 </div>
+
+<script src="/public/js/searchbyschoolName.js"></script>

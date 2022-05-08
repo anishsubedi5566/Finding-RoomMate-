@@ -214,18 +214,19 @@
   
   </div>
 
+
   <div class="postRoommateMessage">
    
+
 <form
-      action="/private/message"
+      action="/private/message/indi"
       id="message-form"
       method="POST"
     >
       <div class="message-form">
-        {{!-- <label>To:</label>
-    --}}
-        {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
-   <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/> 
+      
+        <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/>
+
         <h3>Send a Message</h3>
         <input
           id="message"
@@ -240,23 +241,6 @@
     
     </div>
 
-     </div>
-
-
-
-  
-    <div class="grid-container-comments">
-    <div class="grid-item-comments">
-      <h3>Comments</h3>
-       
-      {{#each postDetail.comments}}
-      <label>Username: {{this.username}}, {{this.commentDate}}</label>
-      <br/>
-      <h5>{{this.comment}}</h5>
-      <br />
-      {{/each}}
-      
-    </div>
     </div>
      {{#if error}}
           <div class="alert alert-danger" role="alert">

@@ -425,7 +425,7 @@ router.post("/login", async (req, res) => {
     }
   } catch (e) {
     if (e) {
-      const out = { errors: e };
+      const out = { error: e };
       res.status(400).render("login", out);
       return;
     } else {
