@@ -6,13 +6,12 @@ const findPostRoute = require("./findPost");
 const aboutUsRoute = require("./other");
 const contactUsRoute = require("./contactUs");
 const aboutUsNotAuthRoute = require("./notAuth");
-const makeCommentRoute = require("./makeComments");
+
 const individualPostRoute = require("./individualPostRoute");
 const messageRoute = require("./message");
 const forgotRoute = require("./forgot");
 
 const constructorMethod = (app) => {
-  app.use("/comment", makeCommentRoute);
   app.use("/", usersRoute);
   app.use("/private/post", individualPostRoute);
   app.use("/private/postRoom", postRoomRoute);

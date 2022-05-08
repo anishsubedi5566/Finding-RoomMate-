@@ -116,6 +116,13 @@
       <p>Posted By :{{this.user}}</p>
      <div class="cssroom-div">
       <label>{{this.title}} </label>
+      <div class="images">
+        <div class="photo">
+          {{#each postImages}}
+            <img src={{this}} alt="place" />
+          {{/each}}
+        </div>
+      </div>
       <label>Post Date:{{this.postDate}}</label>
       <label>Street: {{this.street}}</label>
       <label>City: {{this.city}} </label>

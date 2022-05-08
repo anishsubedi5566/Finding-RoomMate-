@@ -15,6 +15,7 @@ router.get("/:postid", async (req, res) => {
 
     const postDetail = await findIndividualPost.searchPost(req.params.postid);
     console.log("routes/individialpost/postDeatilbyID", postDetail[0]);
+    console.log(postDetail)
     res.render("post/individualPost", {
       postDetail: postDetail[0],
     });
