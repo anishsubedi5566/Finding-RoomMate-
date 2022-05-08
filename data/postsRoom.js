@@ -12,9 +12,15 @@ function checkIsString(str, var_Name) {
   if (str.length === 0) throw `${var_Name} is empty`;
 }
 
-function checkIsNumber(num,var_Name) {
+function checkIsNumber(num, var_Name) {
   if (typeof num !== "number") throw `${num} is not a number`;
   if (isNaN(num)) throw `${var_Name} is NaN`;
+}
+
+function checkIsObjectID(id) {
+  if (!ObjectId.isValid(id)) {
+    throw "ID is not a valid Object ID";
+  }
 }
 
 let exportedMethods = {
@@ -36,31 +42,31 @@ let exportedMethods = {
     
 
     //check for username
-    checkValue(user,'user');
-    checkIsString(user,'user');
+    checkValue(user, "user");
+    checkIsString(user, "user");
 
     //check postdate is valid or not
     if (!postDate) throw "postDate is empty";
 
     //check title is valid or not
     checkValue(title, "title");
-    checkIsString(title,"title");
+    checkIsString(title, "title");
 
     //city error check
-    checkValue(city,'city');
-    checkIsString(city,'city');
+    checkValue(city, "city");
+    checkIsString(city, "city");
 
     //state error check
-    checkValue(state,'state');
-    checkIsString(state,'state');
+    checkValue(state, "state");
+    checkIsString(state, "state");
 
     //schoolName error check
-    checkValue(schoolName,'schoolName');
-    checkIsString(schoolName,'schoolName');
+    checkValue(schoolName, "schoolName");
+    checkIsString(schoolName, "schoolName");
 
     //budget
-    checkValue(budget,'budget');
-    checkIsNumber(budget,'budget');
+    checkValue(budget, "budget");
+    checkIsNumber(budget, "budget");
     //convert budget into integer
     budget = parseInt(budget);
     if (budget < 100) throw "budget must be greater eqaul to 100";
@@ -124,6 +130,23 @@ let exportedMethods = {
     } catch (error) {
       console.log("error", error);
     }
+  },
+  // Get by ID method
+  async getPostRoomByID(id) {
+    if (!id) throw "Id parameter must be supplied";
+    checkIsObjectID(id);
+    checkIsString(id, "post id");
+
+    let newObjId = ObjectId(id);
+
+    const postsRoomCollection = await posts();
+    const post = await postsRoomCollection.findOne({ _id: newObjId });
+
+    if (post === null) throw "No post with that id";
+
+    //result = JSON.parse(JSON.stringify(band));
+    post._id = post["_id"].toString();
+    return post;
   },
 };
 

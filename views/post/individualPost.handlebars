@@ -6,7 +6,7 @@ Image{{postDetail.image}}
 sizeOfApartment{{postDetail.sizeOfApartment}}
 PetAllowed{{postDetail.petsAllowed}}
 
-<p>Send a message to {{postDetail.user}}</p> 
+{{!-- <p>Send a message to {{postDetail.user}}</p>  --}}
 
 <form
       action="/private/message"
@@ -14,18 +14,9 @@ PetAllowed{{postDetail.petsAllowed}}
       method="POST"
     >
       <div class="form">
-        <label>To:</label>
-        {{!-- <input
-          id="messageTo"
-          name="messageTo"
-          type="text"
-          value={{postDetail.user}}
-            disabled
-          placeholder="Enter Message"
-        />
-        <br /> --}}
-
-        <input type="text" name="messageTo" value={{postDetail.user}} readonly="true"/>
+        {{!-- <label>To:</label>
+    --}}
+        <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/>
 
         <label>Send a Message</label>
         <input

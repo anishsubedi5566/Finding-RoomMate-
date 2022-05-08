@@ -18,6 +18,11 @@ function checkIsNumber(num, var_Name) {
 
   if (isNaN(num)) throw `${var_Name} is NaN`;
 }
+function checkIsObjectID(id) {
+  if (!ObjectId.isValid(id)) {
+    throw "ID is not a valid Object ID";
+  }
+}
 
 let exportedMethods = {
   async createPost(
@@ -140,6 +145,7 @@ let exportedMethods = {
       peoplelivingcurrently: peoplelivingcurrently,
       otherdescription: otherdescription,
       postImages: picture,
+      comments: [],
     };
 
     try {
@@ -168,6 +174,23 @@ let exportedMethods = {
     } catch (error) {
       console.log("error", error);
     }
+  },
+  // Get by ID method
+  async getPostRoommateByID(id) {
+    if (!id) throw "Id parameter must be supplied";
+    checkIsObjectID(id);
+    checkIsString(id, "post id");
+
+    let newObjId = ObjectId(id);
+
+    const postsRoommateCollection = await posts();
+    const post = await postsRoommateCollection.findOne({ _id: newObjId });
+
+    if (post === null) throw "No post with that id";
+
+    //result = JSON.parse(JSON.stringify(band));
+    post._id = post["_id"].toString();
+    return post;
   },
 };
 

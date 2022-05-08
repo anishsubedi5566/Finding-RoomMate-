@@ -20,4 +20,5 @@ module.exports = {
   users: getCollectionFn("users"),
   posts: getCollectionFn("posts"),
   messages: getCollectionFn("messages"),
+  comments: getCollectionFn("comments"),
 };
