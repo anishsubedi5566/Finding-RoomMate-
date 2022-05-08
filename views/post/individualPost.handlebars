@@ -1,24 +1,178 @@
-<p> All the values are passed here! Make a Form</p>
-<p> To edit: Views/post/individulPost</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/private">Roomie</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
 
-postDate{{postDetail.postDate}}
-Image{{postDetail.image}}
-sizeOfApartment{{postDetail.sizeOfApartment}}
-PetAllowed{{postDetail.petsAllowed}}
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="/private"
+          >Home</a>
+        </li>
 
-{{!-- <p>Send a message to {{postDetail.user}}</p>  --}}
+        <li class="nav-item">
+          <a class="nav-link" href="/private/profile">Profile</a>
+        </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="/private/message">Message</a>
+        </li>
+
+
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/selectpost">Make Post</a>
+        </li> --}}
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
+      <div class="dropdown-menu">
+        
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
+      </li>
+
+
+  <li class="nav-item">
+          <a class="nav-link" href="/private/aboutUs">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/contactUs">Contact Us</a>
+        </li>
+
+
+       {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/findPost">Find</a>
+        </li> --}}
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+    <main><div class="grid-container">
+ 
+    {{!-- {{#if this.field === "room"}} --}}
+    {{#ifEqual postDetail.field "room"}}
+  
+ 
+    <div class="grid-item">
+    <ul>
+    <div class=""><p>Posted By :{{postDetail.user}}</p></div>
+    
+     <div class="cssroom-div">
+      
+      <label>{{postDetail.title}} </label>
+      <label>Post Date:{{postDetail.postDate}}</label>
+      <label>City: {{postDetail.city}} </label>
+      <label>State:{{postDetail.state}}</label>
+      <label>School Name: {{postDetail.schoolName}}</label>
+      <label>Parking Available:{{postDetail.parkingAvailable}}</label>
+      <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
+      <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
+      <label>Budget:$ {{postDetail.budget}}</label>
+      <label>Is a student?: {{postDetail.student}}</label>
+      <label>Other description: {{postDetail.otherdescription}}</label>
+      {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
+      <br />
+     </div>
+    </ul>
+    </div>
+  
+     {{else}}
+      <div class="grid-item">
+      <ul>
+      <div class=""><p>Posted By :{{postDetail.user}}</p></div>
+      <div class="cssroom-div">
+      <label>{{postDetail.title}} </label>
+      
+      <div class="images">
+        <div class="photo">
+          {{#each postImages}}
+            <img src={{this}} alt="place" />
+          {{/each}}
+        </div>
+      </div>
+      <label>Post Date:{{postDetail.postDate}}</label>
+      <label>Street: {{postDetail.street}}</label>
+      <label>City: {{postDetail.city}} </label>
+      <label>State:{{postDetail.state}}</label>
+      <label>Number of Rooms:{{postDetail.roomNumber}}</label>
+      <label>Room Area: {{postDetail.roomarea}} sqft</label>
+      <label>Parking Available:{{postDetail.parkingAvailable}}</label>
+      <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
+      <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
+      <label>Rent: $ {{postDetail.rent}}</label>
+      <p>People Living Currently: {{postDetail.peoplelivingcurrently}}</p>
+      <label>Other Description: {{postDetail.otherdescription}}</label>
+       {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
+      <br/>
+      <div/>
+      </ul>
+      </div>
+     {{/ifEqual}}
+     </div>
+
+
+  <div class="grid-container-comments">
+    <div class="grid-item-comments">
+      <h3>Leave a comment</h3>
+      <form action="/private/post/{{postDetail._id}}" 
+            id="comment-form"
+            method="POST">
+       <div class="comment-form">
+          <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/>
+         <input
+          id="comment"
+          name="comment"
+          type="text"
+          placeholder="Enter a comment"
+        />
+       <br />
+        <button type="submit" class="btn btn-primary">Comment</button>
+       </div>    
+            
+      </form>
+  </div>
+  </div>
+  <div class="grid-container-message">
+    <div class="grid-item-message">
 <form
       action="/private/message"
       id="message-form"
       method="POST"
     >
-      <div class="form">
+      <div class="message-form">
         {{!-- <label>To:</label>
     --}}
         <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/>
 
-        <label>Send a Message</label>
+        <h3>Send a Message</h3>
         <input
           id="message"
           name="message"
@@ -29,3 +183,17 @@ PetAllowed{{postDetail.petsAllowed}}
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
+    </div>
+    </div>
+    <div class="grid-container-comments">
+    <div class="grid-item-comments">
+       <ul class="comment_list">
+      {{#each postDetail.comments}}
+      <li> Username: {{this.username}}</li>
+      <li>Date: {{this.commentDate}}</li>
+      <li>{{this.comment}}</li>
+      <br />
+      {{/each}}
+    </div>
+    </div>
+</main>

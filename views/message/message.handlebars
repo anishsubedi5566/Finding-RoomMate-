@@ -80,10 +80,9 @@
 
 <ul class="message_list">
   {{#each allMessage}}
-    <li> Sent: {{this.sendBy}}</li>
-    <li>Message: {{this.message}}</li>
-    <li>Received: {{this.receivedBy}}</li>
+    <li>From: {{this.sendBy}} | To: {{this.receivedBy}}</li>
     <li>Date: {{this.date}}</li>
+    <li>Message: {{this.message}}</li>
     {{!-- <a class="nav-link active" href="/private/message/sendBy={{this.sendBy}} & receivedBy={{this.receivedBy}}">Click to Reply</a> --}}
       <a class="nav-link active" href="/private/message/viewall/{{this.sendBy}}-{{this.receivedBy}}">Click to Reply</a>
     <br />
