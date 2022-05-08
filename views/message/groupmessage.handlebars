@@ -96,8 +96,11 @@
     >
       <div class="form">
           <label>Enter Multiple User Name: </label>
+
+
           <br/>
         <input type="text" name="sendto"/>
+
         <input
           id="message"
           name="message"
@@ -110,6 +113,14 @@
     </form>
    
    
-{{{e}}}
+ {{#if error}}
+          <div class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+        {{else}}
+          <div class="alert alert-danger" hidden role="alert">
+            {{error}}
+          </div>
+        {{/if}}
     </div>
 </div>
