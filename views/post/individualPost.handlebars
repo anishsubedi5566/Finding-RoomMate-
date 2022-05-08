@@ -165,15 +165,14 @@
   <div class="grid-container-message">
     <div class="grid-item-message">
 <form
-      action="/private/message"
+      action="/private/message/indi"
       id="message-form"
       method="POST"
     >
       <div class="message-form">
         {{!-- <label>To:</label>
     --}}
-        {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
-
+        <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/>
         <h3>Send a Message</h3>
         <input
           id="message"

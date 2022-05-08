@@ -176,4 +176,38 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/indi", async (req, res) => {
+  try {
+   
+    let message = xss(req.body.message);
+    let receivedBy = xss(req.body.receiver);;
+   let sendBy = req.session.user.username;
+   
+
+    date = new Date().toDateString();
+    const output = await postMessage.createMessage(
+      message,
+      receivedBy,
+      sendBy,
+      date
+    );
+
+    if (output) {
+      res.redirect("/private");
+    }
+  } catch (e) {
+    if (e) {
+      const out = { errors: e };
+      res
+        .status(400)
+        .render("post/postRoom", { title: "Error", error: e.message });
+      return;
+    } else {
+      res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+  }
+});
+
 module.exports = router;
