@@ -39,15 +39,7 @@ let exportedMethods = {
     otherdescription,
     comments = []
   ) {
-    // if(!postDate) throw "postDate is empty"
-    // if(!sizeOfApartment || typeof sizeOfApartment != "string" || sizeOfApartment == " ") throw "Enter size of apartment"
-    // if(!numberOfRooms || typeof numberOfRooms != "string" || numberOfRooms == " ") throw "Enter number of rooms"
-    // if(!city || typeof city != "string" || city == " ") throw "Enter city"
-    // if(!state || typeof state != "string" || state == " ")  throw "Enter state"
-    // if(typeof petsAllowed != "boolean") throw "Pets allowed is empty"
-    // if(typeof coupleAllowed != "boolean") throw "Couple allowed is empty"
-    // if(typeof parkingAvailable != "boolean") throw "Parking is empty"
-    // if(typeof sharingAllowed != "boolean") throw "Sharing allowed is empty"
+    
 
     //check for username
     checkValue(user, "user");
@@ -95,7 +87,9 @@ let exportedMethods = {
       otherdescription: otherdescription,
       comments: comments,
     };
+
     // console.log(post_detail);
+
     try {
       const postCollection = await posts();
       const inserted_user = await postCollection.insertOne(post_detail);
@@ -108,6 +102,7 @@ let exportedMethods = {
       console.log("error", error);
     }
   },
+
 
   // async getPost() {
   //   try {
@@ -122,6 +117,7 @@ let exportedMethods = {
   //     console.log("error", error);
   //   }
   // },
+  
   async getPost() {
     try {
       const postCollection = await posts();

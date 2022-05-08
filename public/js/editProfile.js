@@ -48,12 +48,9 @@ function triggerSubmit(e) {
     errorMessage = null;
   }
 
-  // if (request.files) {
-  //   let picture = req.files.picture;
-  //   let pictureName = picture.name.replaceAll(" ", "-");
-  //   picture.mv(`./public/uploads/` + pictureName);
-  //   imageVal = `/public/uploads/` + pictureName;
-  // }
+  
+
+  // window.location = "/private";
 
   if (errorMessage == null) {
     var saveData = $.ajax({

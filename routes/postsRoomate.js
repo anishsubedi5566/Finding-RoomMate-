@@ -34,11 +34,11 @@ router.post("/", async (req, res) => {
     if (!schoolName || schoolName.trim().length === 0)
       throw "Enter valid schoolName";
 
-    if (!roomNumber || isNaN(roomNumber)) throw `Enter valid roomNumber`;
+    if (!roomNumber || isNaN(roomNumber)) throw `Enter valid Rooms avilable`;
     roomNumber = parseInt(roomNumber);
 
     if (roomNumber < 1 || roomNumber > 15)
-      throw "roomNumber must be between 1 to 15";
+      throw "Rooms avilable must be between 1 to 15";
 
     if (!roomarea || isNaN(roomarea)) throw `Enter valid roomarea`;
     roomarea = parseInt(roomarea);
@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
       postImages
     );
     if (output) {
-      res.redirect("/private/postRoomate");
+      res.render("post/postRoomate", { result: "Submitted Successfully" });
     }
   } catch (e) {
     if (e) {

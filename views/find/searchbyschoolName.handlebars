@@ -22,7 +22,6 @@
             href="/private"
           >Home</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/private/profile">Profile</a>
         </li>
@@ -30,7 +29,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/private/message">Message</a>
         </li>
-
 
 
         {{!-- <li class="nav-item">
@@ -63,9 +61,6 @@
         </li>
 
 
-       {{!-- <li class="nav-item">
-          <a class="nav-link" href="/private/findPost">Find</a>
-        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -79,7 +74,6 @@
 <br/>
 <form class="searchby-option" action="searchbyschoolName" id="schoolName_search" method="POST">
 
-    
     <label for="schoolName">School Name</label>
     <select id="schoolName" name="schoolName" required>
       <option value="Stevens Institute of Technology">Stevens Institute of
@@ -95,13 +89,13 @@
       <option value="University of Washington">University of Washington</option>
     </select>
     <br/>
+    {{#if errors}}
+      <h6>{{errors}}</h6>
+    {{/if}}
     <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
 
-  {{#if errors}}
-      <h2>{{errors}}</h2>
-    {{/if}}
     
   <div class="grid-container">
   {{#each allpost}}
@@ -113,6 +107,7 @@
     <ul>
     <div class=""><p>Posted By :{{this.user}}</p></div>
     
+
      <div class="cssroom-div">
       <label>{{this.title}} </label>
       <label>Post Date:{{this.postDate}}</label>
