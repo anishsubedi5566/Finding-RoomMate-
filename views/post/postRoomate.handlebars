@@ -75,17 +75,20 @@
     </div>
   </div>
 </nav>
-<form action="/private/postRoomate" id="post-form" method="POST" enctype="multipart/form-data">
+<form action="/private/postRoomate" id="post-form" method="POST" enctype="multipart/form-data"
+onsubmit="validatepostRoomate(event)">
   <div class="postform">
 
     <div class="postform--group">
       <h1 ="postform--group">Find a Roommate</h1>
     <br/>
-      <label>Title</label>
-      <input name="title" type="text" placeholder="Enter Title" required />
+    
+
+      <label for="title">Title</label>
+      <input name="title" id="title" type="text" placeholder="Enter Title"   required/>
     <br/>
-      <label>Street</label>
-      <input name="street" type="text" placeholder="Enter Street" required />
+      <label for="street">Street</label>
+      <input name="street" id="street" type="text" placeholder="Enter Street" required />
     <br/>
       <label for="city">City</label>
       <select id="city" name="city" required>
@@ -138,34 +141,36 @@
 
     <br/>
     
-      <label>Rooms Available</label>
-      <input name="roomNumber" type="number" placeholder="1" required />
+      <label for="roomNumber">Rooms Available</label>
+      <input name="roomNumber" id="roomNumber" type="number" placeholder="1" required />
     <br/>
-      <label>Room Area</label>
-      <input name="roomarea" type="number" placeholder="100 Sq. Ft." required />
+      <label for="roomarea">Room Area</label>
+      <input name="roomarea" id="roomarea" type="number" placeholder="100 Sq. Ft." required />
     <br/>
-      <label>Pets Allowed</label>
-      <input name="petsAllowed" type="checkbox" />
+      <label for="petsAllowed">Pets Allowed</label>
+      <input name="petsAllowed" id="petsAllowed" type="checkbox" />
     <br/>
-      <label>Parking Available</label>
-      <input name="parkingAvailable" type="checkbox" />
+      <label for="parkingAvailable">Parking Available</label>
+      <input name="parkingAvailable" id="parkingAvailable"  type="checkbox" />
     <br/>
-      <label>Sharing Allowed</label>
-      <input name="sharingAllowed" type="checkbox" />
+      <label for="sharingAllowed">Sharing Allowed</label>
+      <input name="sharingAllowed" id="sharingAllowed" type="checkbox" />
     <br/>
-      <label>Rent</label>
-      <input name="rent" type="number" placeholder="100$" required />
+      <label for="rent">Rent</label>
+      <input name="rent" type="number" id="rent" placeholder="100$" required />
     <br/>
-      <label>Number of Roommates</label>
+      <label for="peoplelivingcurrently">Number of Roommates</label>
       <input
+        id="peoplelivingcurrently"
         name="peoplelivingcurrently"
         type="number"
         placeholder="1"
         required
       />
     <br/>
-      <label>Other Description</label>
+      <label for="otherdescription">Other Description</label>
       <input
+      id="otherdescription"
         name="otherdescription"
         type="text"
         placeholder="Additional Information"
@@ -185,7 +190,18 @@
 
         </div>
     <br/>
+
+    {{#if errors}}
+      <h2>{{errors}}</h2>
+    {{/if}}
+
+      {{#if result}}
+      <h2>{{result}}</h2>
+    {{/if}}
+      
       <button type="submit" class="btn btn-primary">Submit</button>
+      
+
     </div>
     <script>
          const input = document.querySelector('#inputGroupFile02');
@@ -209,9 +225,11 @@ input.addEventListener('change', (e) => {
     {{/if}}
 
 
-    {{#if errors}}
-      <h2>{{errors}}</h2>
-    {{/if}}
-
   </div>
 </form>
+
+
+<script src="/public/js/postsRoomate.js"></script>
+
+
+

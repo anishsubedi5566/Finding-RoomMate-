@@ -10,13 +10,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let {  title, city, state, schoolName, budget, otherdescription } =
-    req.body;
+  let { title, city, state, schoolName, budget, otherdescription } = req.body;
   try {
-   
+    console.log("yes", title, city);
     const postDate = new Date().toDateString();
-   
-    
+    if (!title || title.trim().length === 0) throw "Enter valid title";
     if (!city || city.trim().length === 0) throw "Enter valid city";
     if (!state || state.trim().length === 0) throw "Enter valid state";
     if (!schoolName || schoolName.trim().length === 0)
@@ -55,8 +53,9 @@ router.post("/", async (req, res) => {
       student,
       otherdescription
     );
+
     if (output) {
-      res.redirect("/private");
+      res.render("post/postRoom", { result: "Submitted Successfully" });
     }
   } catch (e) {
     if (e) {
