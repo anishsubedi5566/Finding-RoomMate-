@@ -8,7 +8,11 @@ router.get("/contactUs", async (req, res) => {
 });
 
 router.post("/contactUs", async (req, res) => {
-  let { yourname, email, message_query } = req.body;
+  // let { yourname, email, message_query } 
+
+  let yourname=xss(req.body.yourname);
+  let email=xss(req.body.email);
+  let message_query=xss(req.body.message_query);
 
   console.log("yes get inside route");
   try {

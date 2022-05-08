@@ -11,18 +11,32 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let {
-    title,
-    street,
-    city,
-    state,
-    schoolName,
-    roomNumber,
-    roomarea,
-    rent,
-    peoplelivingcurrently,
-    otherdescription,
-  } = req.body;
+  // let {
+  //   title,
+  //   street,
+  //   city,
+  //   state,
+  //   schoolName,
+  //   roomNumber,
+  //   roomarea,
+  //   rent,
+  //   peoplelivingcurrently,
+  //   otherdescription,
+  // } 
+  
+  let title=xss(req.body.title);
+  let street=xss(req.body.street);
+  let city=xss(req.body.city);
+  let state=xss(req.body.state);
+  let schoolName=xss(req.body.schoolName);
+  let roomNumber=xss(req.body.roomNumber);
+  let roomarea=xss(req.body.roomarea);
+  let rent=xss(req.body.rent);
+  let peoplelivingcurrently=xss(req.body.peoplelivingcurrently);
+  let otherdescription=xss(req.body.otherdescription);
+
+
+
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
   let postImages = [];
   const username = req.session.user.username;
@@ -67,13 +81,13 @@ router.post("/", async (req, res) => {
 
     let petsAllowed = (parkingAvailable = sharingAllowed = false);
 
-    if (req.body.petsAllowed) {
+    if (xss(req.body.petsAllowed)) {
       petsAllowed = true;
     }
-    if (req.body.parkingAvailable) {
+    if (xss(req.body.parkingAvailable)) {
       parkingAvailable = true;
     }
-    if (req.body.sharingAllowed) {
+    if (xss(req.body.sharingAllowed)) {
       sharingAllowed = true;
     }
 

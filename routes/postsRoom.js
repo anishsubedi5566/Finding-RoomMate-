@@ -14,7 +14,15 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let { title, city, state, schoolName, budget, otherdescription } = req.body;
+  // let { title, city, state, schoolName, budget, otherdescription } 
+  
+  let title=xss(req.body.title);
+  let city=xss(req.body.city);
+  let state=xss(req.body.state);
+  let schoolName=xss(req.body.schoolName);
+  let budget=xss(req.body.budget);
+  let otherdescription=xss(req.body.otherdescription);
+
 
   try {
     const postDate = new Date().toDateString();
@@ -30,17 +38,17 @@ router.post("/", async (req, res) => {
 
     let parkingAvailable = (pets = sharingAllowed = student = false);
 
-    if (req.body.parkingAvailable) {
+    if (xss(req.body.parkingAvailable)) {
       parkingAvailable = true;
     }
-    if (req.body.pets) {
+    if (xss(req.body.pets)) {
       pets = true;
     }
-    if (req.body.sharingAllowed) {
+    if (xss(req.body.sharingAllowed)) {
       sharingAllowed = true;
     }
 
-    if (req.body.student) {
+    if (xss(req.body.student)) {
       student = true;
     }
     const username = req.session.user.username;
@@ -89,12 +97,3 @@ router.post("/", async (req, res) => {
 
 module.exports = router;
 
-// const postCollection = await posts();
-//     const fetch_data = await postCollection.find({ user: user }).toArray();
-//     console.log(fetch_data);
-
-//     if (fetch_data.length === 0) {
-//       throw `There is not any post for user ${user}`;
-//     } else {
-//       return fetch_data;
-//     }
