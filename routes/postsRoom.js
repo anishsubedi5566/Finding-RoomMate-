@@ -6,6 +6,7 @@ const router = express.Router();
 const xss = require("xss");
 let { ObjectId } = require("mongodb");
 const { commentsRoom } = require("../data");
+const userData = data.users;
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomData.getPost();
@@ -14,9 +15,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   let { title, city, state, schoolName, budget, otherdescription } = req.body;
-  try {
 
-    
+  try {
     const postDate = new Date().toDateString();
     if (!title || title.trim().length === 0) throw "Enter valid title";
     if (!city || city.trim().length === 0) throw "Enter valid city";
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
     if (budget < 100) throw "budget must be greater eqaul to 100";
 
     let parkingAvailable = (pets = sharingAllowed = student = false);
-    user = req.session.user.username;
+
     if (req.body.parkingAvailable) {
       parkingAvailable = true;
     }
@@ -43,8 +43,20 @@ router.post("/", async (req, res) => {
     if (req.body.student) {
       student = true;
     }
+    const username = req.session.user.username;
+    const getAllUser = await userData.getAllUsers();
+
+    let userId;
+    //console.log(getAllUsers);
+    getAllUser.forEach((user) => {
+      if (user.username === username) {
+        userDefaultImage = user.userProfileImage;
+        userId = user._id.toString();
+      }
+    });
+
     const output = await postRoomData.createPost(
-      user,
+      username,
       postDate,
       title,
       city,
@@ -55,7 +67,8 @@ router.post("/", async (req, res) => {
       sharingAllowed,
       budget,
       student,
-      otherdescription
+      otherdescription,
+      userId
     );
 
     if (output) {
@@ -75,3 +88,13 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
+
+// const postCollection = await posts();
+//     const fetch_data = await postCollection.find({ user: user }).toArray();
+//     console.log(fetch_data);
+
+//     if (fetch_data.length === 0) {
+//       throw `There is not any post for user ${user}`;
+//     } else {
+//       return fetch_data;
+//     }

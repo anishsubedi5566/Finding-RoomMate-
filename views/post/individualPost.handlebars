@@ -83,7 +83,7 @@
  
     <div class="grid-item">
     <ul>
-    <div class=""><p>Posted By :{{postDetail.user}}</p></div>
+    <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
     
      <div class="cssroom-div">
       
@@ -107,7 +107,7 @@
      {{else}}
       <div class="grid-item">
       <ul>
-      <div class=""><p>Posted By :{{postDetail.user}}</p></div>
+      <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
       <div class="cssroom-div">
       <label>{{postDetail.title}} </label>
       
@@ -196,4 +196,13 @@
       {{/each}}
     </div>
     </div>
+     {{#if error}}
+          <div class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+        {{else}}
+          <div class="alert alert-danger" hidden role="alert">
+            {{error}}
+          </div>
+        {{/if}}
 </main>
