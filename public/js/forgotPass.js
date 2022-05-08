@@ -5,7 +5,7 @@ function validateForgotPassInputs(e) {
   let securityQuesVal = document.getElementById("securityQues").value;
   let securityAnsVal = document.getElementById("securityAns").value;
   let passwordVal = document.getElementById("password").value;
-  let forgotPassForm = document.getElementById("forgot-form").value;
+  let forgotPassForm = document.getElementById("forgot-form");
 
   let errorMessage = null;
 
