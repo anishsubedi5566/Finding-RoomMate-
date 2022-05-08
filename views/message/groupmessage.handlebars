@@ -93,7 +93,7 @@
     >
       <div class="form">
           <label>Enter Multiple User Name: </label>
-        <input type="text" name="sendto"/>
+        <input type="text" name="sendto" placeholder="Enter valid usernames"/>
         <input
           id="message"
           name="message"
@@ -107,7 +107,15 @@
     </div>
    
    
-{{{e}}}
+ {{#if error}}
+          <div class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+        {{else}}
+          <div class="alert alert-danger" hidden role="alert">
+            {{error}}
+          </div>
+        {{/if}}
     </div>
 
 

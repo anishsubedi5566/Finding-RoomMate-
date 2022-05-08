@@ -1,6 +1,7 @@
 const express = require("express");
 const constructorMethod = require(".");
 const data = require("../data");
+const userData = data.users;
 const postMessage = data.message;
 const router = express.Router();
 const xss = require("xss");
@@ -30,9 +31,24 @@ router.post("/groupmessage", async (req, res) => {
   let i = 0;
   let receivedBy;
 
+  // try {
+  //   for (let i = 0; i < allUserArray.length; i++) {
+  //     await userData.getUserByUsername(allUserArray[i]);
+  //   }
+  // } catch (e) {
+  //   console.log("error", e);
+  //   res.status(400).render("message/groupmessage", {
+  //     error: "Please verify if all the usernames are correct",
+  //   });
+  //   return;
+  // }
+
   try {
     if (xss(req.body.sendto.length < 1)) throw "Send field cannot be empty";
     if (xss(req.body.message < 1)) throw "Send message cannot be empty";
+    for (let i = 0; i < allUserArray.length; i++) {
+      await userData.getUserByUsername(allUserArray[i]);
+    }
     allUserArray = allUserArray.map((each) => each.trim(each));
     allUserArray = allUserArray.filter((element) => {
       return element !== "";
@@ -52,9 +68,8 @@ router.post("/groupmessage", async (req, res) => {
     }
   } catch (e) {
     if (e) {
-      const out = { errors: e };
       console.log("error", e);
-      res.status(400).render("message/groupmessage", { e: e });
+      res.status(400).render("message/groupmessage", { error: e });
       return;
     } else {
       res.status(500).json({
@@ -84,7 +99,7 @@ router.get("/viewall/:id", async (req, res) => {
     if (e) {
       const out = { errors: e };
       console.log("error", e);
-      res.status(400).render("message/groupmessage", { e: e });
+      res.status(400).render("message/groupmessage", { error: e.message });
       return;
     } else {
       res.status(500).json({
@@ -129,7 +144,7 @@ router.post("/", async (req, res) => {
   } catch (e) {
     if (e) {
       const out = { errors: e };
-      res.status(400).render("post/postRoom", out);
+      res.status(400).render("post/postRoom", { error: e.message });
       return;
     } else {
       res.status(500).json({
