@@ -19,6 +19,7 @@ router.get("/:postid", async (req, res) => {
     console.log(postDetail);
     res.render("post/individualPost", {
       postDetail: postDetail[0],
+      title: "Post",
     });
   } catch (e) {
     res.status(400).render("post/individualPost", { error: e.message });

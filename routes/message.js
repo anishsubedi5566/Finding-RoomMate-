@@ -26,7 +26,7 @@ router.post("/groupmessage", async (req, res) => {
   let allUserArray = req.body.sendto.split(",");
   let output;
   let sendBy = req.session.user.username;
-  let date = new Date();
+  let date = new Date().toDateString();
   let message = req.body.message;
   let i = 0;
   let receivedBy;

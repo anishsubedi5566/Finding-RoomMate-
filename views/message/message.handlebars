@@ -76,18 +76,24 @@
   </div>
 </nav>
 
-<p> <a href="/private/message/groupmessage">Send message to Multiple User At once</a> </p>
-
+<p style="text-align:center"> <a class="groupmessage-class" href="/private/message/groupmessage">Send message to multiple users at once</a> </p>
+<div class="grid-container-messagepage">
+  <div class="grid-item-messagepage">
 <ul class="message_list">
   {{#each allMessage}}
-    <li>From: {{this.sendBy}} | To: {{this.receivedBy}}</li>
-    <li>Date: {{this.date}}</li>
-    <li>Message: {{this.message}}</li>
+    <label>From: {{this.sendBy}} | To: {{this.receivedBy}}</label>
+    <label>| Date: {{this.date}}</label>
+    <br/>
+    <a>{{this.message}}</a>
+    <br/>
     {{!-- <a class="nav-link active" href="/private/message/sendBy={{this.sendBy}} & receivedBy={{this.receivedBy}}">Click to Reply</a> --}}
       <a class="nav-link active" href="/private/message/viewall/{{this.sendBy}}-{{this.receivedBy}}">Click to Reply</a>
     <br />
     
   {{/each}}
 </ul>
+  
  <h2>{{{noMessage}}}</h2>
 <script src="/public/js/message.js"></script>
+</div>
+</div>

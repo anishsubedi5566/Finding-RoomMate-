@@ -74,7 +74,8 @@
   </div>
 </nav>
 
-
+ <div class="grid-container-comments">
+  <div class="grid-item-comments">
 <ul class="message_list">
   {{#each allMessage}}
     <li> Sent: {{this.sendBy}}</li>
@@ -84,8 +85,10 @@
     <br />
   {{/each}}
 </ul>
-
-
+</div></div>
+  
+<div class="grid-container-commentinput">
+    <div class="grid-item-commentinput">
 <form
       action="/private/message/groupmessage"
       id="message-form"
@@ -93,7 +96,11 @@
     >
       <div class="form">
           <label>Enter Multiple User Name: </label>
-        <input type="text" name="sendto" placeholder="Enter valid usernames"/>
+
+
+          <br/>
+        <input type="text" name="sendto"/>
+
         <input
           id="message"
           name="message"
@@ -104,7 +111,6 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
-    </div>
    
    
  {{#if error}}
@@ -117,5 +123,4 @@
           </div>
         {{/if}}
     </div>
-
-
+</div>
