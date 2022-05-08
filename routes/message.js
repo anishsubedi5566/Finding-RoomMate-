@@ -137,6 +137,9 @@ router.post("/", async (req, res) => {
     let message = xss(req.body.message);
     let receivedBy = xss(req.body.receiver);
     let sendBy = xss(req.body.sender);
+    if(!message || typeof message != "string") throw "must have message"
+    if(!receivedBy || typeof receivedBy != "string") throw "must have receiver name"
+    if(!sendBy || typeof sendBy != "string") throw "must have sender name"
 
     date = new Date().toDateString();
     const output = await postMessage.createMessage(
@@ -169,6 +172,10 @@ router.post("/indi", async (req, res) => {
    
     let message = xss(req.body.message);
     let receivedBy = xss(req.body.receiver);;
+
+    if(!message || typeof message != "string") throw "must have message"
+    if(!receivedBy || typeof receivedBy != "string") throw "must have receiver name"
+
    let sendBy = req.session.user.username;
    
 
