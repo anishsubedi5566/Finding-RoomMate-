@@ -94,11 +94,11 @@
 
     <div class="postRoomContainer">
 
+      <h1>{{postDetail.title}} </h1>
+      <br />
       <a
         href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"
       > Posted by: {{postDetail.user}}</a>
-
-      <h2>{{postDetail.title}} </h2>
       <br />
       <label>Post Date:{{postDetail.postDate}}</label>
       <br />
@@ -124,7 +124,7 @@
 
       <div class="commentinput">
 
-        <h3>Leave a comment</h3>
+        <h2>Leave a comment</h2>
         <form
           action="/private/post/{{postDetail._id}}"
           id="comment-form"
@@ -159,7 +159,7 @@
               readonly="true"
               hidden
             />
-            <h3>Send a Message</h3>
+            <h2>Send a Message</h2>
             <input
               id="message"
               name="message"
@@ -181,7 +181,7 @@
         {{#each postDetail.comments}}
           <label>Username: {{this.username}}, {{this.commentDate}}</label>
           <br />
-          <h5>{{this.comment}}</h5>
+          <h4>{{this.comment}}</h4>
           <br />
         {{/each}}
 
@@ -190,11 +190,13 @@
   {{else}}
 
     <div class="postRoommateContainer">
+
+      <h1>{{postDetail.title}} </h1>
+      <br />
       <a
         href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"
       > Posted by: {{postDetail.user}}</a>
-
-      <h2>{{postDetail.title}} </h2>
+      <br />
 
       <div class="images">
         <div class="photo">
@@ -220,7 +222,7 @@
       <br />
       <div class="commentinput">
 
-        <h3>Leave a comment</h3>
+        <h2>Leave a comment</h2>
         <form
           action="/private/post/{{postDetail._id}}"
           id="comment-form"
@@ -254,7 +256,7 @@
               hidden
             />
 
-            <h3>Send a Message</h3>
+            <h2>Send a Message</h2>
             <input
               id="message"
               name="message"
@@ -274,7 +276,7 @@
           {{#each postDetail.comments}}
             <label>Username: {{this.username}}, {{this.commentDate}}</label>
             <br />
-            <h5>{{this.comment}}</h5>
+            <h4>{{this.comment}}</h4>
             <br />
           {{/each}}
 

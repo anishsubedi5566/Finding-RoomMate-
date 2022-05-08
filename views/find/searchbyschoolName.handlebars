@@ -83,7 +83,7 @@
     </div>
   </div>
 </nav>
-<h2 class="searchbyheader">Search by School</h2>
+<h1 class="searchbyheader">Search by University</h1>
 <br />
 <form
   class="searchby-option"
@@ -93,7 +93,7 @@
   onsubmit="validate_searchbyschoolName(event)"
 >
 
-  <label for="schoolName">School Name</label>
+  <label for="schoolName">University Name</label>
   <select id="schoolName" name="schoolName" required>
     <option value="">None</option>
     <option value="Stevens Institute of Technology">Stevens Institute of
@@ -122,10 +122,9 @@
 
       <div class="grid-item">
 
-        <h6>Posted By :{{this.user}}</h6>
-
         <div class="cssroom-div">
           <h1>{{this.title}} </h1>
+          <label>Posted By :{{this.user}}</label>
           <label>Post Date:{{this.postDate}}</label>
           <label>City: {{this.city}} </label>
           <label>State:{{this.state}}</label>
@@ -146,9 +145,9 @@
     {{else}}
       <div class="grid-item">
 
-        <h6>Posted By :{{this.user}}</h6>
         <div class="cssroom-div">
           <h1>{{this.title}} </h1>
+          <label>Posted By :{{this.user}}</label>
           <div class="images">
             <div class="photo">
               {{#each postImages}}

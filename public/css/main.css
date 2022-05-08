@@ -877,7 +877,7 @@ p {
   border-bottom: 1px solid #006ebd;
   padding-bottom: 10px;
 }
-.grid-item-messagepage h2 {
+.grid-item-messagepage h1 {
   margin-top: 10px;
   text-align: center;
   border-top: 1px solid #333;
@@ -886,6 +886,9 @@ p {
   padding-top: 20px;
   color: black;
   background-color: aliceblue;
+}
+.grid-item-messagepage h2 {
+  font-size: large;
 }
 
 .grid-item-messagepage h5 {
@@ -905,6 +908,17 @@ p {
 /* Individual message page */
 .indiMessage label {
   width: 80%;
+}
+.indiMessage h1 {
+  font-size: 30px;
+  color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightslategray;
+}
+
+.indiMessage h2 {
+  font-size: 20px;
 }
 
 .indiMessage form {
@@ -930,7 +944,7 @@ p {
 .groupMessageCont {
   margin: 100px auto;
   width: 90%;
-  max-width: 440px;
+  max-width: 500px;
   height: 300px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -943,7 +957,7 @@ p {
   color: #333;
 }
 
-.groupMessageCont h2 {
+.groupMessageCont h1 {
   font-size: 30px;
   color: black;
   padding-top: 20px;
