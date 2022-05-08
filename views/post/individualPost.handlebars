@@ -77,40 +77,96 @@
     </div>
   </div>
 </nav>
-    <main><div class="grid-container">
+    <main>
+      
  
     {{!-- {{#if this.field === "room"}} --}}
     {{#ifEqual postDetail.field "room"}}
   
- 
-    <div class="grid-item">
+ <div class="postRoomContainer">
+    
    
     <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
     
-     <div class="cssroom-div">
+     
       
       <h2>{{postDetail.title}} </h2>
+      <br>
       <label>Post Date:{{postDetail.postDate}}</label>
+      <br>
       <label>City: {{postDetail.city}} </label>
+      <br>
       <label>State:{{postDetail.state}}</label>
+      <br>
       <label>School Name: {{postDetail.schoolName}}</label>
+      <br>
       <label>Parking Available:{{postDetail.parkingAvailable}}</label>
+      <br>
       <label>Pets Allowed: {{postDetail.petsAllowed}} </label>
+      <br>
       <label>Sharing allowed: {{postDetail.sharingAllowed}}</label>
+      <br>
       <label>Budget:$ {{postDetail.budget}}</label>
+      <br>
       <label>Is a student?: {{postDetail.student}}</label>
+      <br>
       <label>Other description: {{postDetail.otherdescription}}</label>
       {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br />
-     </div>
+     
+  <div class="commentinput">
+    
+      <h3>Leave a comment</h3>
+      <form action="/private/post/{{postDetail._id}}" 
+            id="comment-form"
+            method="POST">
+       <div class="comment-form">
+          {{!-- <input type="text" name="commentTo" value={{postDetail.user}} readonly="true" hidden/> --}}
+         <input
+          id="comment"
+          name="comment"
+          type="text"
+          placeholder="Enter a comment"
+        />
+       <br />
+        <button type="submit" class="btn btn-primary">Comment</button>
+       </div>    
+      </form>
+  
+  </div>
+
+  <div class="postRoomMessage">
+   
+<form
+      action="/private/message"
+      id="message-form"
+      method="POST"
+    >
+      <div class="message-form">
+        {{!-- <label>To:</label>
+    --}}
+        {{!-- <input type="text" name="messageTo" value={{postDetail.user}} readonly="true" hidden/> --}}
+
+        <h3>Send a Message</h3>
+        <input
+          id="message"
+          name="message"
+          type="text"
+          placeholder="Enter Message"
+        />
+        <br />
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
     
     </div>
-  
+
+  </div>
      {{else}}
-      <div class="grid-item">
       
+      <div class="postRoommateContainer">
       <a href="http://localhost:3000/private/post/{{postDetail.userId}}/userProfile"> Posted by: {{postDetail.user}}</a>
-      <div class="cssroom-div">
+      
       <h2>{{postDetail.title}} </h2>
       
       <div class="images">
@@ -134,15 +190,11 @@
       <label>Other Description: {{postDetail.otherdescription}}</label>
        {{!-- <label>Comments:{{postDetail.comments}}</label> --}}
       <br/>
-      <div/>
       
-      </div>
      {{/ifEqual}}
-     </div>
 
-
-  <div class="grid-container-commentinput">
-    <div class="grid-item-commentinput">
+  <div class="commentinput">
+    
       <h3>Leave a comment</h3>
       <form action="/private/post/{{postDetail._id}}" 
             id="comment-form"
@@ -158,35 +210,23 @@
        <br />
         <button type="submit" class="btn btn-primary">Comment</button>
        </div>    
-            
       </form>
-  </div>
-  </div>
   
-    <div class="grid-container-comments">
-    <div class="grid-item-comments">
-      <h3>Comments</h3>
-       
-      {{#each postDetail.comments}}
-      <label>Username: {{this.username}}, {{this.commentDate}}</label>
-      <br/>
-      <h5>{{this.comment}}</h5>
-      <br />
-      {{/each}}
-      
-    </div>
-    </div>
-    <div class="grid-container-message">
-    <div class="grid-item-message">
+  </div>
+
+
+  <div class="postRoommateMessage">
+   
+
 <form
       action="/private/message/indi"
       id="message-form"
       method="POST"
     >
       <div class="message-form">
-        {{!-- <label>To:</label>
-    --}}
+      
         <input type="text" name="receiver" value={{postDetail.user}} readonly="true" hidden/>
+
         <h3>Send a Message</h3>
         <input
           id="message"
@@ -198,7 +238,9 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
+    
     </div>
+
     </div>
      {{#if error}}
           <div class="alert alert-danger" role="alert">
