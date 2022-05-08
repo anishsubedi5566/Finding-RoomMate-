@@ -12,7 +12,9 @@ let exportedMethods = {
     sendBy,
     date
   ) {
-   
+    if(!message, !receivedBy,!sendBy) throw 'Fill every data'
+    if(typeof message !== "string", typeof receivedBy !== "string",typeof sendBy !== "string"  ) throw 'Must be string'
+  
     const message_detail = {
       message: message,
       date: date,
@@ -40,7 +42,10 @@ let exportedMethods = {
     sendBy,
     date
   ) {
-   
+
+    if(!message, !receivedBy,!sendBy) throw 'Fill every data'
+    if(typeof message !== "string", typeof receivedBy !== "string",typeof sendBy !== "string"  ) throw 'Must be string'
+
     const message_detail = {
       message: message,
       date: date,
@@ -61,13 +66,18 @@ let exportedMethods = {
   },
 
   async getMessage(user) {
+    
+    if(!user) throw "Type a user"
+    if(typeof user !== "string") throw "user must be string"
+
+
     try {
       const messageCollection = await messages();
-      const allMessage = await messageCollection.find({ $or: [
+      let allMessage = await messageCollection.find({ $or: [
         { "sendBy": user },
         { "receivedBy": user}
       ]}).toArray();
-      console.log("allmessage",allMessage)
+
       allMessage.map((item) => (item._id = item._id.toString()));
       allMessage.sort((a, b) => b.postDate - a.postDate);
      let  x = allMessage.map(item => item.receivedBy)
@@ -81,12 +91,11 @@ let exportedMethods = {
     
      let uniqmessage = []
      let constainsMessgaeof = []
-
+      allMessage = allMessage.reverse()
     for(let i = 0; i < uniqueuser.length; i++){
 
       if(!constainsMessgaeof.includes(uniqueuser[i])) {
         allMessage.map(each => {
-          console.log(each.sendBy,each.receivedBy,uniqueuser[i],each.sendBy == uniqueuser[i] ,each.receivedBy == uniqueuser[i])
             if(each.sendBy == uniqueuser[i] || each.receivedBy == uniqueuser[i] ){
               if(!constainsMessgaeof.includes(uniqueuser[i])){
               uniqmessage.push(each)
@@ -96,13 +105,16 @@ let exportedMethods = {
         })
       }
      }
-     console.log(uniqmessage,constainsMessgaeof)
       return uniqmessage;
     } catch (error) {
       console.log("error", error);
     }
   },
   async getSpecificMessage(user) {
+    if(!user) throw "Type a user"
+    if(typeof user !== "string") throw "user must be string"
+
+    
     var arr = user.split("-");
     let first = arr[0]
     let second = arr[1]
