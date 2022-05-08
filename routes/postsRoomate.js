@@ -3,6 +3,7 @@ const data = require("../data");
 const postRoomateData = data.postsRoomate;
 const router = express.Router();
 const xss = require("xss");
+const userData = data.users;
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomateData.getPost();
@@ -24,6 +25,15 @@ router.post("/", async (req, res) => {
   } = req.body;
   // console.log("routes/postRoomate",title,street,city,state,roomNumber,roomarea,petsAllowed,parkingAvailable,sharingAllowed,rent,peoplelivingcurrently,otherdescription )
   let postImages = [];
+  const username = req.session.user.username;
+  const getAllUsers = await userData.getAllUsers();
+  let userId;
+  //console.log(getAllUsers);
+  getAllUsers.forEach((user) => {
+    if (user.username === username) {
+      userId = user._id.toString();
+    }
+  });
   try {
     const postDate = new Date().toDateString();
 
@@ -56,7 +66,7 @@ router.post("/", async (req, res) => {
       throw "peoplelivingcurrently must be greater than zero";
 
     let petsAllowed = (parkingAvailable = sharingAllowed = false);
-    user = req.session.user.username;
+
     if (req.body.petsAllowed) {
       petsAllowed = true;
     }
@@ -79,7 +89,7 @@ router.post("/", async (req, res) => {
     }
 
     const output = await postRoomateData.createPost(
-      user,
+      username,
       postDate,
       title,
       street,
@@ -94,7 +104,8 @@ router.post("/", async (req, res) => {
       rent,
       peoplelivingcurrently,
       otherdescription,
-      postImages
+      postImages,
+      userId
     );
     if (output) {
       res.render("post/postRoomate", { result: "Submitted Successfully" });

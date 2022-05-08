@@ -37,10 +37,10 @@ let exportedMethods = {
     budget,
     student,
     otherdescription,
+
+    userId,
     comments = []
   ) {
-    
-
     //check for username
     checkValue(user, "user");
     checkIsString(user, "user");
@@ -74,6 +74,7 @@ let exportedMethods = {
     const post_detail = {
       field: "room",
       user: user,
+
       postDate: postDate,
       title: title,
       city: city,
@@ -86,6 +87,7 @@ let exportedMethods = {
       student: student,
       otherdescription: otherdescription,
       comments: comments,
+      userId: userId,
     };
 
     // console.log(post_detail);
@@ -103,7 +105,6 @@ let exportedMethods = {
     }
   },
 
-
   // async getPost() {
   //   try {
   //     const postCollection = await posts();
@@ -117,7 +118,7 @@ let exportedMethods = {
   //     console.log("error", error);
   //   }
   // },
-  
+
   async getPost() {
     try {
       const postCollection = await posts();

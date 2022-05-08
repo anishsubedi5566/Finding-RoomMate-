@@ -1,0 +1,118 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/private">Roomie</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="/private"
+          >Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/profile">Profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/message">Message</a>
+        </li>
+
+
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/selectpost">Make Post</a>
+        </li> --}}
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Make Post</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/private/postRoom">Find Room</a>
+        <a class="dropdown-item" href="/private/postRoomate"> Find Roomate</a>
+      </li>
+
+
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Find</a>
+      <div class="dropdown-menu">
+        
+        <a class="dropdown-item" href="/private/findPost/searchbyCity"> Find By City</a>
+        <a class="dropdown-item" href="/private/findPost/searchbyschoolName">Find By University</a>
+      </li>
+
+
+  <li class="nav-item">
+          <a class="nav-link" href="/private/aboutUs">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/private/contactUs">Contact Us</a>
+        </li>
+
+
+       {{!-- <li class="nav-item">
+          <a class="nav-link" href="/private/findPost">Find</a>
+        </li> --}}
+
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="user_profile">
+    <h1>{{title}}</h1>
+    <div class="user_profile_card">
+
+      <div class="profile_data">
+        <img
+          src={{user.userProfileImage}}
+          alt="{{title}}"
+          class="profile_image"
+        />
+        <dl>
+          <dt>First Name</dt>
+          <dd>{{user.firstName}}</dd>
+          <dt>Last Name</dt>
+          <dd>{{user.lastName}}</dd>
+          <dt>Email</dt>
+          <dd>{{user.email}}</dd>
+          <dt>School Name</dt>
+          <dd>{{user.schoolName}}</dd>
+          <dt> City</dt>
+          <dd>{{user.city}}</dd>
+          <dt>State</dt>
+          <dd>{{user.state}}</dd>
+          <dt>Native Country</dt>
+          <dd>{{user.homeCountry}}</dd>
+          <dt>Age</dt>
+          <dd>{{user.age}}</dd>
+          <dt>Gender</dt>
+          <dd>{{user.gender}}</dd>
+
+        </dl>
+      </div>
+
+      
+  <br>
+ 
+        
+    </div>
+  </div>
+</main>

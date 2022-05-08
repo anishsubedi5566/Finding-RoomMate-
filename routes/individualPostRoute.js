@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const data = require("../data");
+const userData = data.users;
 const commentsRoomData = data.commentsRoom;
 
 const xss = require("xss");
@@ -15,11 +16,13 @@ router.get("/:postid", async (req, res) => {
 
     const postDetail = await findIndividualPost.searchPost(req.params.postid);
     console.log("routes/individialpost/postDeatilbyID", postDetail[0]);
-    console.log(postDetail)
+    console.log(postDetail);
     res.render("post/individualPost", {
       postDetail: postDetail[0],
     });
-  } catch (e) {}
+  } catch (e) {
+    res.status(400).render("post/individualPost", { error: e.message });
+  }
 });
 
 router.route("/:postRoomId").post(async (req, res) => {
@@ -67,6 +70,23 @@ router.route("/:postRoomId").post(async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(400).render("post/individualPost", { error: e.message });
+  }
+});
+
+router.route("/:userID/userProfile").get(async (req, res) => {
+  const userId = req.params.userID;
+  try {
+    const user = await userData.getUserByID(userId);
+
+    res.status(200).render("userProfile/otherUserProfile", {
+      title: "User Profile",
+      user: user,
+    });
+  } catch (e) {
+    error = e;
+    console.log(e);
+
+    return;
   }
 });
 

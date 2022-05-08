@@ -9,14 +9,21 @@ let { ObjectId } = require("mongodb");
 const postRoomData = data.postsRoom;
 
 router.get("/", async (req, res) => {
-  if (req.session.user) {
-    //1.If the user is authenticated, it will redirect to /private.
-    res.status(200).render("defaultHome", { title: "Home" });
-  } else {
-    const result = await searchData.getallPost();
-    res.render("defaultHome", {
+  try {
+    if (req.session.user) {
+      //1.If the user is authenticated, it will redirect to /private.
+      res.status(200).render("defaultHome", { title: "Home" });
+    } else {
+      const result = await searchData.getallPost();
+      res.render("defaultHome", {
+        title: "Home",
+        allpost: result,
+      });
+    }
+  } catch (e) {
+    res.status(200).render("defaultHome", {
       title: "Home",
-      allpost: result,
+      errors: "There is no post to show",
     });
   }
 });
@@ -725,48 +732,6 @@ router.route("/private/profile/edit").post(async (req, res) => {
     return;
   }
 
-  //home country error check
-  // if (typeof homeCountry !== "string") {
-  //   res.status(400).render("userProfile/profile", {
-  //     error: `Native country is not a string value`,
-  //   });
-  //   return;
-  // }
-  // if (homeCountry.trim().length === 0) {
-  //   res
-  //     .status(400)
-  //     .render("userProfile/edit", { error: "Invalid input entered" });
-  //   return;
-  // }
-
-  //bio error check
-  // if (!bio) {
-  //   bio = "N/A";
-  // }
-  // if (typeof bio !== "string") {
-  //   res
-  //     .status(400)
-  //     .render("userProfile/edit", { error: `Bio is not a string value` });
-  //   return;
-  // }
-  // if (bio.trim().length === 0) {
-  //   res
-  //     .status(400)
-  //     .render("userProfile/edit", { error: "Invalid input entered" });
-  //   return;
-  // }
-  // try {
-  //   const user = await userData.getUserByID(id);
-  //   console.log(user);
-  //   res.status(200).render("userProfile/edit", {
-  //     user: user,
-  //   });
-  // } catch (e) {
-  //   error = e;
-  //   res.status(400).render("userProfile/edit", error);
-
-  //   return;
-  // }
   try {
     if (req.files) {
       let picture = req.files.picture;
@@ -817,8 +782,6 @@ router.route("/private/profile/edit").post(async (req, res) => {
     }
   }
 });
-
-
 
 router.route("/private/deleteProfile").get(async (req, res) => {
   const username = req.session.user.username;
