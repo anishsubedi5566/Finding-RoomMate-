@@ -661,43 +661,16 @@ p {
   padding-bottom: 20px;
   color: black;
 }
-.grid-container-commentinput {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.grid-item-commentinput h3 {
-  margin-top: 10px;
-  text-align: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 20px;
-  color: black;
-}
-.grid-item-commentinput {
-  bottom: 50px;
 
-  text-align: center;
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  font-size: 15px;
-  text-align: center;
-  overflow: hidden;
-  border: 2px solid #fe4e4e;
-  box-shadow: 0px 2px 5px 0px var(--clr-gray);
-  background-color: #ffffff;
-  text-align: center;
-  border-radius: 1rem;
-  position: relative;
-  padding: 10px;
-  width: 200px;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  width: auto;
-  margin: 50px auto;
-  width: 50%;
+/* Comment input css */
+
+/* Post room individual css */
+
+.postRoomContainer {
+  margin: 100px auto;
+  width: 90%;
   max-width: 440px;
+  height: 900px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.5);
@@ -707,11 +680,89 @@ p {
   text-align: center;
   text-indent: none;
   color: #333;
-  margin-top: 10px;
+}
+
+.postRoomContainer label {
+  width: 80%;
   text-align: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 20px;
-  color: black;
+  padding-bottom: 10px;
+}
+.postRoomContainer .commentinput {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid black;
+}
+
+.postRoomContainer .commentinput input {
+  width: 80%;
+  margin-top: 10px;
+}
+
+.postRoomContainer .commentinput button {
+  margin-top: 20px;
+}
+
+/* Post toom inidividual message input css */
+
+.postRoomContainer .postRoomMessage {
+  border-top: 1px solid black;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+
+.postRoomContainer .postRoomMessage button {
+  margin-top: 20px;
+}
+
+/* Individual roommate post */
+/* Post room individual css */
+
+.postRoommateContainer {
+  margin: 100px auto;
+  width: 90%;
+  max-width: 440px;
+  height: 1000px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  text-indent: none;
+  color: #333;
+}
+
+.postRoommateContainer label {
+  width: 80%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.postRoommateContainer .commentinput {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid black;
+}
+
+.postRoommateContainer .commentinput input {
+  width: 80%;
+  margin-top: 10px;
+}
+
+.postRoommateContainer .commentinput button {
+  margin-top: 20px;
+}
+
+/* Post toom inidividual message input css */
+
+.postRoommateContainer .postRoommateMessage {
+  border-top: 1px solid black;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+
+.postRoommateContainer .postRoommateMessage button {
+  margin-top: 20px;
 }
 .grid-container-comments {
   display: fixed;
@@ -719,8 +770,8 @@ p {
   justify-content: center;
 }
 .grid-item-comments {
-  top: -900px;
-  left: 700px;
+  top: -800px;
+  left: 600px;
   bottom: 50px;
   text-align: center;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -788,36 +839,25 @@ p {
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
   font-size: 15px;
-  text-align: center;
+
   overflow: hidden;
-  border: 2px solid #fe4e4e;
+
   box-shadow: 0px 2px 5px 0px var(--clr-gray);
-  background-color: #ffffff;
-  text-align: center;
+
   border-radius: 1rem;
   position: relative;
-  padding: 10px;
-  width: 200px;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  width: auto;
-  margin: 50px auto;
-  width: 50%;
+
   max-width: 440px;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
   backdrop-filter: blur(5px);
-  text-align: center;
-  text-indent: none;
-  color: #333;
+
   margin-top: 10px;
-  text-align: center;
+
   border-bottom: 1px solid #333;
   padding-bottom: 20px;
-  color: black;
 }
 .grid-item-messagepage label {
   font-size: small;
