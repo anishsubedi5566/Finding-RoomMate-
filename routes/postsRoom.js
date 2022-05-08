@@ -1,8 +1,11 @@
 const express = require("express");
 const data = require("../data");
 const postRoomData = data.postsRoom;
+const commentsRoomData = data.commentsRoom;
 const router = express.Router();
 const xss = require("xss");
+let { ObjectId } = require("mongodb");
+const { commentsRoom } = require("../data");
 
 router.get("/", async (req, res) => {
   const allPost = await postRoomData.getPost();
@@ -10,13 +13,10 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let {  title, city, state, schoolName, budget, otherdescription } =
-    req.body;
+  let { title, city, state, schoolName, budget, otherdescription } = req.body;
   try {
-   
     const postDate = new Date().toDateString();
-   
-    
+
     if (!city || city.trim().length === 0) throw "Enter valid city";
     if (!state || state.trim().length === 0) throw "Enter valid state";
     if (!schoolName || schoolName.trim().length === 0)
