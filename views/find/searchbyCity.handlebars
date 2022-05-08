@@ -94,11 +94,12 @@
   action="searchbyCity"
   id="city_search"
   method="POST"
+  onsubmit="validatecity_searchInputs(event);
 >
 
   <div class="searchbox-city">
     <label for="city">City</label>
-    <select id="city" name="city" required>
+    <select id="city" name="city">
       <option value="">None</option>
       <option value="Austin">Austin</option>
       <option value="Boston">Boston</option>
@@ -188,3 +189,5 @@
 
   {{/each}}
 </div>
+
+<script src="/public/js/searchbyCity.js"></script> 
