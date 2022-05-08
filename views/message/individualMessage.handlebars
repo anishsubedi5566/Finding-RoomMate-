@@ -81,9 +81,9 @@
       <h3>Message</h3>
 <ul class="message_list">
   {{#each allMessage}}
-    <label>From: {{this.sendBy}} | To: {{this.receivedBy}}</label>
-    <label>Date: {{this.date}}</label>
-    <label class="labelmessage-individual">{{this.message}}</label>
+    <label>From: {{this.sendBy}} | To: {{this.receivedBy}}, {{this.date}}</label>
+    {{!-- <label>Date: {{this.date}}</label> --}}
+    <h4>{{this.message}}</h4>
     
     <br />
   {{/each}}
