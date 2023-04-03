@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
   let budget = xss(req.body.budget);
   let otherdescription = xss(req.body.otherdescription);
 
+  
   try {
     const postDate = new Date().toDateString();
     if (!title || title.trim().length === 0) throw "Enter valid title";
